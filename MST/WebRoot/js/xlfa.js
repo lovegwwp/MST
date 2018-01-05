@@ -1352,7 +1352,8 @@ $('.xl-days-one-btn').click(function () {
     $(this).addClass('xl-xuanzhong2');
 });
 
-$('.xl-more-btn').click(function () {
+
+$('body').on('click','.xl-more-btn',function () {
     var eleLen=$(this).parents('.more-btn').find('.xl-more-list').children().length;
     /*console.log('长度为');
     console.log(eleLen);*/
