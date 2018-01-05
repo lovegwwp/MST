@@ -1,0 +1,167 @@
+/*-----------------------------聊天窗口*/
+.chatList{
+    position: absolute;
+    top: 1.09rem;
+    left: 0;
+    width: 19.20rem;
+    height: 9.70rem;
+    background-image: url("../img/background.png");
+    background-size: 100% 100%;
+    padding-top: .30rem;
+    z-index: 10;
+}
+.chatroom{
+    background-color: rgba(0,0,0,.4);
+    height: 8rem;
+    width: 16.80rem;
+    border-radius: .1rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -8.40rem;
+}
+.lookHistory{
+    width: 2.3rem;
+    height: .54rem;
+    background-color: rgba(0,0,0,.1);
+    border-radius: .1rem;
+    float: left;
+    font-size: .28rem;
+    line-height: .54rem;
+    border: .01rem solid #01b29b;
+}
+.scrollBtn{
+    width: .5rem;
+    height: 1.5rem;
+    position: absolute;
+    bottom: 1rem;
+    right: -0.6rem;
+}
+.chatTop{
+    margin-bottom: .5rem;
+    width: .5rem;
+    height: .5rem;
+    background-image: url("../img/up_o.png");
+    background-size:  100% 100%;
+}
+.chatBot{
+    width: .5rem;
+    height: .5rem;
+    background-image: url("../img/down_o.png");
+    background-size:  100% 100%;
+}
+.fashowtime{
+    color: #fff;
+    font-size: .20rem;
+    position: absolute;
+    bottom: .40rem;
+    text-align: center;
+    width: 100%;
+    z-index: 9999;
+}
+.hoshowtime{
+    color: #FFF;
+    font-size: .30rem;
+    position: absolute;
+    bottom: 2.16rem;
+    right: .13rem;
+    width: 1.31rem;
+    z-index: 9999;
+}
+
+
+.send-value{
+    float: right;
+    width: 9.30rem;
+    height: .54rem;
+    font-size: .28rem;
+    border: .01rem solid #1ce0e4;
+    background: rgba(0,0,0,0);
+    border-radius: .10rem;
+    padding:0 .3rem;
+    color: #f1f1f1;
+    margin-right: .50rem;
+}
+.xx-ck-home{
+    padding: 0 .2rem;
+    padding-top: .2rem
+}
+.xx-othUser .othText{
+    font-size: .36rem;
+    max-width: 11.9rem;
+    float: left;
+    line-height: .8rem;
+    background-color: #FFF;
+    padding: 0 .2rem;
+    color: #000;
+    margin-left: .33rem;
+    border-radius: .1rem;
+}
+.xx-othUser .othImg{
+    width: .8rem;
+    height: .8rem;
+    overflow: hidden;
+    background-color: #5bc0de;
+    float: left;
+}
+.meImg{
+    width: .8rem;
+    height: .8rem;
+    overflow: hidden;
+    background-color: green;
+    float: right;
+}
+.meImg img{
+    width: 100%;
+    display: block;
+}
+.othImg img{
+    width: 100%;
+    display: block;
+}
+.meText{
+    font-size: .36rem;
+    max-width: 11.9rem;
+    float: right;
+    line-height: .8rem;
+    background-color: #14aaa1;
+    padding: 0 .2rem;
+    color: #000;
+    margin-right: .33rem;
+    border-radius: .10rem;
+}
+
+
+.xx-sp{
+    width: 2.3rem;
+    height: .54rem;
+    background-color: rgba(0,0,0,.1);
+    border-radius: .1rem;
+    position: absolute;
+    bottom: -1.2rem;
+    right: 0;
+    font-size: .28rem; ;
+    padding-left: .6rem;
+    line-height: .54rem;
+    border: .01rem solid #01b29b;
+}
+
+.xx-sp img{
+    width: .5rem;
+    position: absolute;
+    top: .03rem;
+    left: .27rem;
+}
+.xx-mtext,.xx-otext{
+    position: relative;
+}
+.xx-mtext img,.xx-otext img{
+    position: absolute;
+}
+.xx-mtext img{
+    top: .15rem;
+    right: .98rem;
+}
+.xx-otext img{
+    left: .98rem;
+    top: .15rem;
+}

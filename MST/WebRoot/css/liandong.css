@@ -1,0 +1,94 @@
+* { -ms-word-wrap: break-word; word-wrap: break-word; }
+
+ul, ol, dl {
+    list-style: none;
+}
+.xuanzedizhi{
+    cursor: pointer;
+}
+._citys {
+    width: 16.2rem;
+    display: inline-block;
+    border: .01rem solid #4ed3d9;
+    position: relative;
+    background-color: #18646f;
+    padding:0 .2rem;
+    border-radius: .1rem;
+}
+#_citysheng{
+    border-bottom: .01rem solid #4ed3d9;
+    padding-left: 1.2rem;
+}
+._citys span {
+    color: #56b4f8;
+    height: .416rem;
+    width: .416rem;
+    line-height: .25rem;
+    text-align: center;
+    border-radius: .05rem;
+    position: absolute;
+    right: .1rem;
+    top: .1rem;
+    border: .01rem solid #56b4f8;
+    cursor: pointer;
+}
+._citys0 {
+    height: .92rem;
+    padding: .14rem 0.2rem .083rem 0.2rem ;
+}
+._citys0 li {
+    float: left;
+    line-height: .65rem;
+    font-size: .4rem;
+    text-align: center;
+    cursor: pointer;
+    width: 3rem;
+    margin-left: 2.10rem;
+    color: #f1f1f1;
+}
+._citys0 li:first-child{
+    margin-left: 0;
+}
+.citySel {
+    border: .01rem solid #35ffff;
+    color: #fff;
+    border-radius: .05rem;
+}
+._citys1 {
+    width: 100%;
+    display: inline-block;
+    height: 3.4rem;
+    padding-top: 0.02rem;
+}
+._citys1 a {
+    width: 2.03rem;
+    margin-left: .25rem;
+    margin-top: .05rem;
+    line-height: .6667rem;
+    text-align: center;
+    cursor: pointer;
+    font-size: .333rem;
+    overflow: hidden;
+    float: left;
+    height: 0.6667rem;
+    border: .02rem solid #18646f;
+}
+._citys1 a:nth-child(7n+1){
+    margin-left: 0;
+}
+#PoPy{
+    left: 2rem;
+    top: 6rem;
+}
+*{
+    box-sizing: border-box;
+}
+._citys1 a:hover {
+    border: .02rem solid #35ffff;
+    color: #fff !important;
+    border-radius: .1rem;
+}
+.AreaS {
+    -color: #56b4f8 !important;
+    color: #fff !important;
+}

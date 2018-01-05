@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jquery/jquery-1.12.3.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <p class="box" style="display: none">111111</p>
+    <p class="box">2222222</p>
+    <p class="box">3333333</p>
+    <p class="box">344444444</p>
+    <p class="box">555555</p>
+    <p class="box">66666666</p>
+</body>
+<script>
+//    var aaaa=JSON.parse(localStorage.getItem('ddddddddddddddddddd'))
+//    console.log(aaaa);
+//    if(aaaa.length==1){
+//        alert('1111111111111')
+//    }un
+//var a=[];
+//if(a){
+//    alert('1111')
+//}
+//
+//var a=$('.box:hidden').html()
+//console.log(a)
+//----获取信息接收和发送的时间
+//var a=$('p').length;
+//for(var i=0;i<a;i++){
+//    $('p').eq(i)[0].onclick=function () {
+//        console.log($(this).index())
+//    }
+//}
+//function getInforTime() {
+//    var date = new Date();
+//    var secondAll=date.getHours() * 60 * 60 * 1000 + date.getMinutes() * 60 * 1000 +date.getSeconds() * 1000
+//    var year = date.getFullYear();
+//
+//    var month = date.getMonth()+1;
+//    if(parseInt(month)<10){
+//        month='0'+month;
+//    }
+//    var day = date.getDate();
+//    if(parseInt(day)<10){
+//        day='0'+day;
+//    }
+//    var hour = date.getHours();
+//    if(parseInt(hour)<10){
+//        hour='0'+hour;
+//    }
+//    console.log(hour)
+//    var minute = date.getMinutes();
+//    if(parseInt(minute)<10){
+//        minute='0'+minute
+//    }
+//    var second = date.getSeconds();
+//    if(parseInt(second)<10){
+//        second='0'+second
+//    }
+//    var time=year+'-'+month+'-'+day+' '+hour+':'+minute+':'+second;
+//    var timeText = getTimeText(time);
+//    console.log(timeText);
+//    console.log(secondAll);
+//}
+//getInforTime();
+//
+//
+////// 过去时间戳获取
+////function getTimeS(argument) {
+////    var timeS = argument;
+//////    timeS = timeS.replace(/[年月]/g,'-').replace(/[日]/,'');
+////    return new Date().getTime() - new Date(timeS).getTime() - 1000; //有一秒的误差
+////}
+//
+//// 信息发送和接收的时间和当前的时间做对比
+//function getTimeText(argument) {
+//    var timeS = argument;
+//    var todayT = '';
+//    var yestodayT = '';
+//    var timeCha = new Date().getTime() - new Date(timeS).getTime() - 1000;
+////    console.log(timeCha);
+//    timeS = timeS.slice(-8);
+//    todayT = new Date().getHours() * 60 * 60 * 1000 + new Date().getMinutes() * 60 * 1000 + new Date().getSeconds() * 1000;
+////    console.log(todayT)
+//    yestodayT = todayT + 24 * 60 * 60 * 1000;
+//    if (timeCha > yestodayT) {
+//        return argument.slice(0, 10);
+//    }
+//    if (timeCha > todayT && timeCha < yestodayT) {
+//        return timeS.slice(0, 2) > 12 ? '昨天 下午' + (timeS.slice(0, 2) == 12 ? 12 : timeS.slice(0, 2) - 12) + timeS.slice(2, 5) : '昨天 上午' + timeS.slice(0, 5);
+//    }
+//    if (timeCha < todayT) {
+//        return timeS.slice(0, 2) >= 12 ? '下午' + (timeS.slice(0, 2) == 12 ? 12 : timeS.slice(0, 2) - 12) + timeS.slice(2, 5) : '上午' + timeS.slice(0, 5);
+//    }
+//
+//}
+//$.ajax({
+//    url: 'http://192.168.0.26:8080/MST/cmdPc',
+//    data: {
+//        cmdType:4
+//    },
+//    type: "POST",
+//    dataType: "json",
+//    success: function (data) {
+//        console.log(data);
+//        var IP=data.PCIP;
+//        console.log(data.PCIP);
+//        $.ajax({
+//            url: 'http://192.168.0.26:8080/SSM/upDevIp.action',
+//            data: {
+//                macId:33,
+//                patIP:IP
+//            },
+//            async: true,
+//            type: "POST",
+//            dataType: "json",
+//            success: function (data) {
+//                 console.log('发送ip地址成功');
+//            },
+//            error:function (error) {
+//                console.log(error);
+//            }
+//        });
+//    },
+//    error:function (error) {
+//        console.log(error);
+//    }
+//});
+
+//
+//\     if(data.status==true){
+//    $.ajax({
+//        url: ajaxBd+'MST/cmdPc',
+//        data:{
+//            cmdType:6
+//        },
+//        type: "POST",
+//        dataType: "json",
+//        success: function (data) {
+//            var comment=data.pcInfo;
+//            if(data.status==true){
+//                $.ajax({
+//                    url: ajaxStr+'MSTYL/pat/upPcComment.action',
+//                    data:{
+//                        pID:pID,
+//                        week:week,
+//                        day:day,
+//                        time:time,
+//                        dID:dID,
+//                        type: type,
+//                        titles:title,
+//                        comments:comment
+//                    },
+//                    type: "POST",
+//                    dataType: "json",
+//                    success: function (data) {
+//                        if(data.status==true){
+//                        }
+//                    },
+//                    error:function (err) {
+//                        console.log(err);
+//                    }
+//                })
+//            }
+//        },
+//        error:function (err) {
+//            console.log(err);
+//        }
+//    })
+//}
+function aa(t) {
+    console.log(t)
+}
+aa()
+</script>
+
+</html>

@@ -1,0 +1,154 @@
+/*-----------------------资讯页面*/
+.zixun-content{
+    width: 17.2rem;
+    height: 8.91rem;
+    /*background-color: #313649;*/
+    padding: .1rem 0 0 0;
+}
+.zixun-content1{
+    width: 17.2rem;
+    height: 8.05rem;
+    position: relative;
+}
+.zx-list{
+    height: 8rem;
+    overflow: hidden;
+    padding: .2rem;
+}
+.zx-list>div{
+    width: 16.8rem;
+    height: 2.5rem;
+    background-color: #19636e;
+    margin-bottom: .1rem;
+    padding: .12rem .1rem;
+    border-radius: 0.1rem;
+    box-shadow: 0 0 .2rem #4cd5e8;
+    cursor: pointer;
+}
+.zx-list>div:last-child{
+    margin-bottom: 0;
+}
+.zx-list-pic{
+    width: 2.88rem;
+    height: 2.16rem;
+    overflow: hidden;
+}
+.zx-list-pic img{
+    width:2.88rem;
+    display: block;
+}
+.zx-list-text{
+    width: 13.7rem;
+}
+.zx-list-one>div{
+    float: left;
+}
+.zx-list-one{
+    position: relative;
+}
+.zx-list-text{
+    padding-left: .15rem;
+}
+.zx-list-textTitle{
+    font-size: .3rem;
+    font-weight: bold;
+    line-height: .55rem;
+}
+.zx-list-textDescribe{
+    font-size: .28rem;
+    line-height: .50rem;
+}
+.zx-list-data p{
+    font-size: .28rem;
+    position: absolute;
+    bottom: .2rem;
+    right: .20rem;
+}
+.zx-home{
+    /*display: none;*/
+}
+.zx-text{
+    display: none;
+    /*background-color: pink;*/
+}
+.zx-text{
+    /*background-color: pink;*/
+    padding-top: .1rem;
+}
+.zx-pic img{
+    display: block;
+    height: 3.31rem;
+}
+.zx-pic{
+    width: 4.42rem;
+    height: 3.31rem;
+    margin: .30rem auto;
+    overflow: hidden;
+}
+.zx-text .zx-title{
+    font-size: .30rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: .45rem;
+}
+.zx-text .zx-data{
+    text-align: center;
+    font-size: .28rem;
+    line-height: .45rem;
+    margin-bottom: .25rem;
+}
+.zx-text .zx-detail{
+    font-size: .28rem;
+    line-height: .5rem;
+    overflow: auto;
+    height: 4rem;
+}
+#zx-clone{
+    display: none;
+}
+
+
+.zx-fanhui{
+    font-size: 0.2rem;
+    width: 1rem;
+    text-align: center;
+    color: #fff;
+    height: .33rem;
+    line-height: .3rem;
+    cursor: pointer;
+    position: relative;
+    left: 1.3rem;
+    background-color: #04a0b9;
+    border: .02rem solid #05eaff;
+    top: .4rem;
+}
+.zixun-content{
+    position: relative;
+}
+
+.zx-list b{
+	display: none;
+}
+.zx-text .video-js{
+	width: 6.40rem;
+    height: 3.60rem;
+    margin: 0 auto;
+    margin-bottom: .8rem;
+}
+.zx-text .vjs-big-play-button{
+	width: .6rem;
+    height: .46rem;
+    position: absolute;
+    top: 1.50rem;
+    left: 50%;
+    margin-left: -.30rem;
+}
+.zx-text .vjs-icon-placeholder{
+	position: absolute;
+    top: -.05rem;
+    left: 50%;
+    width: .6rem;
+    height: .46rem;
+    margin-left: -.3rem;
+}
+

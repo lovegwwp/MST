@@ -1,0 +1,211 @@
+/*----系统设置*/
+.xtsz-content{
+    padding-top: .8rem;
+}
+.xtsz-home{
+    height: 8rem;
+    border: .02rem solid #94ffff;
+    border-radius: .10rem;
+    box-shadow: 0 0 .2rem #33c2cf;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: rgba(0,0,0,.2);
+}
+.xt-pic{
+    height: 2.75rem;
+    text-align: center;
+    padding-top: .3rem;
+}
+.xt-pic img{
+    width: 2rem;
+}
+.xt-text{
+    font-size: .35rem;
+    height: 4.2rem;
+}
+.companyCopy,.companyName{
+    font-size: .23rem;
+    color: #bec7c9;
+    text-align: center;
+}
+.xtsjgx{
+    width: 19.20rem;
+    height: 10.8rem;
+    background-color: rgba(0,0,0,.3);
+    background-size: 100% 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+}
+.xtsjgx-ck{
+    width: 9rem;
+    height: 5.8rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -2.9rem;
+    margin-left: -4.50rem;
+    background-image: url("../img/new.png");
+    background-size: 100% 100%;
+}
+.xtsjgx-ck p{
+    color: #FFF;
+    font-size: .4rem;
+    line-height: 6rem;
+    text-align: center;
+}
+.xtsjgx-no-btn{
+    width: 2.74rem;
+    height: .6rem;
+    font-size: .4rem;
+    position: absolute;
+    line-height: .6rem;
+    border-radius: .10rem;
+    background-image: url("../img/anniu_xuanzhong.png");
+    background-size: 100% 100%;
+    margin:0 auto ;
+    margin-left: -1.37rem;
+    left: 50%;
+    bottom: .5rem;
+    overflow: hidden;
+}
+
+.xtsjgx-no-btn:before {
+    content: ' ';
+    position: absolute;
+    background: #fff;
+    width: .25rem;
+    height: .51rem;
+    top: .05rem;
+    left: -.45rem;
+    opacity: 0.3;
+    -webkit-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+}
+.xtsjgx-no-btn:hover:before {
+    width: .25rem;
+    left: 2.9rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+.xtsjgxbtn{
+    position: absolute;
+    width: 7rem;
+    height: .6rem;
+    bottom: .5rem;
+    left: 50%;
+    margin-left: -3.5rem;
+}
+.check-no{
+    width: 2.74rem;
+    height: .6rem;
+    font-size: .3rem;
+    border-radius: .10rem;
+    background-size: 100% 100%;
+    background-image: url("../img/anniu_xuanzhong.png");
+    position: absolute;
+    left: -.88rem;
+    line-height: .3rem;
+    overflow: hidden;
+}
+.check-no:before {
+    content: ' ';
+    position: absolute;
+    background: #fff;
+    width: .25rem;
+    height: .50rem;
+    top: .05rem;
+    left: -.45rem;
+    opacity: 0.3;
+    -webkit-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+}
+.check-no:hover:before {
+    width: .25rem;
+    left: 2.95rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+
+
+
+
+.xtsjgx-yes-no,.xtsjgx-yes-yes{
+    width: 2.74rem;
+    height: .6rem;
+    font-size: .4rem;
+    border-radius: .10rem;
+    background-size: 100% 100%;
+    position: relative;
+    overflow: hidden;
+}
+.xtsjgx-yes-no{
+    background-color: #2b6d77;
+    float: left;
+}
+.xtsjgx-yes-yes{
+    background-image: url("../img/anniu_xuanzhong.png");
+    float: right;
+}
+.xtsjgx-yes-yes:before {
+    content: ' ';
+    position: absolute;
+    background: #fff;
+    width: .25rem;
+    height: .51rem;
+    top: .05rem;
+    left: -.45rem;
+    opacity: 0.3;
+    -webkit-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+}
+.xtsjgx-yes-yes:hover:before {
+    width: .25rem;
+    left: 2.9rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+
+.xt-jiance{
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    margin-left: -.5rem;
+}
+.xt-jiance img{
+    width: 100%;
+}
+.aboutus-content{
+    padding-top: .8rem;
+}
+.hdzx{
+    height: .8rem;
+    display: block;
+    line-height: .8rem;
+    font-size: .34rem;
+}
+.xtsz-btn{
+    width: 1.44rem;
+    line-height: 1.12rem !important;
+}
+
+
+
+.hdzx{
+    font-size: .34rem;
+}
+.xtsz-home{
+    position: relative;
+}
+.banbenTxt{
+    font-size: .34rem;
+    position: absolute;
+    bottom: 1rem;
+    text-align: center;
+    left: 50%;
+    width: 10rem;
+    margin-left: -5rem;
+}

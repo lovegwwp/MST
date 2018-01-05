@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开机画面</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    html,body{
+        width: 19.2rem;
+        height: 100%;
+        /*overflow: hidden;*/
+    }
+    /*----开机动画*/
+    .kj-jif{
+        width: 19.2rem;
+        height: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+    }
+    .kj-jif img{
+        width: 100%;
+        height: 100%;
+        
+    }
+</style>
+<body>
+    <div class="kj-jif"><img src="./img/kaijiloading.gif"></div>
+
+    <script src="jquery/jquery-1.12.3.min.js"></script>
+    <script>
+        var WI=$(window).width(); //浏览器当前窗口可视区域宽度
+        //        alert(WI)
+        var Fs=WI/1920*100+'px';
+        $('body').css({
+            fontSize:Fs
+        });
+        $('html').css({
+            fontSize:Fs
+        });
+
+        var num=2;
+        var timer=setInterval(function () {
+            num--;
+            if(num==0){
+                clearInterval(timer);
+                window.location.href='index.html';
+            }
+        },1000)
+    </script>
+</body>
+</html>

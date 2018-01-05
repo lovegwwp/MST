@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery/jquery-1.12.3.min.js"></script>
+    <!--<link rel="stylesheet" type="text/css">-->
+    <style>
+        .lx-edit-fenzu {
+            width: 240px;
+            top: 0;
+            height: 70px;
+            font-size: 35px;
+            line-height: 70px;
+            padding-left: 38px;
+        }
+
+        .lx-edit-fenzu {
+            border-radius: 10px;
+            background-color: #1a494f;
+            border: 2px solid #22cfd5;
+            position: absolute;
+        }
+        button {
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            display: block;
+            background-color: rgba(0,0,0,0);
+            color: #fff;
+        }
+        .lx-edit-fenzu img {
+            position: absolute;
+            left: 15px;
+            top: 16px;
+            width: 37px;
+        }
+        .lx-edit-fenzu:hover img{
+            animation: myfirst .5s;
+        }
+        @keyframes myfirst {
+            0%   {width: 37px;top: 16px;left: 15px}
+            30%  {width: 15px;top: 24.5px;left: 23px}
+            60% {width: 40px;top: 16px;left: 15px}
+            80%  {width: 20px;top: 24.5px;left: 23px}
+            100% {width: 37px;top: 16px;left: 15px}
+        }
+    </style>
+</head>
+<body>
+<button class="lx-edit-fenzu">
+    <img src="../img/edit@2x.png">
+    编辑分组
+</button>
+<script>
+
+</script>
+</body>
+</html>

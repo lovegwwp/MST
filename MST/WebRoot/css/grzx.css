@@ -1,0 +1,412 @@
+
+/*---------------------个人中心*/
+.grzx-content{
+    width: 17.2rem;
+    height: 7.86rem;
+}
+.grzx-chongzhi>div{
+    float: left;
+    padding-left: 0.12rem;
+}
+.grzx-chongzhi>div:last-child{
+    float: right;
+}
+.grzx-chongzhi{
+    height: 1.80rem;
+    /*border-top: .02rem solid #3b8893;*/
+
+}
+.grzx-chongzhi p{
+    font-size: .4rem;
+    line-height: 1.8rem;
+    float: left;
+    text-shadow: .02rem .02rem .05rem #000;
+    color: #e7c400;
+}
+.xl-sysc span,.sp-sysc span{
+    color: #e7c400;
+}
+.grzx-chongzhi button{
+    font-size: .34rem;
+    background-image: url("../img/anniu_xuanzhong.png");
+    background-size: 100% 100%;
+    color: #eee;
+    margin-left: .35rem;
+    width: 1.80rem;
+    height: .6rem;
+    line-height: .6rem;
+    border-radius: .1rem;
+    float: left;
+    margin-top: .6rem;
+    overflow: hidden;
+    position: relative;
+}
+.tonghua-chongzhi:before,.xunlian-chongzhi:before {
+    content: ' ';
+    position: absolute;
+    background: #fff;
+    width: .25rem;
+    height: .5rem;
+    top: .05rem;
+    left: -.45rem;
+    opacity: 0.3;
+    -webkit-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+}
+.tonghua-chongzhi:hover:before {
+    width: .25rem;
+    left: 2.25rem;
+    -webkit-transition: all 0.35s ease-out;
+    transition: all 0.35s ease-out;
+}
+.xunlian-chongzhi:hover:before {
+    width: .45rem;
+    left: 2.25rem;
+    -webkit-transition: all 0.35s ease-out;
+    transition: all 0.35s ease-out;
+}
+
+
+
+
+.grzx-home,.grzx-home2{
+    height: 6.52rem;
+    width: 17.2rem;
+}
+.ess-information{
+    height: 2rem;
+    border: .01rem solid #4ed3d9;
+    margin-bottom: .3rem;
+    border-radius: .1rem;
+}
+.ess-info td,.ess-case td{
+    font-size: .36rem;
+    line-height: 1rem;
+}
+.ess-id,.ess-age,.essCase-id,.essCase-buwei{
+    padding-left: .25rem;
+    width: 1.9rem;
+}
+.ess-userld,.essCase-userid{
+    width: 4.95rem;
+}
+.ess-name,.essCase-lishou{
+    width: 1.65rem;
+}
+.ess-username,.essCase-userlishou{
+    width: 5.25rem;
+}
+.ess-sex,.essCase-huance{
+    width: 1.15rem;
+}
+.ess-userld,.ess-username,.ess-usersex,.ess-userage,.ess-MshebeiID,.essCase-userid,.essCase-userlishou,.essCase-userhuance,.essCase-userbuwei,.essCase-userdaxiao{
+    color: #eee;
+}
+.ess-id,.ess-name,.ess-sex,.ess-age,.ess-shebeiID,.essCase-id,.essCase-lishou,.essCase-huance,.essCase-buwei,.essCase-daxiao{
+    color: #01e1de;
+}
+.ess-address{
+    height: 1.70rem;
+    margin-bottom: .28rem;
+}
+.ess-address>div{
+    float: left;
+}
+.ess-address-left{
+    width: 1rem;
+    font-size: .4rem;
+    height: 1.7rem;
+    line-height: .8rem;
+}
+.ess-address-left span{
+    color: #01e1de;
+}
+.grzx-home2{
+    overflow: hidden;
+}
+.ess-address-right{
+    font-size: .4rem;
+    line-height: .8rem;
+    height: 1.7rem;
+    width: 16.2rem;
+}
+.ess-address-right>div{
+    height: .8rem;
+    margin-bottom: .1rem;
+    border: .01rem solid #4ed3d9;
+    padding-left: .18rem;;
+    font-size: .4rem;
+    line-height: .8rem;
+    border-radius: .1rem;
+}
+#city{
+    height: .6rem;
+    font-size: .4rem;
+    line-height: .8rem;
+    width: 10rem;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    color: #eee;
+}
+.xuanzedizhi{
+    width: 0.5rem;
+    height: .5rem;
+    margin-right: .2rem;
+}
+.xuanzedizhi img{
+    width: 100%;
+}
+.ess-address-right>form{
+    height: .8rem;
+    border: .01rem solid #4ed3d9;
+    padding-left: .18rem;
+    border-radius: .1rem;
+    /*width: 1624px;*/
+}
+.ess-address-right>form input:first-child{
+    width: 14rem;
+    height: .76rem;
+    vertical-align:top;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    font-size: .4rem;
+    line-height: .78rem;
+    color: #eee;
+}
+.add-queren{
+    width: .92rem;
+    height: .5rem;
+    background-color: #00dfdc;
+    border-radius: .1rem;
+    font-size: .3rem;
+    line-height: .5rem;
+    color: #eee;
+    float: right;
+    text-align: center;
+    margin-top: .14rem;
+    margin-right: .1rem;
+    cursor: pointer;
+    display: none;
+}
+.ess-case{
+    height: 2rem;
+    border: .01rem solid #4ed3d9;
+    border-radius: .1rem;
+}
+.grzx-home-one{
+    padding-top: .4rem;
+    padding-bottom: .2rem;
+    background-color: rgba(36,93,100,.5);
+    border: .01rem solid #4ed3d9;
+    padding-left: .21rem;
+    font-size: .36rem;
+    border-radius: .1rem;
+}
+.grzx-home-text1>p{
+    float: left;
+}
+.ess-leshiList{
+    width: 6.6rem;
+    margin-bottom: .2rem;
+}
+.ess-keshi,.ess-bingqu,.ess-jiben{
+    color: #04d2d0;
+}
+.ess-leshiList span{
+    line-height: .6rem;
+}
+.ess-userkeshi,.ess-userbingqu{
+    margin-left: .23rem;
+}
+.ess-bingqu{
+    width: 1.6rem;
+}
+.grzx-home-text2>p,.grzx-home-text3>p{
+    float: left;
+    line-height: .60rem;
+}
+.grzx-home-text3 .ess-zhenduan{
+    color: #04d2d0;
+}
+.ess-jiben,.ess-zhenduan{
+    width: 1.65rem;
+}
+.ess-userjiben,.ess-userzhenduan{
+    width: 15.09rem;
+}
+.grzx-home2-text2{
+    margin-bottom: .15rem;
+}
+
+.chongzhi-sp,.chongzhi-xl{
+    height: 8.58rem;
+    padding-top: .45rem;
+}
+.cz-zhanghao{
+    font-size: .40rem;
+    line-height: .85rem;
+    text-align: center;
+}
+.cz-userzhanghao-sp,.cz-userzhanghao-xl{
+    font-size: .60rem;
+    line-height: .95rem;
+    text-align: center;
+    margin-bottom: .37rem;
+}
+.cz-priceOne{
+    width: 3.31rem;
+    height: 2.80rem;
+    float: left;
+    margin-left: .16rem;
+    background-color:#2a6971 ;
+    border-radius: .10rem;
+    border: .02rem solid #3ca6ad;
+}
+.cz-active{
+    background-image: url("../img/Recharge-Selected.png");
+    background-size: 100% 100%;
+    border: none;
+}
+.cz-priceOne:hover{
+    cursor: pointer;
+}
+.cz-priceOne>p:first-child{
+    color: #ffff28;
+    font-size: .3rem;;
+    line-height: 1rem;
+    text-align: center;
+}
+.cz-priceOne>p:nth-child(2){
+    font-size: .6rem;;
+    line-height: .8rem;
+    text-align: center;
+}
+.cz-priceOne>p:last-child{
+    font-size: .3rem;
+    line-height: .5rem;
+    text-align: center;
+}
+.cz-priceOne:first-child{
+    margin-left: 0;
+}
+.cz-priceList,.cz-priceList{
+    margin-bottom: .4rem;
+}
+.cz-content-bot{
+    margin-bottom: 1.24rem;
+    padding-left: 6.4rem;
+}
+.cz-zhifu{
+    width: 10.28rem;
+    height: 1rem;
+    font-size: .48rem;
+    line-height: 1rem;
+    background-color: #208891;
+    text-align:center;
+    border: .02rem solid #95fcfc;
+    margin: 0 auto;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: .05rem;
+    position: relative;
+    overflow: hidden;
+}
+/*.cz-zhifu:before {*/
+/*content: ' ';*/
+/*position: absolute;*/
+/*background: #fff;*/
+/*width: .50rem;*/
+/*height: .97rem;*/
+/*top: 0;*/
+/*left: -.8rem;*/
+/*opacity: 0.3;*/
+/*-webkit-transform: skewX(-25deg);*/
+/*transform: skewX(-25deg);*/
+/*}*/
+/*.cz-zhifu:hover:before {*/
+/*width: .55rem;*/
+/*left: 10.50rem;*/
+/*-webkit-transition: all .35s ease-out;*/
+/*transition: all .35s ease-out;*/
+/*}*/
+
+#cz-shiping{
+    display: none;
+}
+#cz-xulian{
+    display: none;
+}
+.cz-content-sp,.cz-content-xl{
+    height: 3.2rem;
+}
+
+/*--------------支付宝付款界面*/
+.payMenoy{
+    width: 19.20rem;
+    height: 10.8rem;
+    background-color: rgba(0,0,0,0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+}
+.pay-code{
+    width: 7rem;
+    height: 7rem;
+    border-radius:.1rem ;
+    border: .03rem solid #9bfbff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -3.5rem;
+    margin-left: -3.5rem;
+    background-color: #18333d;
+}
+#codeShow{
+    margin-top: .8rem;
+    width: 4rem;
+    height: 4rem;
+    background-color: #fff;
+    margin-bottom: .4rem;
+    position: absolute;
+    left: 50%;
+    padding-top: .12rem;
+    padding-left: .2rem;
+    margin-left: -2rem;
+}
+.pay-code-time{
+    font-size: .3rem;
+    text-align: center;
+}
+.pay-code-time span{
+    color: #0bd4e0;
+}
+.pay-code-text{
+    font-size: .4rem;
+    color: #fff;
+    text-align: center;
+    margin-top: 5.3rem;
+    margin-bottom: .2rem;
+}
+.payMenoy-X{
+    width: 1.2rem;
+    height: 1.2rem;
+    position: absolute;
+    top: .70rem;
+    left: 13rem;
+    cursor: pointer;
+}
+.payMenoy-X img{
+    width: 100%;
+    display: block;
+}
+.payLoading{
+    width: 1.28rem;
+    height: 1.28rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 999;
+    margin-left: -64px;
+    margin-top: -137px;
+}

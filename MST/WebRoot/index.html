@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>明思特病人端PC</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link type="text/css" rel="stylesheet" href="./css/video-js.css">
+    <link type="text/css" rel="stylesheet" href="./css/home.css">
+    <link type="text/css" rel="stylesheet" href="./css/xlfa.css">       <!--训练方案的样式-->
+    <link type="text/css" rel="stylesheet" href="./css/zx.css">          <!--资讯的样式-->
+    <link type="text/css" rel="stylesheet" href="./css/lxys.css">          <!--联系医生的样式-->
+    <link type="text/css" rel="stylesheet" href="./css/xz.css">          <!--下载的样式-->
+    <link type="text/css" rel="stylesheet" href="./css/xx.css">          <!--消息的样式-->
+    <link type="text/css" rel="stylesheet" href="./css/grzx.css">          <!--个人中心的样式-->
+    <link type="text/css" rel="stylesheet" href="./css/xtsz.css">          <!--系统设置的样式-->
+    <link type="text/css" rel="stylesheet" href="./css/splt.css">          <!--视频聊天的样式-->
+    <link type="text/css" rel="stylesheet" href="./css/xxlt.css">          <!--消息聊天的样式-->
+    <link type="text/css" rel="stylesheet" href="./css/radiocss.css">          <!--医疗咨询音频样式-->
+    <link type="text/css" rel="stylesheet" href="./css/liandong.css">      <!--个人中心城市选择的样式-->
+    <link type="text/css" rel="stylesheet" href="./css/ripple.css">       <!--水波纹-->
+    <script src="./jquery/jquery-1.12.3.min.js"></script>
+
+    <script>
+        var WI=$(window).width(); //浏览器当前窗口可视区域宽度
+//        alert(WI)
+        var Fs=WI/1920*100+'px';
+        $('body').css({
+            fontSize:Fs
+        });
+        $('html').css({
+            fontSize:Fs
+        });
+    </script>
+</head>
+<body onselectstart="return false">
+    <div class="kaiJi">
+        <div class="kaijihome">
+            <div class="kaiJi-top">
+                <div class="wangluodeng"><img src=""></div>
+            </div>
+            <div>
+                <p class="kaiJi-title"></p>
+            </div>
+            <div class="kaiJi-pic">
+                <div class="kaiJi-picList">
+                    <div><img src="" alt="开机图片" style="font-size: .2rem;color: #eee"></div>
+                    <div><img src="" alt="开机图片" style="font-size: .2rem;color: #eee"></div>
+                    <div><img src="" alt="开机图片" style="font-size: .2rem;color: #eee"></div>
+                </div>
+            </div>
+            <div class="kaiJi-textList">
+                <p class="kaiJi-text"></p>
+            </div>
+            <div class="jindutiaoList">
+                <p>启动中</p>
+                <div class="jingdutiao">
+                    <div class="wanchengList">
+                        <img src="./img/load1@21x.png" style="width: .2rem">
+                        <img src="./img/Load.png" class="wancheng">
+                        <img src="./img/load2@2x.png" style="width: .2rem">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box" style="display: none">
+        <div class="nav clearfix">
+            <button class="xlfa-btn active-under1">训练方案及评测</button>
+            <button  class="ylzx-btn">医疗资讯</button>
+            <button  class="lxys-btn">联系医生</button>
+            <button class="xzfa-btn">方案下载记录</button>
+            <button class="xx-btn">消息</button>
+            <button class="grzx-btn">个人中心</button>
+            <div class="xtsz-btn">
+                <label>其他</label>
+                <div class="xtszbtnList">
+                    <label class="hdzx">互动中心</label>
+                    <div></div>
+                    <button class="aboutus">关于我们</button>
+                    <div></div>
+                    <button class="jcgx">检测更新</button>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="xunlian-contentList">
+                <div class="xl-main" >
+                    <div class="xunlian-home clearfix">
+                        <div class="xl-content-home">
+                            <div class="xl-content-left clearfix"></div>
+                            <div class="xl-content-right">
+                                    <!--训练页右侧消息-->
+                                    <div class="xl-contentright1">
+                                        <p></p>
+                                    </div>
+                                    <div class="xl-contentright2">
+                                        <p></p>
+                                    </div>
+                                </div>
+                            <div class="xl-content" id="xl-content-clone2">
+                                <div id="more-three-day" class="more-threeDay">
+                                    <div class="xl-days-one">
+                                        <button class="xl-days-one-btn">第<span class="xl-week">一</span>周第<span class="xl-day">一</span>天第<span class="xl-time">一</span>次<span class="xl-dID"></span><span class="xl-watchTime"></span><span class="xl-type"></span></button>
+                                        <span class="xl-data" ></span> 
+                                        <button class="small-ceping">测评</button>
+                                    </div>
+                                    <div class="xl-days-one">
+                                        <button class="xl-days-one-btn">第<span class="xl-week">一</span>周第<span class="xl-day">一</span>天第<span class="xl-time">一</span>次<span class="xl-dID"></span><span class="xl-watchTime"></span><span class="xl-type"></span></button>
+                                        <span class="xl-data"></span>
+                                        <button class="small-ceping">测评</button>
+                                    </div>
+                                    <div class="more-btn">
+                                        <div>
+                                            <button class="xl-more-btn" style="text-align: center">更多</button>
+                                        </div>
+                                        <div class="xl-more-listout">
+                                            <div class="xl-more-list"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div id="three-day" class="threeDays"></div>
+                                <div id="xl-one-clone" class="xl-one clearfix">
+                                    <div class="left-btn clearfix">
+                                            <div class="clearfix xl-type-btn"><button class="type-btn"></button><span style="display: none" class="typeItem"></span></div>
+                                            <div class="xl-days-btnList"></div>
+                                            <div class="mid-pic clearfix">
+                                                <div class="circleChart" data-value="77">
+                                                    <p class="circleChartNum"></p>
+                                                    <p class="circleChartFinish">完成</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div id="one-time" class="xl-days-one">
+                                    <button class="xl-days-one-btn">第<span class="xl-week">一</span>周第<span class="xl-day">一</span>天第<span class="xl-time">一</span>次<span class="xl-dID"></span><span class="xl-watchTime"></span><span class="xl-type"></span></button>
+                                    <span class="xl-data"></span>
+                                    <button class="small-ceping">测评</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="xl-content-bot">
+                        <div class="xl-ceping"><button class="xl-cepingBtn">评测</button></div>
+                        <div class="xl-th-shichang">
+                                <div class="fa-sp-chongzhi" style=" float: left;">
+                                    <span>视频通话剩余时长 :</span>
+                                    <span class="fa-sythsc"></span>
+                                    <span>分钟</span>
+                                </div>
+                                <div>
+                                    <button class="xl-th-chongzhi">充值</button>
+                                </div>
+                        </div>
+                        <div class="xl-sp-shichang">
+                                <div class="fa-xl-chongzhi" style="font-size: .20rem; float: left;line-height: .6rem ">
+                                    <span>训练视频剩余时长 :</span>
+                                    <span class="fa-syxlsc"></span>
+                                    <span>分钟</span>
+                                </div>
+                                <div>
+                                    <button class="xl-sp-chongzhi">充值</button>
+                                </div>
+                        </div>
+                        <div class="xl-fenye">
+                            <div><button class="xl-goUp snarl-demo waves-button">上一页</button></div>
+                            <div class="xl-yeshu"><span class="active xl-first-page">1</span><span>/</span><span class="xl-last-page">1</span></div>
+                            <div><button class="xl-goDown active snarl-demo waves-button">下一页</button></div>
+                        </div>
+                    </div>
+                    <div class="pc-contentList" style="display: none">
+                        <div class="pc-content">
+                            <ul class="pc-title">
+                                <li>评测名称</li>
+                                <li>评测时间</li>
+                                <li>评测结果</li>
+                                <li>评测医生</li>
+                            </ul>
+                            <ul class="pc-list-one clearfix">
+                                <li class="pc-mingcheng">上肢</li>
+                                <li class="pc-shijian">2017-8-5</li>
+                                <li class="pc-jieguo"><p class="pc-jieguo-num">60</p><p class="pc-jieguo-text">胳膊抬高度没有到90度需要更正姿势重新锻炼胳膊抬高度没有到90度需要更正姿势重新锻炼</p></li>
+                                <li class="yisheng">张三</li>
+                            </ul>
+                            <ul class="pc-list-one clearfix">
+                                <li class="pc-mingcheng">上肢</li>
+                                <li class="pc-shijian">2017-8-5</li>
+                                <li class="pc-jieguo"><p class="pc-jieguo-num">60</p><p class="pc-jieguo-text">胳膊抬高度没有到90度需要更正姿势重新锻炼胳膊抬高度没有到90度需要更正姿势重新锻炼</p></li>
+                                <li class="yisheng">张三</li>
+                            </ul>
+                            <ul class="pc-list-one clearfix">
+                                <li class="pc-mingcheng">上肢</li>
+                                <li class="pc-shijian">2017-8-5</li>
+                                <li class="pc-jieguo"><p class="pc-jieguo-num">60</p><p class="pc-jieguo-text">胳膊抬高度没有到90度需要更正姿势重新锻炼胳膊抬高度没有到90度需要更正姿势重新锻炼</p></li>
+                                <li class="yisheng">张三</li>
+                            </ul>
+                        </div>
+                        <div class="pc-content-bot clearfix">
+                            <div class="pc-fenye">
+                                <div><button class="pc-goUp snarl-demo waves-button">上一页</button></div>
+                                <div class="pc-yeshu"><span class="pc-first-page active">1</span><span>/</span><span class="pc-last-page" >5</span></div>
+                                <div><button class="pc-goDown active snarl-demo waves-button">下一页</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="small-pc-main" style="display: none">
+                    <div content="small-pc-one">
+                        <div class="spc-main-title"></div>
+                        <div class="spc-mainList">
+                            <div class="spc-mainOne" id="spc-clone">
+                                <p class="spc-mingcheng">登梯子</p>
+                                <p class="spc-shijian">2017-5-12 9:00</p>
+                                <p class="spc-jindu">完成</p>
+                                <p class="spc-text">时刻都咳嗽到山东搜的时刻都顺道看看</p>
+                            </div>
+                            <div class="spc-mainOne">
+                                <p class="spc-mingcheng">登梯子</p>
+                                <p class="spc-shijian">2017-5-12 9:00</p>
+                                <p class="spc-jindu">完成</p>
+                                <p class="spc-text">时刻都咳嗽到山东搜的时刻都顺道看看</p>
+                            </div>
+                            <div class="spc-mainOne">
+                                <p class="spc-mingcheng">登梯子</p>
+                                <p class="spc-shijian">2017-5-12 9:00</p>
+                                <p class="spc-jindu">完成</p>
+                                <p class="spc-text">时刻都咳嗽到山东搜的时刻都顺道看看</p>
+                            </div>
+                            <div class="spc-mainOne">
+                                <p class="spc-mingcheng">登梯子</p>
+                                <p class="spc-shijian">2017-5-12 9:00</p>
+                                <p class="spc-jindu">完成</p>
+                                <p class="spc-text">时刻都咳嗽到山东搜的时刻都顺道看看</p>
+                            </div>
+                            <div class="spc-mainOne">
+                                <p class="spc-mingcheng">登梯子</p>
+                                <p class="spc-shijian">2017-5-12 9:00</p>
+                                <p class="spc-jindu">完成</p>
+                                <p class="spc-text">时刻都咳嗽到山东搜的时刻都顺道看看</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-pc-bot clearfix">
+                        <div class="small-pc-fenye">
+                            <div><button class="small-pc-goUp snarl-demo waves-button">上一页</button></div>
+                            <div class="small-pc-yeshu"><span class="small-pc-first-page active">1</span><span>/</span><span class="small-pc-last-page" >5</span></div>
+                            <div><button class="small-pc-goDown active snarl-demo waves-button">下一页</button></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="xlsp" style="display: none">
+                    <div class="xlsp-main">
+                        <div class="xlsp-tab">
+                            <div class="xlsp-tab-list"></div>
+                            <div class="xlsp-tab-open-close"><img src="./img/guan.png"></div>
+                            <div class="ztxz-btn">
+                                <button class="tab-ztxz">字体设置</button>
+                            </div>
+                        </div>
+                        <button class="tab-gbck">关闭窗口</button>
+                        <div class="xlsp-content"></div>
+                        <div class="videoSProm">
+                            <div class="sp-room"></div>
+                            <div class="sp-btn">
+                                <div>
+                                    <button class="fa-sp-start snarl-demo waves-button"><img src="img/answer.png"></button>
+                                    <p>通话</p>
+                                </div>
+                               <div>
+                                   <button class="fa-sp-end snarl-demo waves-button"><img src="img/refuse.png"></button>
+                                   <p>挂断</p>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="xlsp-clone">
+                    <div class="tab-main" id="tab-main-clone">
+                        <p>
+                        	<span class="tab-main-title"></span>
+                        	<span class="morenbf" style="display:none;">制定播放次数为<span class="bfcs"></span></span>
+                        </p>
+                        <div class="videoList videoc">
+                            <video class="video-js" controls preload="auto"><!--poster就是视频的缩略图-->
+                                <source src="" type="video/mp4">
+                                <source src="" type="video/webm">
+                                <source src="" type="video/ogg">
+                                <p class="vjs-no-js">
+                                    To view this video please enable JavaScript, and consider upgrading to a web browser that
+                                    <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                                </p>
+                            </video>
+                        </div>
+                    </div>
+                    <div class="tab-main" id="tab-main-clone2">
+                        <p>
+                        	<span class="tab-main-title"></span>
+                        	<span class="morenbf" style="display:none;">制定播放次数为<span class="bfcs"></span></span>
+                        </p>
+                        <div class="videoList2 videoc clearfix">
+                            <div class="videoList2_one">
+                                <video class="video-js" controls preload="auto">
+                                    <source src="" type="video/mp4">
+                                    <source src="" type="video/webm">
+                                    <source src="" type="video/ogg">
+                                    <p class="vjs-no-js">
+                                        To view this video please enable JavaScript, and consider upgrading to a web browser that
+                                        <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                                    </p>
+                                </video>
+                            </div>
+                            <div class="videoList2_one">
+                                <video class="video-js" controls preload="auto">
+                                    <source src="" type="video/mp4">
+                                    <source src="" type="video/webm">
+                                    <source src="" type="video/ogg">
+                                    <p class="vjs-no-js">
+                                        To view this video please enable JavaScript, and consider upgrading to a web browser that
+                                        <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                                    </p>
+                                </video>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="tab-main" id="tab-main-clone3">     <!--exe-->
+                        <p class="tab-main-title"></p>
+                        <div class=""></div>
+                    </div>
+                </div>
+            </div>
+            <div class="zixun-content" style="display: none">
+                <div class="zx-home">
+                    <div class="zixun-content1">
+                        <img src="img/ajax.gif" class="zx-jindu" style="display: none">
+                        <div class="zx-list">
+                            
+                        </div>
+                    </div>
+                    <div class="zx-content-bot">
+                        <div class="zx-fenye">
+                            <div><button class="zx-goUp snarl-demo waves-button">上一页</button></div>
+                            <div class="zx-yeshu"><span class="zx-first-page active">1</span><span>/</span><span class="zx-last-page" >1</span></div>
+                            <div><button class="zx-goDown active snarl-demo waves-button">下一页</button></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="zx-text">
+                    
+                </div>
+            </div>
+            <div class="lianxi-content" style="display: none">
+                <div class="lx-main" style="display: none">
+                    <div class="lx-search">
+                        <div style="position: relative">
+                            <input type="search" placeholder="请输入医生姓名/单位/星级/标签查找医生" class="lx-search-test"/>
+                            <button class="lx-search-btn snarl-demo waves-button"><img src="./img/bigjing.png"><span>搜索</span></button>
+                        </div>
+                        <button class="lx-add-fenzu"><img src="./img/add@2x.png">添加分组</button>
+                    </div>
+                    <div class="search-show search-show1">
+                        <div class="friend-home" >
+                            <div class="lx-my-friend">
+                                <div class="fs-bot-top">
+                                    <div class="lx-friendListOne" id="lx-fs-clone">
+                                        <p class="fenzu-mingcheng"></p>
+                                        <button class="lx-edit-fenzu"><img src="./img/edit@2x.png">编辑分组</button>
+                                        <div class="lx-friend-one" id="lx1-fs-clone">
+                                            <span style="display: none" class="ysID"></span>
+                                            <div class="lx-friend-pic"><img src="" class="lx-friend-Pic"></div>
+                                            <div class="lx-friend-int1">
+                                                <div class="int1-left">
+                                                    <p class="int1-name"></p>
+                                                    <p class="int1-pingjia"></p>
+                                                    <p class="int1-zhiwei"></p>
+                                                </div>
+                                                <div class="int1-right">
+                                                    <div class="int1-right-text">
+                                                        <p class="int1-right-textp"></p>
+                                                    </div>
+                                                    <div class="int1-right-label">
+                                                        <!--<div><img src=""><span></span></div>-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="lx-friend-int2">
+                                                <p>
+                                                    <span class="sys-yy">中心医院</span>
+                                                    <span class="sys-ks">呼吸内科</span>
+                                                </p>
+                                            </div>
+                                            <div class="friendOne-btnList">
+                                                <button class="friendOne-remove"><img src="./img/up@2x.png"><label>移至</label></button>
+                                                <button class="friendOne-send txtwav"><img src="./img/bubble@2x.png"><label>发信息</label></button>
+                                                <button class="friendOne-video"><img src="./img/video@2x.png"><label>视频通话</label></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lx-my-friendList">
+
+                                    </div>
+                                <div class="fs-content-bot clearfix">
+                                    <div class="fs-fenye clearfix">
+                                        <div><button class="fs-goUp snarl-demo waves-button">上一页</button></div>
+                                        <div class="fs-yeshu"><span class="fs-first-page active">1</span><span>/</span><span class="fs-last-page" >1</span></div>
+                                        <div><button class="fs-goDown active snarl-demo waves-button">下一页</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <button class="refurbish-friend"><img src="./img/refurbish2x.png">刷新好友</button>
+                        </div>
+                    </div>
+                    <div class="search-show lx-search-show" style="display: none">
+                        <img src="./img/ajax.gif" class="lx-s-loading" style="display: none">
+                        <div class="lx-friend-one search-showOne" id="lx-search-clone">
+                            <span class="ysID" style="display: none"></span>
+                            <div class="lx-friend-pic"><img src="" class="lx-friend-Pic"></div>
+                            <div class="lx-friend-int1">
+                                <div class="int1-left">
+                                    <p class="int1-name">章节小</p>
+                                    <p class="int1-pingjia" style="background:url('./img/3@2x.png');background-size: 20%"></p>
+                                    <p class="int1-zhiwei">主任医师</p>
+                                </div>
+                                <div class="int1-right">
+                                    <div class="int1-right-text">
+                                        <p class="int1-right-text1">主治：肺癌个体化综合治疗、肠癌、胃癌、食管癌、乳腺癌、鼻咽癌、淋巴瘤、纵隔肿瘤、肉瘤化疗，结合放疗、手术和介入消融治疗和放射性粒子植入。</p>
+                                    </div>
+                                    <div class="int1-right-label"></div>
+                                </div>
+                            </div>
+                            <div class="lx-friend-int2">
+                                <p>
+                                    <span class="yiyuanmingcheng">中心医院</span>
+                                    <span class="keshi">呼吸内科</span>
+                                </p>
+                            </div>
+                            <div class="friendOne-btnList">
+                                <button class="friendOne-add ">添加好友</button>
+                            </div>
+                        </div>
+                        <div class="lx-my-friend search-showList">
+
+                        </div>
+                        <div class="lx-s-content-bot">
+                                <div class="lx-s-fenye">
+                                    <div><button class="lx-s-goUp snarl-demo waves-button">上一页</button></div>
+                                    <div class="lx-s-yeshu"><span class="lx-s-first-page active">1</span><span>/</span><span class="lx-s-last-page" >1</span></div>
+                                    <div><button class="lx-s-goDown active snarl-demo waves-button">下一页</button></div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="bianjifenzuList" style="display:none" >
+                        <div class="bianjifenzu">
+                            <p>编辑分组</p>
+                            <p>请输入新的分组名称</p>
+                            <input type="text" class="bjnewfenzu"/>
+                            <div class="bianjifenzuBtn clearfix">
+                                <button class="bianji-quxiao">取消</button>
+                                <button class="bianji-queding">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tianjiafenzuList" style="display: none">
+                        <div class="tianjiafenzu">
+                            <p>添加分组</p>
+                            <p>请输入新的分组名称</p>
+                            <input type="text" class="tjnewfenzu" placeholder="请输入分组名称">
+                            <div class="bianjifenzuBtn clearfix">
+                                <button class="tianjia-quxiao">取消</button>
+                                <button class="tianjia-queding">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fenzuList" style="display: none"> <!--移至选择分组-->
+                        <div class="fenzuList-a">
+                            <P class="xzfztxt">请选择下列分组 :</P>
+                            <div class="fenzuList-b"></div>
+                        </div>
+                        <div class="fenzuListBtn clearfix">
+                            <button class="fz-quxiao">取消</button>
+                            <button class="fz-queding">确定</button>
+                        </div>
+                    </div>
+                    <div class="fenzuList1" style="display: none">   <!--添加好友选择分组-->
+                        <div class="fenzuList-a1">
+                            <P class="xzfztxt">请选择下列分组 :</P>
+                            <div class="fenzuList-b1"></div>
+                        </div>
+                        <div class="fenzuListBtn1 clearfix">
+                            <button class="fz-quxiao1">取消</button>
+                            <button class="fz-queding1">确定</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="lx-main-home" style="display: none">
+                    <img src="./img/ajax.gif" class="xq-loading" style="display: none">
+                    <div class="lx-ys-main" id='lx-ys-mainClone'>
+                        <div class="yishengTitle">
+                            <div class="ys-t-l">
+                                <div><img src="" class="ys-t-pic"></div>
+                            </div>
+                            <div class="ys-t-m">
+                                <p class="ys-t-m1">
+                                    <span class="ys-name">张洁霞</span>
+                                    <img class="ys-sex" src="./img/man@2x.png">
+                                </p>
+                                <p class="ys-zw"></p>
+                                <p><span class="ys-yy"></span><span class="ys-ks"> </span></p>
+                                <!--<div><img src=./img/label'+num+'.png/><span>'+newlabel[j]+'</span></div>-->
+                                <div class="ys-bq clearfix">
+                                    <!--<div><img src=./img/label1.png/><span>11</span></div>-->
+                                </div>
+                            </div>
+                            <div class="ys-t-r">
+                                <div class="ys-t-fh"></div>
+                                <p><span class="brnum">制定训练方案病人:</span> <span class="ys-fs1"></span></p>
+                                <p><span class="fwnum">正在服务病人:</span> <span class="ys-fs2"></span></p>
+                                <div class="ys-xq-pj clearfix">
+                                    <span class="ys-pf">评分: </span>
+                                    <span class="ys-xq-pjxj"></span>
+                                    <span class="ys-pfNum"></span>
+                                    <span>分</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ys-text-main">
+                            <div class="yishengText" >
+                                <p class="ys-jj"><span>医生简介 :</span> <span class="ys-jj-txt"></span></p>
+                                <p class="ys-sc"><span>专业擅长 :</span> <span class="ys-sc-txt"></span></p>
+                            </div >
+                            <div class=" ys-page2" style="display: none">
+                                <p class="ys-sc"><span>专业擅长 :</span> <span class="ys-sc-txt ys-sc-1"></span></p>
+                            </div>
+                        </div>
+                        <div class="lxys-fenye clearfix" style="display: none">
+                            <div><button class="lxys-goUp snarl-demo waves-button">上一页</button></div>
+                            <div><button class="lxys-goDown active snarl-demo waves-button">下一页</button></div>
+                        </div>
+                    </div>
+                    <div class="lx-xq-one"></div>
+                </div>
+            </div>
+            <div class="xzjl-content" style="display: none">
+                <div class="xiazai-home">
+                    <ul class="xz-top clearfix">
+                        <li class="xz-yisheng">医生</li>
+                        <li class="xz-leimu">方案类目</li>
+                        <li class="xz-zhiding">制定时间</li>
+                        <li class="xz-shijain">下载时间</li>
+                    </ul>
+                    <div class="xz-list-one" id="xz-clone">
+                        <!--<div><p class="xz-one-yisheng"></p></div>-->
+                        <!--<div><p class="xz-one-leimu"></p></div>-->
+                        <!--<div><p class="xz-one-zhiding"></p></div>-->
+                        <!--<div><p class="xz-one-shijian"></p></div>-->
+                        <!--<div class="zx-one-X"></div>-->
+                    </div>
+                    <div class="xz-List">
+                        <!--<div class="xz-list-one">-->
+                            <!--<div><p class="xz-one-yisheng">大脑袋</p></div>-->
+                            <!--<div><p class="xz-one-leimu">下肢</p></div>-->
+                            <!--<div><p class="xz-one-zhiding">2017年7月2日  下午03：12</p></div>-->
+                            <!--<div><p class="xz-one-shijian">2017年7月2日  下午03：12</p></div>-->
+                        <!--</div>-->
+                    </div>
+                    <!--<button class="xz-add">添加</button>-->
+                    <!--<button onclick="clearxz()">删除</button>-->
+                </div>
+                <div class="xz-but-Bot clearfix">
+                    <div class="xz-but-fenye clearfix" >
+                        <div> <button class="xz-but-up snarl-demo waves-button">上一页</button></div>
+                        <div class="xz-but-yeshu"><span class="xzBut-first-page active">1</span><span>/</span><span class="xzBut-last-page">1</span></div>
+                        <div><button class="xz-but-down active snarl-demo waves-button">下一页</button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="xiaoxi-content" style="display: none">
+                <div class="xiaoxi-home"></div>
+                <!--<button id="addEle">添加元素（测试）</button>-->
+                <div class="xx-but-Bot">
+                    <div class="xx-but-fenye clearfix" >
+                        <div><button class="xx-but-up snarl-demo waves-button">上一页</button></div>
+                        <div class="xx-but-yeshu"><span class="xxBut-first-page active">1</span><span>/</span><span class="xxBut-last-page">1</span></div>
+                        <div><button class="xx-but-down active snarl-demo waves-button">下一页</button></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="grzx-content" style="display: none">
+                <div class="gr-home">
+                    <div class="grzx-chongzhi">
+                        <div class="shiping-chongzhi">
+                                <p class="sp-sysc">您的视频通话时间剩余&nbsp;<span class="fa-sythsc"></span>分钟</p>
+                                <button class="tonghua-chongzhi">立即充值</button>
+                        </div>
+                        <div class="shiping-chongzhi">
+                                <p class="xl-sysc">您的训练时长时间剩余&nbsp;<span class="fa-syxlsc"></span>分钟</p>
+                                <button class="xunlian-chongzhi">立即充值</button>
+                        </div>
+                    </div>
+                    <div class="grzx-main">
+                        <div class="grzx-home grzx-xinxi" >
+                            <div class="ess-information">
+                                <table class="ess-info">
+                                    <tr>
+                                        <td class="ess-id">id</td>
+                                        <td class="ess-userld"></td>
+                                        <td class="ess-name">姓名</td>
+                                        <td class="ess-username"></td>
+                                        <td class="ess-sex">性别</td>
+                                        <td class="ess-usersex"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ess-age">年龄</td>
+                                        <td class="ess-userage"></td>
+                                        <td class="ess-shebeiID">设备ID</td>
+                                        <td class="ess-MshebeiID"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="ess-address">
+                                <div class="ess-address-left">
+                                    <span>地址</span>
+                                </div>
+                                <div class="ess-address-right">
+                                    <div class="br-address">
+                                        <input type="text" id="city" value="" disabled=disabled />
+                                        <div style="float: right" class="xuanzedizhi"><img src="./img/xialadizhi.png"></div>
+                                    </div>
+                                    <form>
+                                        <input type="text" class="jiedao" value="" placeholder="请填写具体街道" disabled=true>
+                                        <p class="add-queren">确认</p>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="ess-case">
+                                <table>
+                                    <tr>
+                                        <td class="essCase-id">病例ID</td>
+                                        <td class="essCase-userid"></td>
+                                        <td class="essCase-lishou">利手</td>
+                                        <td class="essCase-userlishou"></td>
+                                        <td class="essCase-huance">患侧</td>
+                                        <td class="essCase-userhuance"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="essCase-buwei">出血部位</td>
+                                        <td class="essCase-userbuwei"></td>
+                                        <td class="essCase-daxiao">出血大小</td>
+                                        <td class="essCase-userdaxiao"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gr-content-bot clearfix">
+                        <div class="gr-fenye clearfix">
+                            <div><button class="gr-goUp snarl-demo waves-button">上一页</button></div>
+                            <div class="gr-yeshu"><span class="gr-first-page active">1</span><span>/</span><span class="gr-last-page" >1</span></div>
+                            <div><button class="gr-goDown active snarl-demo waves-button">下一页</button></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chongzhi-sp chongzhi" style="display: none">
+                    <p class="cz-zhanghao">充值账号</p>
+                    <p class="cz-userzhanghao-sp"></p>
+                    <div class="cz-content-sp">
+                        <div class="cz-priceList-sp clearfix">
+
+                        </div>
+                    </div>
+                    <div class="cz-content-bot clearfix">
+                        <div class="cz-fenye1">
+                            <div><button class="cz-goUp1 snarl-demo waves-button">上一页</button></div>
+                            <div class="cz-yeshu1"><span class="active cz-first-page1">1</span><span>/</span><span class="cz-last-page1">1</span></div>
+                            <div><button class="cz-goDown1 active snarl-demo waves-button">下一页</button></div>
+                        </div>
+                    </div>
+                    <div class="cz-zhifu">立即支付</div>
+                </div>
+                <div class="chongzhi-xl chongzhi" style="display: none">
+                    <p class="cz-zhanghao">充值账号</p>
+                    <p class="cz-userzhanghao-xl"></p>
+                    <div class="cz-content-xl">
+                        <div class="cz-priceList-xl clearfix"></div>
+                    </div>
+                    <div class="cz-content-bot clearfix">
+                        <div class="cz-fenye2">
+                            <div><button class="cz-goUp2 snarl-demo waves-button">上一页</button></div>
+                            <div class="cz-yeshu2"><span class="active cz-first-page2">1</span><span>/</span><span class="cz-last-page2">1</span></div>
+                            <div><button class="cz-goDown2 active snarl-demo waves-button">下一页</button></div>
+                        </div>
+                    </div>
+                    <div class="cz-zhifu">立即支付</div>
+                </div>
+            </div>
+            <div class="xtsz-content" style="display: none">
+                 <div class="xtsz-home">
+                    <p class="banbenTxt">当前版本号为:<span class="banbenNum"></span></p>
+                </div>
+            </div>
+            <div class="aboutus-content" style="display: none">
+                <div class="xtsz-home">
+                    <div class="xt-pic"><img src="img/logo0@2x.png"></div>
+                    <p class="xt-text"></p>
+                    <p class="companyCopy">Copyright &copy; 2006-2013</p>
+                    <p class="companyName">苏州明思特医疗科技有限公司</p>
+                </div>
+            </div>
+        </div >
+        <div class="chatList" style="display: none"></div>
+        <div class="shipingList" style="display: none"></div>
+    </div>
+    <div class="ziti-home" style="display:none;">
+        <div class="ziti-List">
+            <div class="zitiPage-ziti">
+                <span>字体</span>
+                <button class="xuanzhong">微软雅黑<span style="display: none">Microsoft YaHei</span></button>
+                <button>宋体<span style="display: none">SimSun</span></button>
+                <button>黑体<span style="display: none">SimHei</span></button>
+                <button>微软正黑体<span style="display: none">Microsoft JhengHei</span></button>
+                <button>楷体<span style="display: none">GB2312 KaiTi_GB2312</span></button>
+            </div>
+            <div style="height: .1rem;background-color:#2ea0af;padding-top:0"></div>
+            <div class="zitiPage-zihao">
+                <span>字号</span>
+                <button>小号<label style="display: none">.3</label></button>
+                <button class="xuanzhong">标准<label style="display: none">.35</label></button>
+                <button>中号<label style="display: none">.4</label></button>
+                <button>大号<label style="display: none">.45</label></button>
+                <button>特大号<label style="display: none">.5</label></button>
+            </div>
+            <div style="height: .1rem;background-color:#2ea0af;padding-top:0"></div>
+            <div class="zitiPage-yanse">
+                <span>颜色</span>
+                <button style="background-color: #fefefe" class="xuanzhong"></button>
+                <button style="background-color: #ebebeb"></button>
+                <button style="background-color: #d0d0d0"></button>
+                <button style="background-color: #fbf6dd"></button>
+                <button style="background-color: #fff4b9"></button>
+                <button style="background-color: #fcec82"></button>
+                <button style="background-color: #67cb6a"></button>
+                <button style="background-color: #21facf"></button>
+                <button style="background-color: #22b3ef"></button>
+            </div>
+        </div>
+        <div class="ziti-btn">
+            <button class="zt-queding">确认</button>
+        </div>
+    </div>
+    <div class="wlzt" style="display: none">
+        <div class="wlzt-ck">
+            <p>检测到网络已经断开！</p>
+            <button class="wlzt-btn">确定</button>
+        </div>
+    </div>                 <!--网络状态弹框-->
+    <div class="zx_fx" style="display: none">                   <!--医生给病人分享了最新资讯-->
+        <div class="zx_fx-ck">
+            <p class="zx_fx_uesr"><span class="zx_fx_uesrname"></span><span>医生给你分享了新的资讯消息!</span></p>
+            <p class="zx_fx_text">(请前往医疗资讯查看)</p>
+            <div class="zx_fx_btn clearfix">
+                <button class="zx_fx_btn-bt">确定</button>
+            </div>
+        </div>
+    </div>
+    <div class="myhy" style="display: none">
+        <button class="myhy-btn">取消</button>
+    </div>                          <!--搜索医生，没有匹配医生弹框-->
+    <div class="accF"></div> 
+    <!--<!--环信视频信令，医生请求添加你为好友弹框(动态添加页面)-->
+    <div class="addFriend" style="display: none">
+        <div class="addFriend-ck">
+            <p class="add-uesr"><span class="add-uesrname"></span><span>医生同意了您的好友申请!</span></p>
+            <div class="addFriend-btn clearfix">
+                <button class="addFriend-btn-bt">确定</button>
+            </div>
+        </div>
+    </div>           <!--环信视频信令，医生同意添加你为好友弹框-->
+    <div class="no_videoChat" style="display: none">
+        <div class="no_videoChat-ck">
+            <p class="no_videoChat_uesr"><span class="no_videoChat_uesrname"></span><span>医生拒绝了你的视频请求！</span></p>
+            <div class="no_videoChat_btn clearfix">
+                <button class="no_videoChat_btn_btn">确定</button>
+            </div>
+        </div>
+    </div>        <!--环信视频信令，对方拒绝接听视频-->
+    <div class="no_accFriend" style="display: none">
+        <div class="no_accFriend-ck">
+            <p class="no_accFriend_uesr"><span class="no_accFriend_uesrname"></span><span>医生拒绝添加你为好友！</span></p>
+            <div class="no_accFriend-btn clearfix">
+                <button class="no_accFriend_btn_btn">确定</button>
+            </div>
+        </div>
+    </div>        <!--环信视频信令，医生拒绝添加你为好友！-->
+    <div class="ysfx_Box"></div><!--环信视频信令，医生分享产品给康复者！(动态添加页面)-->
+    <div class="qqadd_Friend" style="display: none">
+        <div class="qqadd_Friend-ck">
+            <p class="qqadd_Friend_uesr"><span>你已经向</span><span class="qqadd_Friend_uesrname"></span><span>医生发起了好友请求,请等待！</span></p>
+            <div class="qqadd_Friend-btn clearfix">
+                <button class="qqadd_Friend_btn_btn">确定</button>
+            </div>
+        </div>
+    </div>        <!--环信视频信令，主动添加某医生为好友！-->
+    <div class="fwq_no" style="display:none">
+        <div class="fwq_no_ck">
+            <p>服务器开小差了~请稍后重新尝试！</p>
+            <div class="fwq_no_btn clearfix">
+                <button class="fwq_no_btn_btn">确定</button>
+            </div>
+        </div>
+    </div>        <!--服务器开小差！-->
+    <div class="scbz" style="display:none">
+        <div class="scbz_ck">
+            <p class="scbztext"></p>  <!--动态添加！-->
+            <div class="scbz_btn clearfix">
+                <button class="scbz_btn_btn">确定</button>
+            </div>
+        </div>
+    </div>        <!--时长不足！-->
+    <div class="csqs" style="display:none">
+        <div class="csqs_ck">
+            <p>无法提交,请仔细检查参数是否填写完整！</p>
+            <div class="csqs_btn clearfix">
+                <button class="csqs_btn_btn">确定</button>
+            </div>
+        </div>
+    </div>        <!--参数不全提醒！-->
+    <div class="gdsp" style="display: none">
+        <div class="gdsp-ck">
+            <p class="gdsp_uesr"><span>对方已经挂断的视频！</span></p>
+            <div class="gdsp-btn clearfix">
+                <button class="gdsp_btn_btn">确定</button>
+            </div>
+        </div>
+    </div>        <!--环信视频信令，对方视频中主动挂断视频-->
+    <div class="gbqtsp" style="display: none">
+        <div class="gbqtsp-ck">
+            <p class="gbqtsp_uesr"><span>请您先关闭视频聊天窗口再试！</span></p>
+            <div class="gbqtsp-btn clearfix">
+                <button class="gbqtsp_btn_btn">确定</button>
+            </div>
+        </div>
+    </div>        <!--请先关闭其他视频聊天窗口提醒！-->
+    <div class="acc-sp" style="display: none">
+        <div class="accsp-ck">
+            <p class="accsp-uesr"><span class="accsp-text"></span><span>医生,邀请你视频聊天.....</span></p>
+            <div class="accsp-btn clearfix">
+                <p style="display: none" class="yes-accsp-docid"></p>
+                <p style="display: none" class="sp_type"></p>
+                <p style="display: none" class="sp_SRC"></p>
+                <div><button class="no-accsp"><img src="img/refuse.png"></button><p style="text-align: center;font-size: .35rem">拒绝</p></div>
+                <div><button class="yes-accsp"><img src="img/answer.png"></button><p style="text-align: center;font-size: .35rem">接听</p></div>
+            </div>
+        </div>
+    </div>                        <!--环信视频信令，对方请求你视频弹框-->
+    <div class="xfatx" style="display: none">
+        <div class="xfatx-ck">
+            <p>有新的训练方案,即将下载新的资源库!</p>
+        </div>
+    </div>                         <!--新方案提醒弹框-->
+    <div class="xfaxz" style="display:none;">
+        <p>新方案下载中...</p>
+        <div class="xz-jingdutiaoList">
+                <div class="xzjingdutiao">
+                    <div class="xzwanchengList">
+                        <img src="./img/l.png" style="width: .4rem">
+                        <img src="./img/Load.png" class="xzwancheng" style="height: .7rem">
+                        <img src="./img/r.png" style="width: .4rem">
+                    </div>
+                    <p><span class="xz-num">完成度</span></p>
+                </div>
+            </div>
+        <div>
+            <button class="xz-quxiao">取消</button>
+        </div>
+    </div>                         <!--新方案下载进度页面-->
+    <div class="kjdangerqq" style="display: none">
+        <div class="kjdangerqq-ck">
+            <p>本机设备号请求异常,请重新运行!</p>
+        </div>
+    </div>                    <!--设备号请求异常-->
+    <div class="lxys_tx" style="display:none">
+        <div class="lxys_tx_ck">
+            <p class="lxys_tx_text"></p>  <!--动态添加！-->
+            <div class="lxys_tx_btn clearfix">
+                <button class="lxys_tx_btn_btn">确定</button>
+            </div>
+        </div>
+    </div>        <!--联系医生不足！   提醒 分组存在 分组成功 最多7个分组 医生列表刷新失败,请手动刷新-->
+    <div class="kjdanger" style="display: none">
+        <div class="kjdanger-ck">
+            <p>检测到您的设备号匹配异常,请重新运行!</p>
+        </div>
+    </div>          <!--MicID匹配失败弹框--><!--设备号匹配异常-->
+    <div class="payMenoy" style="display: none">
+        <div class="payLoading" style="display: none"><img src="img/ajax.gif"></div>
+        <div class="pay-code" style="display: none">
+            <div id="codeShow"></div>
+            <p class="pay-code-text">手机微信扫一扫完成支付</p>
+            <p class="pay-code-time"> <span>支付剩余时间 </span><span class="pay-time">30:00</span></p>
+        </div>
+        <div class="payMenoy-X"><img src="./img/delete@3x.png"></div>
+    </div>          <!--微信支付二维码弹框-->
+    <div class="fxMoney" style="display: none">
+        <div class="fx-code">
+            <div id="fxpay"></div>
+            <p class="fx-name"></p>
+            <p class="fxpay-text">打开手机淘宝扫码进入淘宝商城</p>
+        </div>
+        <div class="fxpay-X"><img src="./img/delete@3x.png"></div>
+    </div>
+    <div class="xtsjgx" style="display:none">
+        <div class="xtsjgx-ck"></div>
+    </div>            <!--系统升级更新弹框-->
+    <div class="thtsls" style="display: none"></div><!--通话提示铃声-->
+    <div class="dwdwdw" style="display: none">网络已中断,部分功能受限！</div>
+    <div class="fagktxsc" style="display: none">
+        <P><span>您的视频训练已经观看了</span><span class="xlgktime"></span><span>分钟</span></P>
+    </div>   <!--观看训练方案30分钟提醒一次的弹出层-->
+    <script src="./js/jquery.qrcode.min.js"></script>           <!--生成二维码-->
+    <script src="./js/waves.min.js"></script>                  <!--点击水波纹-->
+    <script src="./js/MacId.js"></script>                        <!--抓取-匹配设备号-->
+    <script src="./js/video.min.js"></script>                    <!--训练方案video.js-->
+    <script src="./js/home.js"></script>                           <!--各个页面公共的方法和最先定义的方法-->
+    <script src="./js/circleChart.min.js"></script>               <!--训练方案圆形百分比-->
+    <script src="./js/xlfa.js"></script>
+    <script src="./js/ylzx.js"></script>
+    <script src="./js/lxys.js"></script>
+    <script src="./js/xz.js"></script>
+    <script src="./js/xx.js"></script>
+    <script src="./js/grzx.js"></script>
+    <script src="./js/xtsz.js"></script>
+    <script src="./js/Popt.js"></script>                    <!--个人中心城市选择-->
+    <script src="./js/cityJson.js"></script>                <!--个人中心城市选择-->
+    <script src="./js/citySet.js"></script>                 <!--个人中心城市选择-->
+    <script src="js/audiomain.js"></script>                 <!--医疗咨询radio-->
+    <script src="js/audioplayer.js"></script>               <!--医疗咨询radio-->   
+    <script src="./shengwang/AgoraRTCSDK-2.0.0.js"></script>
+    <script src="./shengwang/index.js"></script>
+    <script src="./huanxin/browser-polyfill.min.js"></script>
+    <script src="./huanxin/webim.config.js"></script>
+    <script src='./huanxin/strophe-1.2.8.min.js'></script>
+    <script src='./huanxin/websdk-1.4.12.js'></script>
+    <script src="./huanxin/adapter.js"></script>
+    <script src="./huanxin/webrtc-1.4.12.js"></script>
+    <script src="./huanxin/index.js"></script>
+    <script src="./js/function.js"></script>            <!--启动项目的js-->
+</body>
+</html>

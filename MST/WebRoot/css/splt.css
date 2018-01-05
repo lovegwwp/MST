@@ -1,0 +1,367 @@
+
+.sp-ck-home{
+    font-size: .20rem;
+}
+.video-big #agora_local,.bigOtherPic.active{
+    width: 11rem;
+    height: 7.35rem;
+    position: absolute;
+    top: .64rem;
+    left: 3rem;
+}
+.video-big #agora_local{
+    z-index: 0;
+}
+#agora_local{
+    z-index: 4;
+}
+.video-big #agora_local.active{
+    z-index: 6;
+}
+.bigOtherPic.active{
+    z-index: 3;
+}
+.bigOtherPic{
+    z-index: 2
+}
+.otherPerson.active{
+    z-index:0 ;
+}
+.otherPerson{
+    z-index: 1;
+}
+.bigOtherPic{
+    float:left;
+    height: 3rem;
+    width: 3rem;
+    display:inline-block;
+    position: absolute;
+    top: .64rem;
+    left: 3rem;
+    overflow: hidden;
+}
+
+.video-big #agora_local.active{
+    float:left;
+    width: 3rem;
+    height: 3rem;
+    display:inline-block;
+    position: absolute;
+    top: .64rem;
+    left: 3rem;
+}
+
+#leave,#join{
+    width: 1rem;
+    height: 1rem;
+    font-size: .2rem;
+    line-height: .5rem;
+    text-align: center;
+    position: absolute;
+    right: .1rem;
+    border-radius: 50%;
+}
+#join{
+    top: 5rem;
+    background-image: url("../img/answer.png");
+    background-size: 100% 100%;
+}
+#leave{
+    top: 6.2rem;
+    background-image: url("../img/refuse.png");
+    background-size: 100% 100%;
+}
+#channel{
+    width: 2rem;
+    height: .4rem;
+    font-size: .2rem;
+}
+.otherPerson{
+    width: 3rem;
+    height: 3rem;
+    background-color: rgba(0,0,0,.4);
+    position: absolute;
+    left: 3rem;
+    top: 0;
+}
+.otherPerson.active{
+    width: 10.52rem;
+    height: 7.35rem;
+    position: absolute;
+    top: 0;
+    left: 3.15rem;
+    background-color: rgba(0,0,0,.4);
+}
+.otherPerson p{
+    font-size: .30rem;
+    text-align: center;
+    color: #fff;
+    line-height: 3rem;
+}
+.bigsfck{
+    width: .5rem;
+    height: .5rem;
+    position: absolute;
+       top: .1rem;
+    right: 2.84rem;
+    z-index: 9999;
+    cursor: pointer;
+}
+.bigsfck img{
+    display: block;
+    width: 100%;
+}
+
+/*----训练视频聊天窗口-*/
+.smsfck{
+    width: .5rem;
+    height: .5rem;
+    position: absolute;
+    top: .4rem;
+    right: .2rem;
+    z-index: 999999999;
+    cursor: pointer;
+}
+.smsfck img{
+    display: block;
+    width: .5rem;
+    height: .5rem;
+}
+.videoSProm{
+    width: 2rem;
+    height: 10.80rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 9;
+}
+.video-small #agora_local{
+    float:left;
+    width: 2rem;
+    height: 2rem;
+    display:inline-block;
+    position: absolute;
+    top: .4rem;
+    z-index: 2;
+}
+.video-small #agora_local.active{
+    height: 10rem;
+    width: 4.3rem;
+    position: absolute;
+    top: .4rem;
+    right: .2rem;
+    z-index: 1;
+}
+.smallOtherPic{
+    height: 10rem;
+    width: 4.3rem;
+    position: absolute;
+    top: .4rem;
+    right: .2rem;
+    z-index: 1;
+    overflow: hidden;
+}
+.smallOtherPic.active{
+    float:left;
+    width: 2rem;
+    height: 2rem;
+    display:inline-block;
+    position: absolute;
+    top: .4rem;
+    left: 0;
+    z-index: 2;
+    overflow: hidden;
+}
+.otherxlPerson{
+    width: 4.3rem;
+    height: 10rem;
+    position: absolute;
+    top: .39rem;
+    left: 0;
+    background-color: rgba(0,0,0,.4);
+    z-index: 0;
+}
+.otherxlPerson.active{
+    float:left;
+    width: 2rem;
+    height: 2rem;
+    display:inline-block;
+    position: absolute;
+    top: .4rem;
+    z-index: 1;
+}
+.otherxlPerson p{
+    font-size: .2rem;
+    line-height: 10rem;
+    text-align: center;
+}
+.otherxlPerson.active p{
+    font-size: .20rem;
+    line-height: 2rem;
+    text-align: center;
+}
+
+.xx_Time{
+    float: right;
+}
+.sp-btn{
+    position: absolute;
+    bottom: .3rem;
+    width: 5rem;
+    height: 1.3rem;
+    left: -10.5rem;
+}
+.sp-btn>div{
+    width: 1rem;
+    height:1.3rem;
+    font-size: .25rem;
+}
+.sp-btn>div p{
+    text-align: center;
+}
+.fa-sp-start,.fa-sp-end{
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.sp-btn>div:first-child{
+    float: left;
+}
+.sp-btn>div:last-child{
+    float: right;
+}
+.fa-sp-start img,.fa-sp-end img{
+    display: block;
+    width: 100%;
+}
+/*-----视频*/
+.lianxi-content{
+    position: relative;
+}
+.shipingList{
+    position: absolute;
+    top: 1.09rem;
+    left: 0;
+    width: 19.2rem;
+    height: 9.7rem;
+    background-image: url("../img/background.png");
+    background-size: 100% 100%;
+    padding-top: .30rem;
+    z-index: 10;
+}
+.shipingroom{
+    background-color: rgba(0,0,0,.4);
+    height: 8rem;
+    width: 16.8rem;
+    border-radius: .1rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -8.4rem;
+}
+.sp-name,.xx-name{
+    height:.64rem;
+    border: .02rem solid #1ce0e4;
+    border-radius: .1rem .1rem 0 0;
+}
+.xx-time{
+    text-align: center;
+    font-size: .16rem;
+}
+.xx-time>span{
+    background-color: #14aaa1;
+    border-radius: .5rem;
+    padding: .05rem;
+}
+.sp-ck-home,.xx-ck-home{
+    width: 16.8rem;
+    margin: 0 auto;
+    position: relative;
+    padding-top: .25rem;
+    margin-bottom: .2rem;
+    padding-bottom: .2rem;
+    /*background-color: black;*/
+}
+.sp-ck-home{
+    height: 7rem;
+}
+.xx-ck-home{
+    height:6.3rem;
+    overflow: auto;
+}
+.xx-ck-home>div{
+    margin-bottom: .2rem;
+}
+.xx-ck-home>div:last-child{
+    margin-bottom: 0;
+}
+.sp-name,.xx-name{
+    font-size: .3rem;
+    text-align: center;
+    line-height: .64rem;
+}
+.sp-ck,.xx-ck{
+    height: 6.94rem;
+}
+.sp-liaotiao{
+    width: 1.7rem;
+    height: .7rem;
+    background-color: #1c494f;
+    border-radius: .05rem;
+    position: absolute;
+    bottom: -.7rem;
+    right: 0;
+    font-size: .28rem;
+}
+.chat-value{
+    border-top: .01rem solid #086669;
+    background-color: #002c30;
+    height: .85rem;
+    padding: .15rem .4rem;
+}
+.chat-btnList{
+    position: absolute;
+    bottom: .2rem;
+    right: 2.1rem;
+}
+.xx-fasong,.sp-liaotiao{
+    width: 1.50rem;
+    height: .5rem;
+    background-image: url(../img/Button.png);
+    font-size: .3rem;
+    line-height: .5rem;
+    text-align: center;
+    float: right;
+    border-radius: .10rem;
+    background-size: 100% 99%;
+    background-color: rgba(0,0,0,0);
+    position: relative;
+    overflow: hidden;
+}
+.xx-fasong:before,.sp-liaotiao:before {
+    content: ' ';
+    position: absolute;
+    background: #fff;
+    width: .25rem;
+    height: .44rem;
+    top: .05rem;
+    left: -.45rem;
+    opacity: 0.3;
+    -webkit-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+}
+.xx-fasong:hover:before {
+    width: .25rem;
+    left: 1.35rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+.sp-liaotiao:hover:before {
+    width: .25rem;
+    left: 1.35rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+#agora_local>div{
+	background-color: rgba(0,0,0,0) !important;
+}

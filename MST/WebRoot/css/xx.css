@@ -1,0 +1,197 @@
+/*---------------------消息*/
+.xiaoxi-content{
+    width: 17.2rem;
+    height: 8rem;
+    /*background-color: pink;*/
+    padding-top: .3rem;
+}
+.xxXx-one{
+    width: 17.2rem;
+    background-color: #196370;
+    border-radius: .1rem;
+    position: relative;
+    margin-bottom: .1rem;
+}
+.pic-inform,.text-inform,.friend-xx,.ys-fxcp{
+    height: 1.4rem;
+    width: 16.9rem;
+    border-radius: .1rem 0 0 .1rem;
+}
+.pic-inform,.ys-fxcp{
+    cursor: pointer;
+}
+.xx-X{
+    width: .3rem;
+    height: 1.38rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color:#35828d;
+    writing-mode: tb-rl;
+    text-align: center;
+    line-height: .3rem;
+    letter-spacing: .25rem;
+    font-size: .2rem;
+    padding-top: .3rem;
+    color: #fff;
+    display: none;
+    cursor: pointer;
+    border-radius: 0 .1rem .1rem 0;
+    z-index: 99;
+    opacity: 1!important;
+}
+.xx-X:hover{
+    background-color: #ff6600;
+}
+.text-inform p,.text-inform span{
+    font-size: .28rem;
+    line-height: .8rem;
+}
+.text-inform-img,.ys-fxcp-pic{
+    width: 1rem;
+    height: 1rem;
+}
+.text-inform-text,.ys-fxcp-textbox{
+    height: 1.1rem;
+    width: 15.4rem;
+}
+.text-inform-text p,.text-inform-text span,.ys-fxcp-textbox p,.ys-fxcp-textbox span{
+    line-height: .5rem;
+}
+.text-inform-img img,.ys-fxcp-pic img{
+    width:100% ;
+}
+.text-inform>div:first-child{
+    float: left;
+}
+.text-inform>div:last-child{
+    float: left;
+}
+.pic-inform-pic{
+    position: relative;
+}
+.pic-inform-pic,.friend-xx-pic{
+    width: 1rem;
+    height: 1rem;
+    /*overflow: hidden;*/
+}
+.pic-inform-pic img,.friend-xx-pic img{
+    display: block;
+    width: 1rem;
+    height: 1rem;
+}
+.xx-noRead{
+    width: .3rem;
+    height: .3rem;
+    border-radius: .15rem;
+    background-color: red;
+    font-size: .2rem;
+    line-height: .3rem;
+    text-align: center;
+    position: absolute;
+    left: -.15rem;
+    top: -.15rem;
+    color: #fff;
+}
+.pic-inform-text,.friend-xx-text{
+    width: 15.4rem;
+    font-size: .28rem;
+}
+.pic-inform-text p,.friend-xx-text{
+    line-height: .5rem;
+}
+.pic-inform-textTime,.friend-xx-textTime{
+    float: right;
+}
+.pic-inform-pic,.text-inform-img,.ys-fxcp-pic{
+    margin-left: .2rem;
+    margin-top: .2rem;
+    float: left;
+}
+.pic-inform-text,.text-inform-textbox{
+    margin-top: .2rem;
+    margin-left: .3rem;
+    float: left;
+}
+.xiaoxi-home{
+    height: 7.7rem;
+}
+.ys-fxcp-textbox p,.ys-fxcp-textbox span{
+    font-size: .28rem;
+    line-height: .5rem;
+}
+.text-inform-text,.ys-fxcp-textbox{
+    margin-top: .2rem;
+    margin-left: .3rem;
+    float: left;
+}
+.pic-inform-textT{
+    display: inline-block;
+    width: 13rem;
+    overflow: hidden;
+}
+.ys-fxcp-text{
+    display: inline-block;
+    width: 13rem;
+    overflow: hidden;
+}
+
+
+/*分享的链接*/
+.fxMoney{
+    width: 19.20rem;
+    height: 10.8rem;
+    background-color: rgba(0,0,0,0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+}
+.fx-code{
+    width: 7rem;
+    height: 7rem;
+    border-radius:.1rem ;
+    border: .03rem solid #9bfbff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -3.5rem;
+    margin-left: -3.5rem;
+    background-color: #18333d;
+}
+#fxpay{
+    margin-top: .8rem;
+    width: 4rem;
+    height: 4rem;
+    background-color: #fff;
+    margin-bottom: .4rem;
+    position: absolute;
+    left: 50%;
+    padding-top: .12rem;
+    padding-left: .2rem;
+    margin-left: -2rem;
+}
+.fxpay-text{
+    font-size: .4rem;
+    color: #fff;
+    text-align: center;
+    margin-top:.1rem;
+}
+.fx-name{
+    font-size: .4rem;
+    color: #fff;
+    text-align: center;
+    margin-top: 5rem;
+}
+.fxpay-X{
+    width: 1.2rem;
+    height: 1.2rem;
+    position: absolute;
+    top: .70rem;
+    left: 13rem;
+    cursor: pointer;
+}
+.fxpay-X img{
+    width: 100%;
+    display: block;
+}

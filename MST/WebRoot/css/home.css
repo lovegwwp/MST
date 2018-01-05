@@ -1,0 +1,778 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul li{
+    list-style: none;
+}
+.clearfix:after{
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+button{
+    outline:none;
+}
+button,p,a,span{
+    color: #eeeeee;
+}
+button{
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    display: block;
+    background-color: rgba(0,0,0,0);
+}
+html,body{
+    width: 19.2rem;
+    height: 100%;
+    font-family: 'Microsoft Yahei', Helvetica, Arial, sans-serif;
+    overflow: hidden;
+}
+/*------------开机画面--------------*/
+.kaiJi{
+    width: 19.2rem;
+    height: 100%;
+    position: absolute;
+    z-index: 9999999;
+    background-color: #25616b;
+}
+.kaiJi-top{
+    height: 1.7rem;
+    position: relative;
+}
+.wangluodeng{
+    width: 2.78rem;
+    height: .7rem;
+    position: absolute;
+    right: .6rem;
+    top: .25rem;;
+}
+.wangluodeng img{
+    width: 100%;
+}
+.kaijihome>img{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+.kaiJi-title{
+    font-size: .36rem;
+    line-height: .36rem;
+    text-align: center;
+    margin-bottom: .7rem;
+}
+.kaiJi-picList{
+    width: 15.8rem;
+    height: 3.19rem;
+    margin: 0 auto .2rem;
+}
+.kaiJi-picList>div{
+    width: 5.1rem;
+    height: 3.19rem;
+    margin-left: .25rem;
+    float: left;
+    overflow: hidden;
+}
+.kaiJi-picList img{
+    display: block;
+    width: 100%;
+}
+.kaiJi-picList>div:first-child{
+    margin-left: 0;
+}
+.kaiJi-text{
+    width: 15.80rem;
+    height: 3.2rem;
+    overflow: hidden;
+    margin: 0 auto;
+    font-size: .26rem;
+    line-height: .40rem;
+    overflow: hidden;
+}
+.jindutiaoList{
+    height: 1.8rem;
+    background-color:rgba(0,0,0,.4);
+    position: relative;
+}
+.jindutiaoList p{
+    font-size: .36rem;
+    position: absolute;
+    left: .95rem;
+    top: .68rem;
+}
+.jingdutiao{
+    width: 15.82rem;
+    height: .40rem;
+    background-color: #196370;
+    border-radius: .5rem;
+    position: absolute;
+    left: 2.4rem;
+    top: .68rem;
+}
+.wanchengList{
+    height: .40rem;
+    width: 15.82rem;
+    /*background-color: #1d75ed;*/
+    border-radius: .50rem;
+}
+.wanchengList img{
+    width: .3rem;
+    height: 100%;
+    display: block;
+    float: left;
+}
+.xfaxz p{
+    font-size: .5rem;
+    text-align: center;
+    margin-bottom: 1.7rem;
+}
+.xzwanchengList{
+    height: .74rem;
+    width: 15.82rem;
+    background-color: #1a494e;
+    border: .02rem solid #51b8c6;
+    border-radius: .5rem;
+    box-shadow: 0 0 .7rem #2d939e;
+    float: left;
+}
+.xzjingdutiao{
+    padding-left: .5rem;
+}
+.xzjingdutiao p{
+    float: left;
+}
+.xz-num{
+    margin-left: .3rem;
+    margin-right: .1rem;
+}
+.xzwanchengList img{
+    width: .4rem;
+    height: 100%;
+    display: block;
+    float: left;
+}
+.box{
+    width: 19.2rem;
+    height: 100%;
+    background-image:url("../img/background.png");
+    background-size: 100% 100%;
+    /*overflow: hidden;*/
+}
+/*.kaijixiazai{*/
+    /*width: 19.2rem;*/
+    /*height: 10.8rem;*/
+    /*background-image: url("../img/fangan.png");*/
+    /*background-size: 100% 100%;*/
+    /*position: fixed;*/
+    /*left: 0;*/
+    /*top: 0;*/
+    /*z-index: 9;*/
+/*}*/
+/*.kaijixiazai img,.kaijixiazai img{*/
+    /*width: 100%;*/
+    /*display: block;*/
+/*}*/
+
+/*------------------------网络状态*/
+.wlzt{
+    width: 19.2rem;
+    height: 10.8rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999999;
+    background-image: url("../img/wangluo.png");
+    background-size: 100% 100%;
+}
+.wlzt-ck{
+    width: 9rem;
+    height: 5.8rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -2.9rem;
+    margin-left: -4.50rem;
+}
+.wlzt p{
+    color: #fff;
+    font-size: .4rem;
+    line-height: 5.5rem;
+    text-align: center;
+}
+.wlzt-btn{
+    font-size: .35rem;
+    line-height: .62rem;
+    width: 2.37rem;
+    top: 4rem;
+    left: 3.34rem;
+    position: absolute;
+    background-image: url(../img/anniu_xuanzhong.png);
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+.wlzt-btn:before {
+    content: ' ';
+    position: absolute;
+    background: #fff;
+    width: .25rem;
+    height: .51rem;
+    top: .05rem;
+    left: -.45rem;
+    opacity: 0.3;
+    -webkit-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+}
+.wlzt-btn:hover:before {
+    width: .25rem;
+    left: 2.5rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+
+/*------头部 导航*/
+.nav{
+    padding-left: 1rem; ;
+    padding-right: 1rem;
+    height: 1.1rem;
+    background-color: rgba(0,0,0,.3);
+    border-bottom: .02rem solid #327176;
+}
+.nav>button{
+    height: 1.1rem;
+    border-radius: .1rem;
+    background-color: rgba(0,0,0,0);
+    margin-left: .76rem;
+    font-size: .34rem;
+    text-align: center;
+    display: block;
+    float: left;
+}
+.nav>button:hover{
+    font-size: .36rem;
+    /*text-shadow: 0rem 0rem 1rem #000;*/
+}
+.nav>div:hover{
+    font-size: .36rem;
+    /*text-shadow: 0rem 0rem 1rem #000;*/
+}
+.nav>div{
+    height: 1.1rem;
+    border-radius: .1rem;
+    background-color: rgba(0,0,0,0);
+    margin-left: .76rem;
+    font-size: .34rem;
+    text-align: center;
+    line-height: 1.2rem;
+    display: block;
+    float: left;
+    cursor: pointer;
+    color: #fff;
+    position: relative;
+}
+.xtszbtnList{
+    border-radius: .05rem;
+    border: .02rem solid #3ea9b3;
+    background-color: #19636f;
+    position: absolute;
+    top: 1.09rem;
+    left: -.18rem;
+    z-index: 9999;
+    display: none;
+}
+.xtszbtnList>div{
+    width: 1.4rem;
+    height: .01rem;
+    background-color: #55d8de;
+    margin: 0 auto;
+}
+.xtszbtnList button{
+    font-size: .34rem;
+    text-align: center;
+    color: #fff;
+    height: 0.8rem;;
+    line-height: .8rem;
+    width: 1.8rem;
+}
+.xlfa-btn,.xzfa-btn{
+    width: 2.6rem;
+}
+.ylzx-btn,.lxys-btn,.xx-btn,.grzx-btn{
+    width: 1.5rem;
+}
+.nav>button.active-under1 {
+    background: url(../img/nav_underline.png) no-repeat 0rem .86rem;
+    background-size: 100% 10%;
+    font-size: .36rem;
+ }
+.nav>button.active-under2 {
+    background: url(../img/nav_underline_1.png) no-repeat 0 .85rem;
+    background-size: 100% 10%;
+    font-size: .36rem;
+}
+.xtsz-btn{
+    cursor: pointer;
+}
+.xtsz-btn>label{
+    cursor: pointer;
+}
+.xtsz-btn.active-under2 {
+    background: url(../img/nav_underline_1.png) no-repeat 0 .85rem;
+    background-size: 100% 10%;
+    font-size: .36rem;
+}
+.nav button:first-child{
+    margin-left: 0;
+}
+/*-----------------------接收视频请求*/
+.acc-sp{
+    width: 19.20rem;
+    height: 10.8rem;
+    background-color: rgba(0,0,0,0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+}
+.accsp-ck{
+    width: 9rem;
+    height: 4.75rem;
+    background-color: #18333e;
+    top: 3.15rem;
+    left: 50%;
+    margin-left: -4.50rem;
+    padding-top: 1.2rem;
+    border: .02rem solid #9cfbff;
+    border-radius: .1rem;
+    font-size: .4rem;
+    position: relative;
+}
+.accsp-btn>div{
+    float: left;
+    margin-left: 2.52rem;
+}
+
+/*没有好友提醒*/
+.myhy{
+    width: 19.2rem;
+    height: 10.8rem;
+    background-image: url("../img/chongxinsousuo.png");
+    background-size: 100% 100% ;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99999;
+}
+.myhy img{
+    width: 100%;
+    display: block;
+}
+.myhy button{
+    width: 2.3rem;
+    height: .5rem;
+    position: absolute;
+    top: 6.84rem;
+    left: 8.51rem;
+    background-image: url("../img/anniu_xuanzhong.png");
+    background-size: 100% 100%;
+    font-size: .35rem;
+    line-height: .5rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+.myhy-btn:before{
+    content: ' ';
+    position: absolute;
+    background: #fff;
+    width: .25rem;
+    height: .42rem;
+    top: .03rem;
+    left: -.38rem;
+    opacity: 0.3;
+    -webkit-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+}
+
+.myhy-btn:hover:before {
+    width: .25rem;
+    left: 2.5rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+
+/*-----新方案提醒*/
+.xfatx{
+    width: 19.20rem;
+    height: 10.8rem;
+    background-color: rgba(0,0,0,.3);
+    background-size: 100% 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999999;
+}
+.xfatx-ck{
+    width: 9rem;
+    height: 5.8rem;
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     margin-top: -2.9rem;
+     margin-left: -4.50rem;
+     background-image: url("../img/new.png");
+     background-size: 100% 100%;
+ }
+.xfatx-ck p{
+    color: #fff;
+    font-size: .4rem;
+    line-height: 7rem;
+    text-align: center;
+}
+/*-----新方案下载*/
+.xfaxz{
+    width: 19.20rem;
+    height: 10.8rem;
+    background-size: 100% 100%;
+    background-image: url("../img/background.png");
+    position: fixed;
+    padding-top: 2.5rem;
+    left: 0;
+    top: 0;
+    z-index: 9999999;
+}
+.xfaxz button{
+    width: 2.37rem;
+    height: .60rem;
+    position: absolute;
+    top: 7.53rem;
+    left: 7.92rem;
+    font-size: .35rem;
+    border-radius: .10rem;
+    line-height: .60rem;
+    border: 0.02rem solid #0cadac;
+}
+/*----设备号匹配失败---*/
+.kjdanger{
+    width: 19.20rem;
+    height: 10.8rem;
+    background-color: rgba(0,0,0,.3);
+    background-size: 100% 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999999;
+}
+.kjdanger-ck{
+    width: 9rem;
+    height: 5.8rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -2.9rem;
+    margin-left: -4.50rem;
+    background-image: url("../img/danger.png");
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+.kjdanger-ck p{
+    color: #fff;
+    font-size: .4rem;
+    line-height: 7rem;
+    text-align: center;
+}
+/*----设备号请求失败---*/
+.kjdangerqq{
+    width: 19.20rem;
+    height: 10.8rem;
+    background-color: rgba(0,0,0,.3);
+    background-size: 100% 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999999;
+}
+.kjdangerqq-ck{
+    width: 9rem;
+    height: 5.8rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -2.9rem;
+    margin-left: -4.50rem;
+    background-image: url("../img/danger.png");
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+.kjdangerqq-ck p{
+    color: #fff;
+    font-size: .4rem;
+    line-height: 7rem;
+    text-align: center;
+}
+/*-----存在视频聊天*/
+
+
+/*---------------------------接收好友添加消息-*/
+.accFriend,.addFriend,.no_videoChat,.zx_fx,.gdsp,.gbqtsp,.no_accFriend,.qqadd_Friend,.fwq_no,.csqs,.scbz,.lxys_tx,.ysfx_cptx{
+    width: 19.20rem;
+    height: 10.8rem;
+    background-color: rgba(0,0,0,0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+}
+.accFriend-ck,.addFriend-ck,.no_videoChat-ck,.zx_fx-ck,.gdsp-ck,.gbqtsp-ck,.no_accFriend-ck,.qqadd_Friend-ck,.fwq_no_ck,.csqs_ck,.scbz_ck,.lxys_tx_ck,.ysfx_cptx-ck{
+    width: 9rem;
+    height: 4.75rem;
+    background-color: #18333e;
+    position: absolute;
+    top: 3.15rem;
+    left: 50%;
+    margin-left: -4.50rem;
+    padding-top: 1.7rem;
+    border: .02rem solid #9cfbff;
+    border-radius: .1rem;
+}
+.ysfx_cptx-ck{
+    padding-top: 1.2rem;
+}
+.zx_fx_text{
+    font-size: 18px;
+    text-align: center;
+}
+.accFriend-ck p,.addFriend-ck p,.no_videoChat-ck p,.zx_fx-ck p,.gdsp-ck p,.gbqtsp p,.no_accFriend p,.qqadd_Friend-ck p,.fwq_no p,.csqs p,.scbz p,.lxys_tx_ck p,.ysfx_cptx-ck p{
+    color: #fff;
+}
+.acc-user,.add-uesr,.accsp-uesr,.no_videoChat_uesr,.zx_fx_uesr,.gdsp_uesr,.gbqtsp_uesr,.no_accFriend_uesr,.qqadd_Friend_uesr,.fwq_no p,.csqs p,.scbz p,.lxys_tx_ck p,.ysfx_cptx-ck p{
+    font-size: .4rem;
+    text-align: center;
+    line-height: .4rem;
+    margin-bottom: .6rem;
+}
+.accFriend-btn{
+    height: .6rem;
+}
+.accFriend-btn>button,.addFriend-btn button,.no_videoChat-btn button,.zx_fx_btn-bt,.gdsp_btn_btn,.gbqtsp_btn_btn,.no_accFriend_btn_btn,.qqadd_Friend_btn_btn,.fwq_no_btn_btn,.csqs_btn_btn,.no_videoChat_btn_btn,.scbz_btn_btn,.lxys_tx_btn_btn,.ysfx_cptx_btn_btn{
+    width: 2.74rem;
+    height: .6rem;
+    font-size: .4rem;
+    line-height: .6rem;
+    border-radius: .10rem;
+    overflow: hidden;
+    /*border: .01rem solid #3cc9d2;*/
+}
+.addFriend-btn-bt,.no_videoChat_btn_btn,.zx_fx_btn-bt,.gdsp_btn_btn,.gbqtsp_btn_btn,.no_accFriend_btn_btn,.qqadd_Friend_btn_btn,.fwq_no_btn_btn,.csqs_btn_btn,.scbz_btn_btn,.lxys_tx_btn_btn,.ysfx_cptx_btn_btn{
+    background-image: url("../img/anniu_xuanzhong.png");
+    background-size: 100% 100%;
+    border: none;
+    position: absolute;
+    top: 3.3rem;
+    left: 50%;
+    margin-left: -1.32rem;
+}
+.ysfx_cptx_btn_btn{
+    top: 3.7rem;
+}
+.zx_fx_btn-bt{
+    top: 3.2rem;
+}
+.accFriend-yes{
+    background-image: url("../img/anniu_xuanzhong.png");
+    background-size: 100% 100%;
+    border: none;
+    float: left;
+    margin-left: 1.20rem;
+    position: relative;
+    overflow: hidden;
+}
+.accFriend-yes.active{
+    border: none;
+}
+.accFriend-yes:before,.addFriend-btn-bt:before,.no_videoChat_btn_btn:before,.zx_fx_btn-bt:before,.gdsp_btn_btn:before,.gbqtsp_btn_btn:before,.no_accFriend_btn_btn:before,.qqadd_Friend_btn_btn:before,.fwq_no_btn_btn:before,.csqs_btn_btn:before,.scbz_btn_btn:before,.lxys_tx_btn_btn:before,.ysfx_cptx_btn_btn:before{
+    content: ' ';
+    position: absolute;
+    background: #fff;
+    width: .25rem;
+    height: .49rem;
+    top: .05rem;
+    left: -.45rem;
+    opacity: 0.3;
+    -webkit-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+}
+.no_videoChat_btn_btn:hover:before {
+    width: .25rem;
+    left: 2.9rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+
+.addFriend-btn-bt:hover:before {
+    width: .25rem;
+    left: 2.9rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+.zx_fx_btn-bt:hover:before {
+    width: .25rem;
+    left: 2.9rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+.gdsp_btn_btn:hover:before {
+    width: .25rem;
+    left: 2.9rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+.gbqtsp_btn_btn:hover:before {
+    width: .25rem;
+    left: 2.9rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+.no_accFriend_btn_btn:hover:before {
+    width: .25rem;
+    left: 2.9rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+.no-accsp,.yes-accsp{
+    width: .8rem;
+    height: .8rem;
+    overflow: hidden;
+}
+.no-accsp img,.yes-accsp img{
+    width: 100%;
+}
+.qqadd_Friend_btn_btn:hover:before {
+    width: .25rem;
+    left: 2.9rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+.fwq_no_btn_btn:hover:before {
+    width: .25rem;
+    left: 2.9rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+.csqs_btn_btn:hover:before {
+    width: .25rem;
+    left: 2.9rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+.scbz_btn_btn:hover:before {
+    width: .25rem;
+    left: 2.9rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+.lxys_tx_btn_btn:hover:before {
+    width: .25rem;
+    left: 2.9rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+.ysfx_cptx_btn_btn:hover:before {
+    width: .25rem;
+    left: 2.9rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+.accFriend-no{
+    float: left;
+    margin-left: 1.15rem;
+    border: .01rem solid #3cc9d2
+}
+
+    /*----------------------------------*/
+.no-shuju{
+    font-size: .30rem;
+    text-align: center;
+    color:#eee;
+}
+p.active{
+    background-color: #327176;
+    border: .02rem solid #3ba5ab;
+    border-radius: .1rem;
+}
+/*----placeholder的背景颜色*/
+input::-webkit-input-placeholder{
+    color: #f1f1f1;
+}
+.send-value::-webkit-input-placeholder{
+    color: #f1f1f1;
+}
+input {
+    outline:none
+}
+/*-----gif 加载动画*/
+.zx-jindu{
+    width: 1rem;
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    margin-left: -.5rem;
+}
+.lx-s-loading{
+    width: 1rem;
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    margin-left: -.5rem;
+}
+.xq-loading{
+    width: 1rem;
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    margin-left: -.5rem;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar
+{
+    width: .12rem;
+    height: .16rem;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 .06rem rgba(0,0,0,0.3);
+    border-radius: .10rem;
+    background-color: #235c65;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+    border-radius: .10rem;
+    -webkit-box-shadow: inset 0 0 .06rem rgba(0,0,0,.3);
+    background-color: #14aaa1;
+}
+#div_device{
+    display: none !important;
+    position: absolute;
+    bottom: -1.2rem;
+}
+
+/*断网了*/
+.dwdwdw{
+    position: fixed;
+    font-size: .1rem;
+    color: #f7ff3c;
+    bottom: 0;
+    right: 0;
+    z-index: 99999999999999999999;
+}
+

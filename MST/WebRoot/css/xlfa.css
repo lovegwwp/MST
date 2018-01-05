@@ -1,0 +1,1059 @@
+/*-------训练方案*/
+.content{
+    padding-left: 1rem; ;
+    padding-right: 1rem;
+}
+.xunlian-contentList{
+    width: 17.20rem;
+    height: 7.86rem;
+    /*background-color: #1d222d;*/
+}
+.xl-content-home{
+    height: 7.2rem;
+}
+.xunlian-home{
+    height: 7.2rem;
+}
+.xl-content-left{
+    height: 7.2rem;
+}
+.xl-content{
+    height: 7.2rem;
+}
+.xl-content-bot{
+    height: 1.07rem;
+    position: relative;
+}
+.xl-th-shichang{
+    position: absolute;
+    top: 0;
+    left: 4.90rem;
+}
+.xl-sp-shichang{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.zx-content-bot,.pc-content-bot,.lx-s-content-bot{
+    height: .74rem;
+}
+.zx-jindu{
+    position: absolute;
+    top: .5rem;
+    left: 50%;
+    z-index: 10;
+}
+.xl-content-left{
+    padding-top: .28rem;
+    float: left;
+}
+.xl-content-right{
+    font-size: .25rem;
+    float: right;
+    width: 6rem;
+    padding-top: .28rem;
+}
+.xl-content-right>div{
+    margin-bottom: .2rem;
+}
+.xl-content-right>div:last-child{
+    margin-bottom: 0;
+}
+.xl-contentright1,.xl-contentright2{
+    /*padding: .10rem .10rem;*/
+}
+.xl-contentright1 p{
+    border: .02rem solid #60d1d6;
+    height: 4.40rem;
+    padding: .10rem;
+    box-shadow: 0 0 0.2rem #47fefd;
+}
+.xl-contentright2 p{
+    height: 2rem;
+    border: .02rem solid #60d1d6;
+    padding: .1rem;
+    box-shadow: 0 0 0.2rem #47fefd;
+}
+.xl-contentBut{
+    padding-bottom: .3rem;
+}
+.type-btn{
+    width: 1.5rem;
+    height: .6rem;
+    font-size: .3rem;
+    border-radius: .05rem;
+    border: .02rem solid #70d1db;
+    background-color: rgba(109,206,216,.15);
+    box-shadow: 0 0 0.07rem #47fefd;
+}
+.xl-type-btn{
+    float: left;
+    margin-right: .26rem;
+
+}
+.xl-days-btnList{
+    float: left;
+    width: 5.9rem;
+}
+.xl-days-one-btn{
+    width: 5.18rem;
+    height: .6rem;
+    display: block;
+    font-size: .3rem;
+    text-align: left;
+    padding-left: .17rem;
+    line-height: .6rem;
+    border-radius: .05rem;
+    border: .02rem solid #6dced8;
+    background-color: rgba(109,206,216,.15);
+    box-shadow: 0 0 0.07rem #47fefd;
+}
+.xl-days-one-btn.hcys{
+    /*border: .02rem solid #f7ff3c;*/
+}
+.xl-days-one-btn>span{
+    line-height: .6rem;
+}
+.xl-days-one-btn .xlfa-ts{
+    color: #f7ff3c;
+    font-size: .22rem;
+    line-height: .6rem;
+    margin-left: .2rem;
+}
+.xl-days-one-btn:hover{
+    border: .02rem solid #6ffffe;
+    box-shadow: 0 0 .2rem 0 rgba(8, 8, 8, 0.8);
+}
+.xl-more-btn{
+    background-color: rgba(109,206,216,.15);
+    box-shadow: 0 0 0.07rem #47fefd;
+}
+.xl-more-btn:hover{
+    /*border: .02rem solid #8efffe;*/
+    /*box-shadow: 0 0 0.07rem #8efffe;*/
+    border: .02rem solid #6ffffe;
+    box-shadow: 0 0 .2rem 0 rgba(8, 8, 8, 0.8);
+}
+.xl-more-btn,.xl-shouqi{
+    width: 5.18rem;
+    height: .6rem;
+    display: block;
+    font-size: .3rem;
+    text-align: center;
+    padding-left: .17rem;
+    border-radius: .05rem;
+    border: .02rem solid #6dced8;
+}
+.small-ceping{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: .62rem;
+    height: .4rem;
+    font-size: .24rem;
+    line-height: .40rem;
+    border-radius: 0 .1rem .1rem 0;
+    border: .02rem solid #6dced8;
+    box-shadow: 0 0 0.07rem #6dced8;
+
+}
+.small-ceping.active{
+    background-color: #6dac4c;
+    border: .02rem solid #f7ff3c;
+}
+.small-ceping:hover{
+    border: .02rem solid #fff;
+    box-shadow: 0 0 0.07rem #fff;
+}
+.xl-dID{
+    display: none;
+}
+.xl-watchTime{
+    display: none;
+}
+.xl-type{
+    display: none;
+}
+.threeDays>div{
+    margin-bottom: .1rem;
+    position: relative;
+    cursor: pointer;
+}
+.more-threeDay>div{
+    position: relative;
+    cursor: pointer;
+}
+.more-threeDay>div{
+    margin-bottom: .1rem;
+    position: relative;
+    cursor: pointer;
+}
+.threeDays>div:nth-child(3),.more-threeDay>div:nth-child(3){
+    margin-bottom: 0;
+}
+.more-threeDay>div{
+
+}
+button.active{
+    background-color: #04a0b9;
+    border: .02rem solid #05eaff;
+    /*color: #739392;*/
+}
+/*div.active{*/
+/*background-color: #1d75ed;*/
+/*}*/
+.xl-data{
+    position: absolute;
+    right: .9rem;
+    top: 0;
+    font-size: .28rem;
+    color: #6fd836;
+    line-height: .6rem;
+    /*background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#22f2fa), to(#83f078));*/
+    /*-webkit-background-clip: text;*/
+    /*-webkit-text-fill-color: transparent;*/
+}
+.xl-datafh{
+    color: #6fd836;
+}
+.xl-content-left>div{
+    margin-bottom: .3rem;
+}
+.xl-content-left>div:last-child{
+    margin-bottom: 0;
+}
+.left-btn{
+    float: left;
+}
+.mid-pic{
+    width: 3.48rem;
+    height: 2rem;
+    float: left;
+}
+.xl-content-bot,.zx-content-bot,.pc-content-bot,.lx-content-bot{
+    padding: .1rem 0 0 .2rem;
+    position: relative;
+}
+.xl-cepingBtn{
+    width: 1.5rem;
+    height: .6rem;
+    font-size: .3rem;
+    background-color: #20516a;
+    border: .03rem solid #94ccd4;
+    border-radius: .05rem;
+    overflow: hidden;
+    position: relative;
+}
+.xl-cepingBtn:before {
+    content: ' ';
+    position: absolute;
+    background: #fff;
+    width: .25rem;
+    height: .58rem;
+    top: 0;
+    left: -.45rem;
+    opacity: 0.3;
+    -webkit-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+}
+.xl-cepingBtn:hover:before {
+    width: .25rem;
+    left: 1.70rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+.xl-th-shichang,.xl-sp-shichang{
+    width: 6.04rem;
+    height: .6rem;
+    background-color: #205068;
+    padding-left: .45rem;
+    border-radius: .05rem;
+    padding-right: .1rem;
+    border: .03rem solid #94ccd4;
+}
+.xl-th-shichang{
+    margin-bottom: .1rem;
+}
+.fa-xl-chongzhi{
+    float: left;
+}
+.fa-sp-chongzhi{
+    float: left;
+}
+.fa-sythsc,.fa-syxlsc{
+    margin-right: .1rem;
+    margin-left: .1rem;
+}
+.fa-xl-chongzhi span,.fa-sp-chongzhi span{
+    font-size: .3rem;
+    color: #f1f1df;
+    line-height:.55rem;
+    float: left;
+}
+.xl-th-chongzhi,.xl-sp-chongzhi{
+    width: .79rem;
+    height: .46rem;
+    font-size: .3rem;
+    line-height: .46rem;
+    float: right;
+    background-color: #99b0bd;
+    border-radius: .05rem;
+    font-weight: bold;
+    margin-top: .04rem;
+    color: #24313a;
+    -webkit-transition: all .30s ease-out;
+    transition: all .30s ease-out;
+}
+.xl-th-chongzhi:hover{
+    font-size: .35rem;
+}
+.xl-sp-chongzhi:hover{
+    font-size: .35rem;
+}
+.xl-ceping{
+    position: absolute;
+    left: 0;
+    border-radius: .05rem;
+}
+
+.xl-shichang{
+    border-radius: .05rem;
+}
+.xl-chongzhiList{
+    float: right;
+}
+.small-pc-goUp,.small-pc-goDown,.lxys-goUp,.lxys-goDown,.xl-goUp,.xl-goDown,.zx-goUp,.zx-goDown,.pc-goUp,.pc-goDown,.lx-s-goUp,.lx-s-goDown,.fs-goUp,.fs-goDown,.gr-goUp,.gr-goDown,.cz-goUp,.cz-goDown,.cz-goUp1,.cz-goUp2,.cz-goDown1,.cz-goDown2,.xx-but-down,.xx-but-up,.xz-but-up,.xz-but-down{
+    width: 1.2rem;
+    height: .52rem;
+    background-color: #09525b;
+    font-size: .3rem;
+    line-height: .52rem;
+    border: .01rem solid #096f76;
+}
+.small-pc-goUp,.lxys-goUp,.xl-goUp,.zx-goUp,.pc-goUp,.lx-s-goUp,.fs-goUp,.gr-goUp,.cz-goUp1,.cz-goUp2,.xx-but-up,.xz-but-up{
+    border-radius: .4rem 0 0 .4rem;
+}
+.small-pc-goDown,.lxys-goDown,.xl-goDown,.zx-goDown,.pc-goDown,.lx-s-goDown,.fs-goDown,.gr-goDown,.cz-goDown1,.cz-goDown2,.xx-but-down,.xz-but-down{
+    border-radius: 0 .4rem .4rem 0 ;
+}
+.xl-fenye{
+    position: absolute;
+    /*width: 4.3rem;*/
+    height: .52rem;
+    left: 50%;
+    margin-left: -1.90rem;
+    top: 1.26rem;
+}
+.gr-fenye,.lxys-fenye{
+    float: right;
+}
+.lx-ys-bot{
+    margin-top: .2rem;
+}
+.small-pc-fenye>div,.xl-fenye>div,.zx-fenye>div,.pc-fenye>div,.lx-s-fenye>div,.fs-fenye>div,.gr-fenye>div,.cz-fenye1>div,.cz-fenye2>div,.lxys-fenye>div,.xx-but-fenye>div,.xz-but-fenye>div,.gr-fenye>div{
+    float: left;
+    margin-left: .37rem;;
+}
+.small-pc-fenye>div:first-child,.xl-fenye>div:first-child,.zx-fenye>div:first-child,.pc-fenye>div:first-child,.lx-s-fenye>div:first-child,.fs-fenye>div:first-child,.lxys-fenye>div:first-child,.xx-but-fenye>div:first-child,.xz-but-fenye>div:first-child,.gr-fenye>div:first-child{
+    margin-left: 0;
+}
+.small-pc-yeshu,.xl-yeshu,.zx-yeshu,.pc-yeshu,.lx-s-yeshu,.fs-yeshu,.gr-fenye,.lxys-fenye,.cz-yeshu2,.cz-yeshu1,.xx-but-yeshu,.xz-but-yeshu,.gr-yeshu{
+    font-size: .4rem;
+}
+.small-pc-yeshu span,.xl-yeshu span,.zx-yeshu span,.pc-yeshu span,.lx-s-yeshu span,.fs-yeshu span,.cz-yeshu2 span,.cz-yeshu1 span,.xx-but-yeshu span,.xz-but-yeshu span,.gr-yeshu span{
+    color: #c3c3c3;
+}
+span.active{
+    color: #ffffff;
+}
+.zx-fenye,.pc-fenye,.lx-s-fenye,.fs-fenye,.xx-but-fenye,.xz-but-fenye,.gr-fenye{
+    position: absolute;
+    /*width: 4.2rem;*/
+    height: .52rem;
+    left: 50%;
+    margin-left: -1.9rem;
+}
+.zx-fenye{
+    top: .31rem;
+}
+.pc-fenye{
+    top: .31rem;
+}
+.lx-s-fenye{
+    top: .08rem;
+}
+.fs-fenye{
+    top: 0.08rem;
+}
+.xx-but-fenye{
+    top: .46rem;
+}
+.xz-but-fenye{
+    top: .2rem;
+}
+.lx-s-content-bot,.fs-content-bot,.xx-but-Bot,.xz-but-Bot,.gr-content-bot{
+    position: relative;
+}
+.more-btn{
+    position: relative;
+}
+.gr-fenye{
+    top: .15rem;
+}
+/*.xl-more-list{*/
+/*position: absolute;*/
+/*!*box-shadow: rgba(15, 29, 31, 0.72) 0px 41px 29px -10px;*!*/
+/*border-radius: 0 0 .1rem 0;*/
+/*!*background-color: rgba(39,94,102,1);*!*/
+/*background-image: url("../img/backgroundc.png");*/
+/*top: 0;*/
+/*width: 5.9rem;*/
+/*height: 3.5rem;*/
+/*left: 0;*/
+/*z-index: 9999;*/
+/*overflow: auto;*/
+/*padding-bottom: .1rem;*/
+/*}*/
+.xl-more-list{
+    width: 5.9rem;
+    height: 2.8rem;
+    display: block;
+    overflow: auto;
+}
+.xl-more-listout{
+    position: absolute;
+    /*box-shadow: rgba(15, 29, 31, 0.72) 0px 41px 29px -10px;*/
+    border-radius: 0 0 .1rem 0;
+    /*background-color: rgba(39,94,102,1);*/
+    background-image: url("../img/backgroundc.png");
+    top: 0;
+    width: 5.9rem;
+    height: 3.5rem;
+    left: 0;
+    z-index: 9999;
+    padding-bottom: .1rem;
+    display: none;
+    box-shadow: rgba(15, 29, 31, 0.72) 0 .41rem .29rem -.1rem;
+}
+.xl-one:nth-child(3n+1) .xl-more-listout{
+    /*box-shadow: rgba(15, 29, 31, 0.72) 0 41px 29px -10px;*/
+    z-index: 20;
+}
+.xl-one:nth-child(3n+1) .xl-shouqi{
+    position: fixed;
+    top: 5.58rem;
+    left: 2.76rem;
+}
+.xl-one:nth-child(3n+2) .xl-shouqi{
+    position: fixed;
+    top: 7.88rem;
+    left: 2.76rem;
+}
+.xl-one:nth-child(3n+3) .xl-shouqi{
+    position: fixed;
+    top: 9.48rem;
+    left: 2.76rem;
+}
+.xl-shouqiList{
+    position: relative;
+}
+.xl-shouqi-scroll{
+    width: .62rem;
+    height: .4rem;
+    position: absolute;
+    top: -.03rem;
+    right: -.74rem;
+    border-radius: 0 .1rem .1rem 0;
+    border: .02rem solid #6dced8;
+    box-shadow: 0 0 0.07rem #6dced8;
+    padding-left: .04rem;
+    padding-top: .05rem;
+}
+.xl-shouqi-scroll img{
+    width: .5rem;
+    display: block;
+    height: .13rem;
+}
+.xl-one:nth-child(3n+2) .xl-more-listout{
+    /*box-shadow: rgba(15, 29, 31, 0.72) 0 41px 29px -10px;*/
+    z-index: 10;
+}
+.xl-one:nth-child(3n+3) .xl-more-listout{
+    z-index: 5;
+    height: 2.8rem;
+}
+.xl-one:nth-child(3n+3) .xl-more-list{
+    height: 2.1rem;
+}
+.xl-more-list>div{
+    position: relative;
+    margin-bottom: .10rem;
+}
+.xl-more-list>div:last-child{
+    margin-bottom: 0;
+}
+.xl-more-list>.xl-days-one:last-child{
+    margin-bottom: 0;
+}
+.circleChart{
+    background-image: url("../img/2x(1).png");
+    background-size: 100% 100%;
+    width: 2.1rem;
+    height: 2.1rem;
+    float: right;
+    margin-right: .54rem;
+    position: relative;
+    border-radius: 50%;
+    border: .02rem solid #6de2f3;
+    box-shadow: 0 0 0.5rem #5fc8d6;
+}
+.circleChart>p{
+    text-align: center;
+    line-height: 0.5rem;
+}
+.circleChartFinish{
+    color: #ffd704;
+    font-size: 0.33rem;
+}
+.circleChart>p:first-child{
+    margin-top: 0.55rem;
+    font-size: 0.45rem;
+}
+.circleChart_canvas{
+    width: 2rem;
+    position: absolute;
+    top: .03rem;
+    left: .03rem;
+}
+
+/*--训练----测评页111-*/
+.pc-contentList{
+    /*background-color: #313649;*/
+}
+.pc-content{
+    width: 17.2rem;
+    height: 8.16rem;
+    /*background-color: #313649;*/
+    padding-top: .30rem;
+}
+.pc-title>li{
+    float: left;
+    width: 3rem;
+    height: .6rem;
+    font-size: .36rem;
+    font-weight: bold;
+    text-align: center;
+    color:#f1f1df ;
+    background-color: #1a4c53;
+    line-height: .60rem;
+    border: .01rem solid #37a9af;
+}
+.pc-title>li:nth-child(3){
+    width: 8.2rem;
+}
+.pc-list-one>li{
+    height: 2.4rem;
+    width: 3rem;
+    line-height: 2.4rem;
+    border-bottom: .01rem solid #37a9af;
+    float: left;
+    font-size: .36rem;
+    text-align: center;
+}
+.pc-list-one>li:last-child {
+    width: 2.96rem;
+}
+.pc-list-one .pc-jieguo{
+    width: 8.20rem;
+}
+.pc-list-one{
+    border: .01rem solid #37a9af;
+    border-top: none;
+}
+
+.pc-jieguo p{
+    float: left;
+}
+.pc-jieguo p:last-child{
+    padding-right: .2rem;
+}
+.pc-jieguo-num{
+    width: 2rem;
+    line-height: 2.4rem;
+}
+.pc-jieguo-text{
+    width: 6.2rem;
+    line-height: .75rem;
+}
+li{
+    color: #f1f1df;
+}
+/*--训练----测评页2222-*/
+.small-pc-main{
+    padding-top: .30rem;
+}
+.spc-main-title{
+    height: .80rem;
+    font-size: .35rem;
+    background-color:#1b474d ;
+    text-align: center;
+    line-height: .8rem;
+    margin-bottom: .2rem;
+    color: #eee;
+    border: .01rem solid #37a9af;
+    border-radius: .05rem;
+}
+.spc-mainOne{
+    padding-left: .46rem;
+    font-size: .30rem;
+    line-height: 1.05rem;
+    height: 1.05rem;
+    border-radius: .1rem;
+    border: .01rem solid #37a9af;
+    margin-bottom: .1rem;
+}
+.spc-mainOne:last-child{
+    margin-bottom: 0;
+}
+.spc-mainOne>p{
+    float: left;
+}
+.spc-mingcheng{
+    font-size: .4rem;
+    width: 2.2rem;
+}
+.spc-shijian{
+    width:  4rem;
+}
+.spc-jindu{
+    width: 2.3rem;
+}
+.spc-text{
+    width: 8.2rem;
+}
+.spc-mainList{
+    height: 6.8rem;
+    margin-bottom: .3rem;
+}
+.small-pc-bot{
+    padding-left: 6.5rem;
+}
+.spc-mainList>div:nth-child(2n+1){
+    background-color: #286a73;
+}
+.spc-mainList>div:nth-child(2n){
+    background-color: #18646f;
+}
+#spc-clone{
+    display: none;
+}
+.xlsp>button{
+    color: #000;
+}
+.xlsp{
+    width: 19.2rem;
+    height: 10.8rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99999;
+    background-image: url("../img/background.png");
+    background-size: 100% 100%;
+}
+.xlsp-tab{
+    padding-top: .8rem;
+    width: 3.754rem;
+    height: 10.8rem;
+    position: fixed;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+.ztxz-btn{
+    width: 3.754rem;
+}
+
+.xlsp-tab button{
+    margin: 0 auto;
+    margin-bottom: .2rem;
+}
+.xlsp-tab-list{
+    overflow: auto;
+    height: 7rem;
+    padding-top: 0.1rem;
+}
+.xlsp-tab-list>button{
+    min-width: 2.43rem;
+    max-width: 3.7rem;
+    height: .68rem;
+    background-color: #0d3139;
+    font-size: .35rem;
+    line-height: .64rem;
+    border-radius: .10rem;
+    box-shadow: 0 0 .15rem #63e4f2;
+    position: relative;
+    overflow: hidden;
+    border: .02rem solid rgba(0,0,0,0);
+}
+.tab-one.xuanzhong{
+    border: none;
+}
+.tab-one.xuanzhong:hover{
+    border: none;
+}
+.tab-one:hover{
+    border: 2px solid #63e4f2
+}
+.xlsp-tab button.xuanzhong{
+    background-image: url("../img/anniu_xuanzhong.png");
+    background-size: 100.9% 103%;
+    box-shadow: 0 0 .2rem #40cbdb;
+    /*position: relative;*/
+}
+.xlsp-tab button.xuanzhong:before {
+    content: ' ';
+    position: absolute;
+    background: #fff;
+    width: .25rem;
+    height: .59rem;
+    top: .05rem;
+    left: -.45rem;
+    opacity: 0.3;
+    -webkit-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+}
+.xlsp-tab button.xuanzhong:hover:before {
+    width: .25rem;
+    left: 2.6rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+.xlsp-tab-open-close{
+    width: .5rem;
+    height: 1rem;
+    background-color: rgba(0,0,0,0.5);
+    font-size: .35rem;
+    text-align: center;
+    position: absolute;
+    top: 0.2rem;
+    right: -.5rem;
+    border-radius: 0 .1rem .1rem 0;
+    color: #fff;
+    padding-top: .23rem;
+    cursor: pointer;
+}
+.xlsp-tab-open-close img{
+    width: 100%;
+}
+.tab-ztxz,.tab-gbck{
+    font-size: .35rem;
+    min-width: 2.43rem;
+    max-width: 3.7rem;
+    height: .68rem;
+    line-height: .68rem;
+    border-radius:.50rem;
+    background-color: #091c42;
+    border: .02rem solid #99c2c8;
+}
+.tab-gbck{
+    position: absolute;
+    bottom: .7rem;
+    left: .68rem;
+    z-index: 999999999999999999;
+}
+
+.tab-ztxz:hover{
+    border: .02rem solid #63e4f2
+}
+.tab-gbck:hover{
+    border: .02rem solid #63e4f2
+}
+.ztxz-btn{
+    position: absolute;
+    bottom: 1.5rem;
+}
+.xlsp-content{
+    padding-top: .20rem;
+    height: 10.8rem;
+}
+.tab-main p{
+    font-size: .50rem;
+    text-align: center;
+    text-shadow: .02rem .02rem .10rem #000;
+    line-height: 1rem;
+}
+.tab-main p .morenbf{
+    font-size: .20rem;
+    text-align: center;
+    line-height: 1rem;
+    margin-left: .2rem;
+}
+.xlsp-content{
+    font-size: .16rem;
+}
+.video-js .vjs-big-play-button{
+    top: 50%;
+    left: 50%;
+}
+.videoList .video-js{
+    width:10rem;
+    height:7.5rem;
+    margin: 0 auto;
+
+}
+.videoList .video-js.active{
+    width: 10rem;
+    height: 7.5rem;
+    margin-left: 3rem;
+}
+.videoList2{
+     padding-top: 0.5rem;
+ }
+.videoList2 .video-js{
+    width: 8.8rem;
+    height: 6.6rem;
+    margin: 0 auto;
+}
+
+.videoList2 .videoList2_one.active{
+    float: left;
+    width: 7rem;
+}
+.videoList2 .video-js.active{
+    width:6.6rem;
+    height:4.95rem;
+}
+.videoList{
+    padding-top: .2rem;
+}
+
+.videoList2 .videoList2_one{
+    float: left;
+    width: 9.6rem;
+}
+.videoList2.active{
+    padding-top: 1.2rem;
+}
+:focus{
+    outline: none;
+}
+.xl-xuanzhong1{
+    background-image: url("../img/anniu_xuanzhong.png");
+    background-size: 100% 100%;
+    border: none;
+    box-shadow: none;
+    overflow: hidden;
+    position: relative;
+}
+.xl-xuanzhong1:before {
+    content: ' ';
+    position: absolute;
+    background: #fff;
+    width: .25rem;
+    height: .5rem;
+    top: .05rem;
+    left: -.45rem;
+    opacity: 0.3;
+    -webkit-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+}
+.xl-xuanzhong1:hover:before {
+    width: .25rem;
+    left: 1.70rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+
+.xl-xuanzhong2{
+    border: .02rem solid #6ffffe;
+    box-shadow: 0 0 .2rem 0 rgba(8, 8, 8, 0.8);
+}
+#xlsp-clone,#xlsp-clo{
+    display: none;
+}
+
+/*字体设置*/
+/*--------------------------------------字体字号-*/
+.ziti-home{
+    width: 19.20rem;
+    height: 10.8rem;
+    background-image: url("../img/background.png");
+    background-size: 100% 100%;
+    padding-top: 1.5rem;
+    padding-left: 1rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999999999999999;
+}
+.ziti-home button{
+    font-size: .38rem;
+    line-height: .68rem;
+    text-align: center;
+    background-color: #158b98;
+    border: 0.02rem solid #0cadac;
+    border-radius: .1rem;
+}
+.zitiPage-ziti button,.zitiPage-zihao button{
+    width: 2.43rem;
+    height: .68rem;
+    margin-right: .55rem;
+    float: left;
+}
+.zitiPage-ziti button:last-child,.zitiPage-zihao button:last-child{
+    margin-right: 0;
+}
+.zitiPage-yanse button{
+    width: 1.15rem;
+    height: 1.15rem;
+    margin-right: .45rem;
+    float: left;
+}
+.ziti-List span{
+    display: inline-block;
+    width: 2.50rem;
+    font-size: .30rem;
+    line-height: .60rem;
+    padding-left: .20rem;
+    float: left;
+    text-align: center;
+}
+.ziti-List span:last-child{
+    line-height: 1.1rem;
+}
+.ziti-List>div{
+    width: 17.28rem;
+    height: 1.8rem;
+    border: .01rem solid #2d939e;
+    padding-top: .58rem;
+    box-shadow: 0 0 1.2rem #2d939e;
+}
+div.zitiPage-yanse{
+    padding-top: .33rem;
+}
+.zitiPage-yanse span{
+    margin-top: .20rem;
+}
+.ziti-List{
+    margin-bottom: 1rem;
+}
+.ziti-btn button{
+    width: 3.4rem;
+    height: .6rem;
+    font-size: .28rem;
+    margin: 0 auto;
+    line-height: .6rem;
+    border: .02rem solid #94ffff;
+    border-radius: .10rem;
+    box-shadow: 0 0 .2rem #33c2cf;
+    position: relative;
+    overflow: hidden;
+}
+.ziti-btn button:before {
+    content: ' ';
+    position: absolute;
+    background: #fff;
+    width: .25rem;
+    height: .56rem;
+    top: 0;
+    left: -.45rem;
+    opacity: 0.3;
+    -webkit-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+}
+.ziti-btn button:hover:before {
+    width: .25rem;
+    left: 3.55rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+
+
+.zitiPage-ziti button.xuanzhong,.zitiPage-zihao button.xuanzhong{
+    background-image: url("../img/anniu_xuanzhong.png");
+    background-size: 100.9% 103%;
+    box-shadow: 0 0 .2rem #40cbdb;
+    position: relative;
+    overflow: hidden;
+}
+
+.zitiPage-yanse button.xuanzhong{
+    box-shadow: 0 0 .3rem #282828;
+}
+.ziti-btn{
+    text-align: center;
+}
+.zitiPage-ziti button.xuanzhong:before,.zitiPage-zihao button.xuanzhong:before{
+    content: ' ';
+    position: absolute;
+    background: #fff;
+    width: .25rem;
+    height: .54rem;
+    top: .05rem;
+    left: -.45rem;
+    opacity: 0.3;
+    -webkit-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+}
+.zitiPage-ziti button.xuanzhong:hover:before {
+    width: .25rem;
+    left: 2.55rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+.zitiPage-zihao button.xuanzhong:hover:before {
+    width: .25rem;
+    left: 2.55rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+
+.small-ceping{
+    display: none;
+}
+
+/*评测隐藏*/
+.small-ceping{
+    display: none;
+}
+.xl-shouqi-scroll{
+    display: none;
+}
+.xl-days-btnList{
+    width: 5.5rem;
+}
+.xl-more-listout{
+    width: 5.5rem;
+}
+.xl-more-list{
+    width: 5.5rem;
+}
+.xl-data{
+    right: .45rem;
+}
+.xl-more-listout .xl-data {
+    /*right: .33rem;*/
+}
+
+.xl-cepingBtn{
+    display: none;
+}
+
+
+/*观看训练方案每30分钟提醒一次*/
+.fagktxsc{
+    position: fixed;
+    width: 2.5rem;
+    height: 1.5rem;
+    background-color: #14a9a0;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 99999;
+    border-radius: .2rem;
+    padding: .4rem .1rem;
+}
+.fagktxsc p{
+    font-size: .25rem;
+    text-align: center;
+}
+
+

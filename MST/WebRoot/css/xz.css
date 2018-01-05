@@ -1,0 +1,85 @@
+/*---------------------下载记录*/
+.xzjl-content{
+    width: 17.20rem;
+    height: 8.06rem;
+    /*background-color: #313649;*/
+}
+.xiazai-home{
+    height: 8.06rem;
+    margin-bottom: .2rem;
+}
+.xz-top{
+    height: 1.75rem;
+    padding-top: .85rem;
+    font-size: .36rem;
+    font-weight: bold;
+    line-height: .56rem;
+}
+.xz-top>li{
+    float: left;
+    text-shadow: .02rem .02rem .05rem #000;
+}
+.xz-yisheng,.xz-one-yisheng{
+    width: 3rem;
+    text-align: center;
+}
+.xz-leimu,.xz-one-leimu{
+    width: 3rem;
+    text-align: center;
+}
+.xz-shijain,.xz-one-shijian{
+    width: 5.57rem;
+    text-align: center;
+}
+.xz-zhiding,.xz-one-zhiding{
+    width: 5.57rem;
+    text-align: center;
+}
+.xz-List{
+    height: 6.4rem;
+}
+.xz-list-one{
+    height: 1.5rem;
+    margin-bottom: .10rem;
+    border: .01rem solid #41acb4 ;
+    border-radius: 0.1rem;
+    background-color:#2a6971;
+    position: relative;
+}
+.zx-one-X{
+    width: .3rem;
+    height: 1.48rem;
+    border-radius: 0 .1rem .1rem 0;
+    background-color:#1b4247;
+    position: absolute;
+    right: 0;
+    top: 0;
+    writing-mode: tb-rl;
+    text-align: center;
+    line-height: .3rem;
+    letter-spacing: 0.3rem;
+    font-size: .20rem;
+    padding-top: .3rem;
+    color: #fff;
+    display: none;
+    cursor: pointer;
+}
+.xz-list-one:hover .zx-one-X{
+    display: block;
+}
+.zx-one-X:hover{
+    background-color: #ff6600;
+}
+.xz-list-one:last-child{
+    margin-bottom: 0;
+}
+.xz-list-one>div{
+    float: left;
+}
+.xz-list-one{
+    font-size: .3rem;
+    line-height: 1.5rem;
+}
+#xz-clone{
+    display: none;
+}

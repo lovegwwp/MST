@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery/jquery-1.12.3.min.js"></script>
+</head>
+<body>
+<div class="xz-num"></div>
+<script>
+    var data=[1,2,3,4,5];
+    var num=parseInt(14.98/data.length);   //100%进度条 一份的进度条长度数
+    var per=parseInt(100/data.length);    //100%进度数  一份的百分比数
+
+    for(var k=0;k<data.length;k++) {
+//        var video = data[k].vedio;
+        var Num = per*k;                  //百分比的初始值
+        var settime=parseInt(1200/per);  //与进度条1200 保持速度一致。每个数计时时间间隔
+//        console.log(vedio);
+        console.log('333333333333')
+//            $('.xzwancheng').animate({width: num*k+'rem',}, 1200);
+            var ForTime = setInterval(function () {
+                $('.xz-num').html(Num);
+                Num++;
+                if (Num == per*(k+1)+1) {
+                    console.log(per*(k+1)+1);
+                    console.log('0000000000000000000')
+                    clearInterval(ForTime)    //下载页面百分比显示
+                }
+            }, settime);
+
+
+        console.log('111111111111')
+
+    }
+    //不为整数多余的数进度条最终都为100%变化
+    setTimeout(function () {
+        var Num = per*data.length;
+        var settime=parseInt(1200/(100-(per*data.length)));  //与进度条1200 保持速度一致。每个数计时时间间隔
+        var NumTime = setInterval(function () {
+            $('.xz-num').html(Num);
+            Num++;
+            if (Num == 101) {
+                clearInterval(NumTime)    //下载页面百分比显示
+            }
+        }, settime);
+        $('.xzwancheng').animate({width: '14.98rem',}, 1200);
+    },6000)
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery/jquery-1.12.3.min.js"></script>
+</head>
+<body>
+<!--<video src="./11.mp4"></video>-->
+<div id="box"></div>
+<script>
+//  var obj=[{a:1,A:1},{a:2,A:2},{a:3,A:3}];
+//  var vv=2;
+//  var dd;
+//  for(var i=0;i<obj.length;i++){
+//      if(obj[i].a==vv){
+//          dd=obj[i].A
+//          break;
+//      }
+//  }
+//  console.log(dd)
+
+var a='./a.jpg'
+$('#box').html('<img src='+a+'>')
+
+
+//找到id对应的医生姓名和医生图片
+var ysName,ysImg;
+if(YsIdXm.length>0){   //医生doc对应的医生姓名图片
+    for(var b=0;b<YsIdXm.length;b++){
+        if(YsIdXm[b].docId==othUser){
+            ysName=YsIdXm[b].name;   //通过id号找到对应的医生姓名
+            ysImg=YsIdXm[b].pic;     //通过id号找到对应的医生图片
+            break;
+        }
+    }
+}else {
+    console.log('YsIdXm数组为空，没有找到对应医生的姓名');
+    ysName='没有找到对应医生的姓名';
+    ysImg='./img/doctor-head.png';
+}
+</script>
+</body>
+</html>//防止窗口已经存在后医生修改姓名，刷新列表后导致的姓名不匹配

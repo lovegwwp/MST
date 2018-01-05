@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery/jquery-1.12.3.min.js"></script>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .pic{
+        width: 100%;
+        height: 1080px;
+        /*overflow: hidden;*/
+        position: fixed;
+    }
+    img{
+        width: 100%;
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 0;
+        transition: all .2s ease-out;
+
+    }
+    .div{
+        height: 400px;
+        background-color: red;
+    }
+</style>
+<body>
+<!--<div class="box">-->
+    <!--<div class="pic"><img src="../42.jpg"></div>-->
+    <!--<div class="div"></div>-->
+<!--</div>-->
+<div id="xlsp">111</div>
+
+</body>
+<script>
+    $(document).ready(function(){
+        console.log($(window).height()); //浏览器当前窗口可视区域高度
+        console.log($(document).height()); //浏览器当前窗口文档的高度
+        console.log($(document.body).height());//浏览器当前窗口文档body的高度
+        console.log($(document.body).outerHeight(true));//浏览器当前窗口文档body的总高度 包括border padding margin
+        console.log($(window).width()); //浏览器当前窗口可视区域宽度
+        console.log($(document).width());//浏览器当前窗口文档对象宽度
+        console.log($(document.body).width());//浏览器当前窗口文档body的宽度
+        console.log($(document.body).outerWidth(true));//浏览器当前窗口文档body的总宽度 包括border padding margin
+    })
+</script>
+</html>
