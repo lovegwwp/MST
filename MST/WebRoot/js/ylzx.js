@@ -64,7 +64,7 @@ function getzxone(page) {
             		$('.zx-list').append(`<div class="zx-list-one">
             					<b>mp3</b>
                                 <div class="zx-list-pic">
-                                    <img src="./img/1.png">
+                                    <img src="./img/yp.png">
                                 </div>
                                 <div class="zx-list-text">
                                     <p class="zx-list-textTitle">${zxTitle}</p>
@@ -78,7 +78,7 @@ function getzxone(page) {
             		$('.zx-list').append(`<div class="zx-list-one">
             					<b>mp4</b>
                                 <div class="zx-list-pic">
-                                    <img src="./img/1 (2).png">
+                                    <img src="./img/sp.png">
                                 </div>
                                 <div class="zx-list-text">
                                     <p class="zx-list-textTitle">${zxTitle}</p>

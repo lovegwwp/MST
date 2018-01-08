@@ -12,13 +12,13 @@
         box-sizing: border-box;
     }
     html,body{
-        width: 19.2rem;
+        width: 100%;
         height: 100%;
         /*overflow: hidden;*/
     }
     /*----开机动画*/
     .kj-jif{
-        width: 19.2rem;
+        width: 100%;
         height: 100%;
         position: fixed;
         left: 0;
@@ -35,7 +35,7 @@
 
     <script src="jquery/jquery-1.12.3.min.js"></script>
     <script>
-        var WI=$(window).width(); //浏览器当前窗口可视区域宽度
+       /*  var WI=$(window).width(); //浏览器当前窗口可视区域宽度
         //        alert(WI)
         var Fs=WI/1920*100+'px';
         $('body').css({
@@ -43,7 +43,7 @@
         });
         $('html').css({
             fontSize:Fs
-        });
+        }); */
 
         var num=2;
         var timer=setInterval(function () {

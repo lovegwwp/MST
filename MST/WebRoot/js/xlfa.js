@@ -606,7 +606,7 @@ $('.xz-quxiao').click(function () {
 
 });
 // -----------------------------------------------------第几周第几天第几次--
-$('.xl-days-one-btn').click(function () {
+$('body').on('click','.xl-days-one-btn',function () {
 	$('.zx-text').html('');
 	$('.xlsp-tab').css({
         transition: 'all 1s ease-out',
