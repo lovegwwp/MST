@@ -56,7 +56,7 @@ public class CmdPcServlet
     }
     ////抓取设备号以及设备驱动MD5码
     else if (cmdType.equals("3")) {
-      String macId = MstpcUtil.getTxtId2();
+      String macId = MstpcUtil.getTxtId3();
       String MD5Str = MstpcUtil.getFileMd5Str("C://MSTAPP//mstid.exe");
       System.out.println("oldMacid2===>" + macId);
       System.out.println("MD5Str===>" + MD5Str);
@@ -142,6 +142,24 @@ public class CmdPcServlet
       System.out.println("bdCamera=m：" + (String)m.get("bdCamera"));
       System.out.println("xnCamera=m：" + (String)m.get("xnCamera"));
     }
+    ///项目整体--清除缓存---清除所有视频
+    else if (cmdType.equals("12")) {
+      m = clearOperate();
+      ResponseJson.responseOutWithJson(response, m);
+    }
+  }
+  
+  
+  public static Map<String, String> clearOperate()
+  {
+    Map<String, String> m = new HashMap<String, String>();  
+    String urlStr = "C:\\MSTAPP\\apache-tomcat-7.0.79\\apache-tomcat-7.0.79\\webapps\\uploadVedio";
+    boolean isSucc = CommTool.deleteDir(urlStr);
+    m.put("status", "fasle");
+    if (isSucc) {
+    	 m.put("status", "true");
+	}   
+    return m;
   }
   
   public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -233,20 +251,29 @@ public class CmdPcServlet
     return CommTool.createFile(path, fileName);
   }
   
+  //第三方训练文件读取
+  /////轮训文件是否存在，存在读取，启动下一个exe操作。不存在,不做处理
   public Map<String, String> cmdOperateTestResult(String urlStr)
   {
     Map<String, String> m = new HashMap();
     String path = urlStr.substring(0, urlStr.indexOf("exe") - 1);
     path = path + "_Data\\StreamingAssets";
     String fileName = "ResultRecord.txt";
-    m = CommTool.findFileAndGetInfo(path + "\\" + fileName);
+    boolean flag = cmdFindFile(path + "\\" + fileName);
+    if (flag) {
+    	m = CommTool.findFileAndGetInfo(path + "\\" + fileName);
+	}else{
+		m.put("status", "false");
+        m.put("info", "");
+	}
+    
     return m;
   }
   
   public static Map<String, String> hdzxOperate(String urlStr)
   {
     Map<String, String> m = new HashMap();
-    if ((urlStr.equals("")) || (urlStr == null)) {
+    if ( (urlStr == null)||(urlStr.equals("")) ) {
       urlStr = "c:\\mstperson\\thirdtrain\\08\\hall.exe 1 mstsyzmotion 1";
     }
     urlStr = urlStr + " 1 mstsyzmotion 1";
@@ -266,6 +293,7 @@ public class CmdPcServlet
   
   public static void main(String[] args)
   {
-    hdzxOperate("C:\\Temp\\Third\\001.exe 1 mstsyzmotion 0");
+   // hdzxOperate("C:\\Temp\\Third\\001.exe 1 mstsyzmotion 0");
+   //System.out.println(clearOperate());
   }
 }

@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -71,6 +72,36 @@ public class MstpcUtil {
         }      
         return macId;
     }
+    
+    ///bom格式处理
+    public static String getTxtId3() {
+        String macId = "";
+        String fileStr = "c:" + File.separator + "mstperson" + File.separator + "temp" + File.separator + "idmst.txt";
+       // URL url = new URL("http://****/***/test.txt");   
+        File f  = new File(fileStr);  
+            String enc = null; // or NULL to use systemdefault
+			try {
+				UnicodeInputStream uin = new UnicodeInputStream(new FileInputStream(f),enc);
+			   //如果是本地将url.openStream -> new FileInputStream(f)
+	            enc = uin.getEncoding(); // check and skip possible BOM bytes
+	            InputStreamReader in;	          
+	            if (enc == null){
+	                in = new InputStreamReader(uin);
+	            }else {            
+					in = new InputStreamReader(uin, enc);	
+				}		           
+	            BufferedReader reader = new BufferedReader(in);
+	            //BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("D:/tags.txt"),"utf-8"));	           
+	            macId =reader.readLine();//读取一行
+			}catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				return "";
+			} 
+			System.out.println(macId);
+        return macId;
+    }
+    
     public static String getPcCommet() {
         String filePath = "c:" + File.separator + "mstperson" + File.separator + "temp";
         File file = new File(filePath);
@@ -260,6 +291,6 @@ public class MstpcUtil {
        /// getCameratxt(path);
     	String path = "C://MSTAPP//idmst.txt";
         //getFileMd5Str(path);
-    	getTxtId2();
+    	getTxtId3();
     }
 }
