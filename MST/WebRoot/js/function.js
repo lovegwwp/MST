@@ -1,6 +1,6 @@
     var MacID;
     var patId;
-
+   
    // var WI=$(window).width(); //浏览器当前窗口可视区域宽度
    // var Fs=WI/1920*100+'px';
    // $('body').css({
@@ -92,6 +92,8 @@ var xnObj='';           //虚拟视频的obj值
 
 var bdCamera=0;  //本地摄像头  下标默认为0
 var xnCamera=1;  //虚拟摄像头  下标默认为0
+
+var yypd=''; //流文件 
 
 (function () {
     $.ajax({

@@ -120,7 +120,7 @@ public class CommTool {
             file.mkdirs();
         }
 
-        File file2 = new File(filePath, filePath);
+        File file2 = new File(filePath, fileName);
         if(!file2.exists()) {
             try {
                 file2.createNewFile();

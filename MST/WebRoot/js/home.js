@@ -464,6 +464,14 @@ $('.aboutus').click(function (e) {
     $('.aboutus-content').show().siblings().hide();
 });
 
+$('.qchc').click(function (e) {
+    e.stopPropagation();
+    $(".xtszbtnList").slideUp("slow");
+    $(this).css('color','#55d8de').siblings().css('color','#fff');
+    $('.qchc-content').show().siblings().hide();
+});
+
+
 $('.jcgx').click(function (e) {
     e.stopPropagation();
     $(".xtszbtnList").slideUp("slow");

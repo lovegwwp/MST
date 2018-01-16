@@ -981,7 +981,7 @@ $('.refurbish-friend').click(function () {
     });
 });
 // -----------------------------------------添加好友
-$('.friendOne-add').click(function (e) {
+$('body').on('click','.friendOne-add',function (e) {
     e.stopPropagation();
     e.preventDefault();
     addPersonId=$(this).parents('.search-showOne').find('.ysID').html();        //添加好友的id
@@ -1063,7 +1063,7 @@ function addFried(docId,group) {
     });
 }
 // -------------------------------------------医生详情(好友列表点击)
-$('.lx-friend-one').click(function (e) {
+$('body').on('click','.lx-friend-one',function (e) {
     // $('#lx-ys-mainClone').siblings().remove();
     $('.lx-xq-one').html('');
     $('.lx-main-home').show().addClass('spsp').siblings().hide();

@@ -318,6 +318,7 @@
     background-color: #002c30;
     height: .85rem;
     padding: .15rem .4rem;
+    position: relative;
 }
 .chat-btnList{
     position: absolute;
@@ -331,12 +332,15 @@
     font-size: .3rem;
     line-height: .5rem;
     text-align: center;
-    float: right;
+    position: absolute;
+    right: 1.5rem;
     border-radius: .10rem;
     background-size: 100% 99%;
     background-color: rgba(0,0,0,0);
-    position: relative;
     overflow: hidden;
+}
+.sp-liaotiao{
+	 right: 0;
 }
 .xx-fasong:before,.sp-liaotiao:before {
     content: ' ';
@@ -352,13 +356,13 @@
 }
 .xx-fasong:hover:before {
     width: .25rem;
-    left: 1.35rem;
+    left: 1.55rem;
     -webkit-transition: all .35s ease-out;
     transition: all .35s ease-out;
 }
 .sp-liaotiao:hover:before {
     width: .25rem;
-    left: 1.35rem;
+    left: 1.55rem;
     -webkit-transition: all .35s ease-out;
     transition: all .35s ease-out;
 }

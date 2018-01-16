@@ -18,7 +18,8 @@
     <link type="text/css" rel="stylesheet" href="./css/radiocss.css">          <!--医疗咨询音频样式-->
     <link type="text/css" rel="stylesheet" href="./css/liandong.css">      <!--个人中心城市选择的样式-->
     <link type="text/css" rel="stylesheet" href="./css/ripple.css">       <!--水波纹-->
-    <script src="./jquery/jquery-1.12.3.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="huanxin/yy.css">	      <!--环信语音-->
+    <script src="./jquery/jquery-3.2.1.min.js"></script>
 
     <script>
         var WI=$(window).width(); //浏览器当前窗口可视区域宽度
@@ -79,6 +80,8 @@
                     <button class="aboutus">关于我们</button>
                     <div></div>
                     <button class="jcgx">检测更新</button>
+                    <div></div>
+                    <button class="qchc">清理缓存</button>
                 </div>
             </div>
         </div>
@@ -709,6 +712,17 @@
                     <p class="companyName">苏州明思特医疗科技有限公司</p>
                 </div>
             </div>
+            <div class="qchc-content" style="display: none">
+                <div class="qchc-home">
+                	<div class="qchc_tx">
+                		<p>请输入清除缓存的密码:</p>
+                		<input class="qchc_password" cplaceholder="请清除输入密码"/>
+                		<span class="qchc_result" style="display: none;"></span>
+                		<button class="qchc_OK">确定清除</button>
+                	</div>
+                </div>
+            </div>
+            
         </div >
         <div class="chatList" style="display: none"></div>
         <div class="shipingList" style="display: none"></div>
@@ -919,12 +933,10 @@
     <div class="fagktxsc" style="display: none">
         <P><span>您的视频训练已经观看了</span><span class="xlgktime"></span><span>分钟</span></P>
     </div>   <!--观看训练方案30分钟提醒一次的弹出层-->
-    <script src="./js/jquery.qrcode.min.js"></script>           <!--生成二维码-->
     <script src="./js/waves.min.js"></script>                  <!--点击水波纹-->
     <script src="./js/MacId.js"></script>                        <!--抓取-匹配设备号-->
     <script src="./js/video.min.js"></script>                    <!--训练方案video.js-->
     <script src="./js/home.js"></script>                           <!--各个页面公共的方法和最先定义的方法-->
-   <!--  <script src="./js/circleChart.min.js"></script>               训练方案圆形百分比 -->
     <script src="./js/xlfa.js"></script>
     <script src="./js/ylzx.js"></script>
     <script src="./js/lxys.js"></script>
@@ -933,10 +945,12 @@
     <script src="./js/grzx.js"></script>
     <script src="./js/xtsz.js"></script>
     <script src="./js/Popt.js"></script>                    <!--个人中心城市选择-->
-    <script src="./js/cityJson.js"></script>                <!--个人中心城市选择-->
+   	<script src="./js/cityJson.js"></script>                <!--个人中心城市选择-->
     <script src="./js/citySet.js"></script>                 <!--个人中心城市选择-->
-    <script src="js/audiomain.js"></script>                 <!--医疗咨询radio-->
-    <script src="js/audioplayer.js"></script>               <!--医疗咨询radio-->   
+    
+    <script src="./js/audiomain.js"></script>                 <!--医疗咨询radio-->
+    <script src="./js/audioplayer.js"></script>                 <!--医疗咨询radio-->
+    <script src="./js/jquery.qrcode.min.js"></script>           <!--生成二维码-->
     <script src="./js/circleChart.min.js"></script>               <!--训练方案圆形百分比-->
     <script src="./shengwang/AgoraRTCSDK-2.0.0.js"></script>
     <script src="./shengwang/index.js"></script>
@@ -946,7 +960,10 @@
     <script src='./huanxin/websdk-1.4.12.js'></script>
     <script src="./huanxin/adapter.js"></script>
     <script src="./huanxin/webrtc-1.4.12.js"></script>
+    <script src="./js/weixinAudio.js"></script>
     <script src="./huanxin/index.js"></script>
-    <script src="./js/function.js"></script>            <!--启动项目的js-->
+    <script src="./js/function.js"></script>    
+    <script src="luying/recordmp3.js"></script>
+    <script src="luying/luying.js"></script>
 </body>
 </html>

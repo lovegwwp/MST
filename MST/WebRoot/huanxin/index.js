@@ -1,4 +1,4 @@
-
+var mp3Blob;
 var conn = new WebIM.connection({
     isMultiLoginSessions: WebIM.config.isMultiLoginSessions,
     https: typeof WebIM.config.https === 'boolean' ? WebIM.config.https : location.protocol === 'https:',
@@ -9,7 +9,6 @@ var conn = new WebIM.connection({
     apiUrl: WebIM.config.apiURL,
     isAutoLogin: true
 });
-
 conn.listen({
     onOpened: function ( message ) {          //连接成功回调
         // 如果isAutoLogin设置为false，那么必须手动设置上线，否则无法收消息
@@ -17,7 +16,7 @@ conn.listen({
         // 则无需调用conn.setPresence();
         console.log('连接成功');
         conn.setPresence();
-        console.log('设置上线状态')
+        console.log('设置上线状态');
     },
     onClosed: function ( message ) {
         console.log('连接关闭')
@@ -25,6 +24,7 @@ conn.listen({
     onTextMessage: function ( message ) {
         console.log(message);
         var othUser=message.from;
+        $('.ltjlmy').remove();
         //找到id对应的医生姓名和医生图片
         var ysName,ysImg;
         if(YsIdXm.length>0){   //医生doc对应的医生姓名图片
@@ -132,12 +132,27 @@ conn.listen({
         } else {
             //当前医生消息界面提醒不存在，为你创建;
             console.log('不存在当前用户消息提醒');
-            $('.xiaoxi-home').prepend('<div class="xxXx-one"><div class="pic-inform clearfix" id=' + message.from + '><div class="pic-inform-pic"> <div class="xx-noRead" style="display: none">0</div> <img src=' + ysImg + '> </div> <div class="pic-inform-text"> <p class="pic-inform-user">' + ysName+ '</p> <p> <span class="pic-inform-textT">' + message.data + '</span> <span class="xx_Time">' + xxtime + '</span><span class="xx_bzTime" style="display: none">'+bztime+'</span></p> </div></div><div class="xx-X">删除</div></div>');
+            $('.xiaoxi-home').prepend(`<div class="xxXx-one">
+            								<div class="pic-inform clearfix" id="${message.from}">
+            									<div class="pic-inform-pic"> 
+            										<div class="xx-noRead" style="display: none">0</div>
+            										<img src="${ysImg}">
+            									</div> 
+            									<div class="pic-inform-text"> 
+            										<p class="pic-inform-user">${ysName}</p> 
+            										<p> 
+            											<span class="pic-inform-textT">${message.data}</span> 
+            											<span class="xx_Time">${xxtime}</span>
+            											<span class="xx_bzTime" style="display: none">${bztime}</span>
+            										</p> 
+            									</div>
+            								</div>
+            								<div class="xx-X">删除</div>
+            							</div>`);
             getxxList(); //刷新消息列表
         }
         // console.log('测试')
         var xxtime=timeHide(timeList,xxtime,othUser); //对2分钟以内的时间隐藏
-        // console.log(checkTime);
         // ------
         // ---判断聊天室界面是否存在,  默认生成隐藏的聊天窗口
         var id = message.from + '_x';
@@ -146,111 +161,75 @@ conn.listen({
 
         } else {
             // console.log('不存在聊天窗口');
-            $('.chatList').append('<div class="chatroom" id=' + id + '> <p class="xx-name">' + ysName + '</p> <div class="xx-ck"> <div class="xx-ck-home"></div> </div> <div class="chat-value clearfix"><button class="lookHistory">查看聊天记录</button> <button class="xx-fasong">发送</button> <input type="text" placeholder="请输入要发送的信息" class="send-value"> </div> <button class="xx-sp"><img src="./img/video@2x.png">视频通话</button></div> </div>')
+            $('.chatList').append(`<div class="chatroom" id="${id}"> 
+            							<p class="xx-name">${ysName}</p> 
+            							<div class="xx-ck"> 
+            								<div class="xx-ck-home"></div> 
+            							</div> 
+            							<div class="chat-value clearfix">
+            								<button class="lookHistory">查看聊天记录</button> 
+            								<button class="xx-fasong">发送</button> 
+            								<input type="text" placeholder="请输入要发送的信息" class="send-value">
+            								<div class="yy_send">
+        										<button class="voice_record snarl-demo waves-button" onclick=funStart("${id}")>录制</button>
+    											<button class="voice_send snarl-demo waves-button" onclick=funStop("${id}","${othUser}")>发送</button>
+        									</div>		
+            							</div> 
+            							<button class="xx-sp"><img src="./img/video@2x.png">视频通话</button>
+            							</div>`)
         }
         // 低于2分钟不显示时间的样式
         if(xxtime==''){
             bztime='';
-            $('#' + id).find('.xx-ck-home').append('<div class="xx-othUser clearfix"><div class="othImg"><img src='+ysImg+'></div> <div class="xx-otext"> <p class="othText">' + message.data + '</p> <img src="./img/sanjiaol.png"> </div> </div>');
+            $('#' + id).find('.xx-ck-home').append(`<div class="xx-othUser clearfix">
+            											<div class="othImg">
+            												<img src="${ysImg}">
+            											</div> 
+            											<div class="xx-otext"> 
+            												<p class="othText">${message.data }</p> 
+            												<img src="./img/sanjiaol.png"> 
+            											</div> 
+            										</div>`);
         }else {
-            $('#' + id).find('.xx-ck-home').append('<div class="xx-othUser clearfix"><p class="xx-time"><span>'+xxtime+'</span></p> <div class="othImg"><img src='+ysImg+'></div> <div class="xx-otext"> <p class="othText">' + message.data + '</p> <img src="./img/sanjiaol.png"> </div> </div>');
-        }
-        var chatBox = $('#' + id).find('.xx-ck-home')[0];
-        chatBox.scrollTop = chatBox.scrollHeight;
-
-        if(chatBox.scrollHeight>chatBox.clientHeight){
-            if($('#'+id).find('.scrollBtn').length==1){
-                // console.log('存在滚动条')
-            }else {
-                $('#'+id).append('<div class="scrollBtn" style="display: none"> <button class="chatTop"></button> <button class="chatBot"></button> </div>');
-                $('#'+id).find('.scrollBtn').fadeIn("slow");
-                //上
-                var eleTop=$('#'+id).find('.chatTop')[0];
-                console.log(eleTop);
-                eleTop.onclick=function () {
-                    $(chatBox).animate({
-                        'scrollTop':0
-                    },1500);
-                };
-                var eleBot=$('#'+id).find('.chatBot')[0];
-                eleBot.onclick=function () {
-                    // console.log('22222')
-                    $(chatBox).animate({
-                        'scrollTop':chatBox.scrollHeight
-                    },1500);
-                };
-            }
-        }else {
-
+            $('#' + id).find('.xx-ck-home').append(`<div class="xx-othUser clearfix">
+            											<p class="xx-time">
+            												<span>${xxtime}</span>
+            											</p> 
+            											<div class="othImg">
+            												<img src="${ysImg}">
+            											</div> 
+            											<div class="xx-otext"> 
+            												<p class="othText">${message.data}</p>
+            												<img src="./img/sanjiaol.png"> 
+            											</div> 
+            										</div>`);
         }
         // --消息未读判断 //
-        var xxone={}  ;      //当前信息对象
-
-        if ($('#' + id).is(':visible') || $('chatList').is(':visible')) {
+        if ($('#' + id).is(':visible') || $('chatList').is(':visible')) {//消息已读
             // console.log('当前聊天窗口显示');
             $('#' + message.from).find('.xx-noRead').html(0).hide();
-            //消息已读
-            xxone={
-                User:message.from,
-                data:message.data,
-                time:bztime
-            };
-        } else {
+            
+        } else { //消息未读
             // console.log('当前聊天窗口隐藏');
             var num = $('#' + message.from).find('.xx-noRead').html();
             var num = parseInt(num);
             var newNum = num + 1;
-            $('#' + message.from).find('.xx-noRead').html(newNum).show();
-            //消息未读
-            xxone={
+            $('#' + message.from).find('.xx-noRead').html(newNum).show(); 
+        };
+        var xxone={}  ;      //当前信息对象
+ 		xxone={
                 User:message.from,
                 data:message.data,
                 time:bztime
-            };
         };
+        
+        var chatBox = $('#' + id).find('.xx-ck-home')[0];
+        chatBox.scrollTop = chatBox.scrollHeight;
+        
+        
         // -------聊天窗口历史消息缓存(对方)
         //index.html 1030
-        // console.log(ChatHistory);
-        // console.log(ChatHistory.length);
-        if(ChatHistory){    //历史消息缓存
-            if(ChatHistory.length>0){
-                var flog=false;
-                for(var k=0;k<ChatHistory.length;k++){
-                    if(ChatHistory[k].othUser==message.from) {
-                        ChatHistory[k].data.push(xxone);
-                        if(ChatHistory[k].data.length>300){   //判断当前用户的聊天信息数是否达到300条，及时清除
-                            ChatHistory[k].data.shift();
-                            console.log(ChatHistory[k].othUser+'的缓存数已经满了')
-                        }
-                         flog=false;
-                        break;
-                    }else {
-                        flog=true;
-                    }
-                }
-                if(flog==true){
-                    var Userobj={
-                        othUser:message.from,
-                        data:[]
-                    };
-                    Userobj.data.push(xxone);
-                    ChatHistory.push(Userobj);
-                }
-            }else {
-                var Userobj={
-                    othUser:message.from,
-                    data:[]
-                };
-                Userobj.data.push(xxone);
-                ChatHistory.push(Userobj);
-            }
-        }else {
-            console.log('聊天缓存对象不存在')
-        };
-
-
-        localStorage.setItem('chatxx', JSON.stringify(ChatHistory));
-        console.log(ChatHistory);
+		saveHcXxO(message.from,xxone);  //缓存消息（接收文本）
 
         // -------消息界面的最新消息缓存
         var $ele = $('.xiaoxi-home').html();
@@ -527,10 +506,216 @@ conn.listen({
             }
         }
     },     //收到命令消息
-    onAudioMessage: function ( message ) {},   //收到音频消息
+    onAudioMessage: function ( message ) {   //收到音频消息
+    	console.log(message);
+    	var othUser=message.from;
+    	$('.ltjlmy').remove();    
+        //找到id对应的医生姓名和医生图片
+        var ysName,ysImg;
+        if(YsIdXm.length>0){   //医生doc对应的医生姓名图片
+            var flg=true;
+            for(var b=0;b<YsIdXm.length;b++){
+                if(YsIdXm[b].docId==othUser){
+                    ysName=YsIdXm[b].name;   //通过id号找到对应的医生姓名
+                    ysImg=imgUrlStr+YsIdXm[b].pic;     //通过id号找到对应的医生图片
+                    flg=false;
+                    break;
+                }
+            }
+            if(flg==true){
+                console.log('YsIdXm数组存在，没有找到对应医生的姓名,当前医生docId为'+othUser);
+                console.log(YsIdXm);
+                console.log(othUser);
+                console.log(YsIdXm[0].docId);
+                ysName='未知姓名';
+                ysImg='./img/1.png';
+            }
+        }else {
+            console.log('YsIdXm数组为空，没有找到对应医生的姓名');
+            ysName='未知姓名';
+            ysImg='./img/1.png';
+        }
+    
+    	var options = { url: message.url };
+    		options.onFileDownloadComplete = function ( response ) { 
+      		//音频下载成功，需要将response转换成blob，使用objectURL作为audio标签的src即可播放。
+      		var objectURL = WebIM.utils.parseDownloadResponse.call(conn, response);
+      		console.log(objectURL);
+   			 // -------消息界面的没有数据提示消失
+        $('.xiaoxi-home').find('.no-shuju').remove();
+
+        // ----消息的时间显示（时间戳）
+        var timeList=getInforTime();         //获取时间对象
+        var bztime = timeList.time;          // 2017-09-14 13:46:22 获取时间对象--标准时间
+        var xxtime = getTimeText(bztime);    //对时间进行判断  区别今天/昨天/过去
+
+        // ---------判断消息界面是否存在                           ！对方发来消息，由此可以进入聊天窗口    (ysName:'对应医生的姓名';ysImg:'对应医生的图片');
+        var $ele= $('#' + message.from);
+        if ($ele.length == 1) {
+            //当前医生消息界面提醒存在;
+            console.log('存在当前用户消息提醒');
+            $ele.find('.pic-inform-user').html(ysName);      //防止医生替换姓名.获取最新的姓名
+            $ele.find('img').attr('src',ysImg);              //防止医生替换图片，获取最新的图片
+            $ele.find('.pic-inform-textT').html('[语音消息]');
+            $ele.find('.xx_bzTime').html(bztime);
+            $ele.find('.xx_Time').html(xxtime);
+            var clone = $ele.parents('.xxXx-one').clone(true);
+            $ele.parents('.xxXx-one').remove();
+            $('.xiaoxi-home').prepend(clone);
+            getxxList(); //刷新消息列表
+        } else {
+            //当前医生消息界面提醒不存在，为你创建;
+            console.log('不存在当前用户消息提醒');
+            $('.xiaoxi-home').prepend(`<div class="xxXx-one">
+            								<div class="pic-inform clearfix" id="${message.from}">
+            									<div class="pic-inform-pic"> 
+            										<div class="xx-noRead" style="display: none">0</div>
+            										<img src="${ysImg}">
+            									</div> 
+            									<div class="pic-inform-text"> 
+            										<p class="pic-inform-user">${ysName}</p> 
+            										<p> 
+            											<span class="pic-inform-textT">[语音消息]</span> 
+            											<span class="xx_Time">${xxtime}</span>
+            											<span class="xx_bzTime" style="display: none">${bztime}</span>
+            										</p> 
+            									</div>
+            								</div>
+            								<div class="xx-X">删除</div>
+            							</div>`);
+            getxxList(); //刷新消息列表
+        }
+        
+        var xxtime=timeHide(timeList,xxtime,othUser); //对2分钟以内的时间隐藏
+        // ------
+        // ---判断聊天室界面是否存在,  默认生成隐藏的聊天窗口
+        var id = message.from + '_x';
+        if ($('#' + id).length == 1) {
+            // console.log('已经存在聊天窗口');
+
+        } else {
+            // console.log('不存在聊天窗口');
+            $('.chatList').append(`<div class="chatroom" id="${id}"> 
+            							<p class="xx-name">${ysName}</p> 
+            							<div class="xx-ck"> 
+            								<div class="xx-ck-home"></div> 
+            							</div> 
+            							<div class="chat-value clearfix">
+            								<button class="lookHistory">查看聊天记录</button> 
+            								<button class="xx-fasong">发送</button> 
+            								<input type="text" placeholder="请输入要发送的信息" class="send-value">
+            								<div class="yy_send">
+        										<button class="voice_record snarl-demo waves-button" onclick=funStart("${id}")>录制</button>
+    											<button class="voice_send snarl-demo waves-button" onclick=funStop("${id}","${othUser}")>发送</button>
+        									</div>	
+            							</div> 
+            							<button class="xx-sp"><img src="./img/video@2x.png">视频通话</button>
+            						</div>`)
+        }
+        // 低于2分钟不显示时间的样式
+        if(xxtime==''){
+            bztime='';
+            $('#' + id).find('.xx-ck-home').append(`<div class="xx-othUser clearfix">
+            											<div class="othImg">
+            												<img src="${ysImg}">
+            											</div> 
+            											<div class="xx-otext"> 
+            												<div class="othText">
+            													<p class="weixinAudio Aud">
+																	<audio src="" id="media" width="1" height="1" preload></audio>
+																	<span id="audio_area" class="db audio_area">
+																		<span class="audio_wrp db">
+																			<span class="audio_play_area">
+																				<i class="icon_audio_default"></i>
+																				<i class="icon_audio_playing"></i>
+            																</span>
+																			<span id="audio_length" class="audio_length tips_global"></span>
+																			<span id="audio_progress" class="progress_bar" style="width: 0%;"></span>
+																		</span>
+																	</span>
+																</p>
+            												</div>
+            												<img src="./img/sanjiaol.png"> 
+            											</div> 
+            										</div>`);
+        }else {
+            $('#' + id).find('.xx-ck-home').append(`<div class="xx-othUser clearfix">
+            											<p class="xx-time">
+            												<span>${xxtime}</span>
+            											</p> 
+            											<div class="othImg">
+            												<img src="${ysImg}">
+            											</div> 
+            											<div class="xx-otext"> 
+            												<div class="othText">
+            													<p class="weixinAudio Aud">
+																	<audio src="" id="media" width="1" height="1" preload></audio>
+																	<span id="audio_area" class="db audio_area">
+																		<span class="audio_wrp db">
+																			<span class="audio_play_area">
+																				<i class="icon_audio_default"></i>
+																				<i class="icon_audio_playing"></i>
+            																</span>
+																			<span id="audio_length" class="audio_length tips_global"></span>
+																			<span id="audio_progress" class="progress_bar" style="width: 0%;"></span>
+																		</span>
+																	</span>
+																</p>
+            												</div>
+            												<img src="./img/sanjiaol.png"> 
+            											</div> 
+            										</div>`);
+            										
+        	}
+   			
+   			console.log($('.Aud').length)
+   			$('.Aud').weixinAudio({
+				autoplay:false,
+				src:objectURL,
+			});	
+			
+			$('.weixinAudio').removeClass('Aud');
+//			console.log($('.Aud').length)
+			var xxone={};      //当前信息对象
+   			xxone={
+                User:message.from,
+                data:objectURL,
+                time:bztime
+        	};
+			
+			saveHcXxO(message.from,xxone);  //缓存消息（接收语音）
+			
+			// --消息未读判断 //
+        	if ($('#' + id).is(':visible') || $('chatList').is(':visible')) {//消息已读
+            	// console.log('当前聊天窗口显示');
+            	$('#' + message.from).find('.xx-noRead').html(0).hide();
+            
+        	} else { //消息未读
+            	// console.log('当前聊天窗口隐藏');
+            	var num = $('#' + message.from).find('.xx-noRead').html();
+            	var num = parseInt(num);
+            	var newNum = num + 1;
+            	$('#' + message.from).find('.xx-noRead').html(newNum).show(); 
+        	};
+			
+			var chatBox = $('#' + id).find('.xx-ck-home')[0];
+        	chatBox.scrollTop = chatBox.scrollHeight;
+    	};  
+
+    	options.onFileDownloadError = function () {
+      		//音频下载失败 
+    	};  
+    	//通知服务器将音频转为mp3
+    	options.headers = { 
+      		'Accept': 'audio/mp3'
+    	};
+
+    	WebIM.utils.download.call(conn, options);
+    },   //收到音频消息
     onLocationMessage: function ( message ) {},//收到位置消息
     onFileMessage: function ( message ) {},    //收到文件消息
     onVideoMessage: function (message) {
+    	
         // var node = document.getElementById('privateVideo');
         // var option = {
         //     url: message.url,
@@ -551,7 +736,7 @@ conn.listen({
     onPresence: function ( message ) {
         console.log(message);
         var e=message;
-        console.log(message)
+        console.log(message);
         var str=e.status;
         if (e.type === 'subscribe') {
             console.log('对方加你为好友');
@@ -621,6 +806,49 @@ conn.listen({
     }        //如果用户在A群组被禁言，在A群发消息会走这个回调并且消息不会传递给群其它成员
 });
 //  消息时间戳
+
+//缓存信息对方
+function saveHcXxO(message,xxone){
+	 var othUser=message;  //环信ID
+	 if(ChatHistory){    //历史消息缓存
+            if(ChatHistory.length>0){
+                var flog=false;
+                for(var k=0;k<ChatHistory.length;k++){
+                    if(ChatHistory[k].othUser==othUser) {
+                        ChatHistory[k].data.push(xxone);
+                        if(ChatHistory[k].data.length>100){   //判断当前用户的聊天信息数是否达到100条，及时清除
+                            ChatHistory[k].data.shift();
+                            console.log(ChatHistory[k].othUser+'的缓存数已经满了')
+                        }
+                        flog=false;
+                        break;
+                    }else {
+                        flog=true;
+                    }
+                }
+                if(flog==true){
+                    var Userobj={
+                        othUser:othUser,
+                        data:[]
+                    };
+                    Userobj.data.push(xxone);
+                    ChatHistory.push(Userobj);
+                }
+            }else {
+                var Userobj={
+                    othUser:othUser,
+                    data:[]
+                };
+                Userobj.data.push(xxone);
+                ChatHistory.push(Userobj);
+            }
+        }else {
+            console.log('聊天缓存对象不存在')
+        };
+        localStorage.setItem('chatxx', JSON.stringify(ChatHistory));
+        console.log(ChatHistory);
+}
+
 
 //----获取信息接收和发送的时间
 function getInforTime() {
@@ -720,8 +948,8 @@ function timeHide(timeList,xxtime,othUser) {
             if (checkTime[i].othUser == othUser) {
                 if (timeList.nowtime.year == checkTime[i].time.year && timeList.nowtime.month == checkTime[i].time.month && timeList.nowtime.day == checkTime[i].time.day && timeList.nowtime.hour == checkTime[i].time.hour && parseInt(timeList.nowtime.minute) <= parseInt(checkTime[i].time.minute)) {
                     console.log('该用户时间存在,时间距离上次未超出2分钟，隐藏')
-                    console.log(timeList.nowtime.minute);
-                    console.log(checkTime[i].time.minute);
+//                  console.log(timeList.nowtime.minute);
+//                  console.log(checkTime[i].time.minute);
                     flog = false;
                     return xxtime = '';
                 } else {
@@ -766,6 +994,7 @@ var sendPrivateText = function (toID,Id) {
     var sendVal=$('#'+Id).find('.send-value').val();
     $('#'+Id).find('.send-value').val('');
     if(sendVal!==''){
+    	$('.ltjlmy').remove();
         // ----时间戳
         var timeList=getInforTime();
         var bztime = timeList.time;          // 2017-09-14 13:46:22 获取标准时间
@@ -793,82 +1022,40 @@ var sendPrivateText = function (toID,Id) {
         var meImg=myImg;  //用户自己的图片
         if(xxtime==''){
             bztime='';
-            $('#'+Id).find('.xx-ck-home').append('<div class="xx-meUser clearfix"><div class="meImg"><img src='+meImg+'></div> <div class="xx-mtext"> <p class="meText">'+sendVal+'</p> <img src="./img/sanjiaor.png"> </div> </div>');
+            $('#'+Id).find('.xx-ck-home').append(`<div class="xx-meUser clearfix">
+            											<div class="meImg">
+            												<img src="${meImg}">
+            											</div>
+            											<div class="xx-mtext"> 
+            												<p class="meText">${sendVal}</p> 
+            												<img src="./img/sanjiaor.png"> 
+            											</div> 
+            										</div>`);
         }else {
-            $('#'+Id).find('.xx-ck-home').append('<div class="xx-meUser clearfix"><p class="xx-time"><span>'+xxtime+'</span></p><div class="meImg"><img src='+meImg+'></div> <div class="xx-mtext"> <p class="meText">'+sendVal+'</p> <img src="./img/sanjiaor.png"> </div> </div>');
+            $('#'+Id).find('.xx-ck-home').append(`<div class="xx-meUser clearfix">
+            											<p class="xx-time">
+            												<span>${xxtime}</span>
+            											</p>
+            											<div class="meImg">
+            												<img src="${meImg}">
+            											</div> 
+            											<div class="xx-mtext">
+            												<p class="meText">${sendVal}</p> 
+            												<img src="./img/sanjiaor.png"> 
+            											</div>
+            										</div>`);
         }
         var chatBox=$('#'+Id).find('.xx-ck-home')[0];
         chatBox.scrollTop = chatBox.scrollHeight;
-
-        // -----判断滚动条是否存在
-        if(chatBox.scrollHeight>chatBox.clientHeight){
-            if($('#'+Id).find('.scrollBtn').length==1){
-                console.log('存在滚动条')
-            }else {
-                $('#'+Id).append('<div class="scrollBtn" style="display: none"> <button class="chatTop"></button> <button class="chatBot"></button> </div>');
-                $('#'+Id).find('.scrollBtn').fadeIn("slow");
-                //上
-                var eleTop=$('#'+Id).find('.chatTop')[0];
-                console.log(eleTop);
-                eleTop.onclick=function () {
-                    $(chatBox).animate({
-                        'scrollTop':0
-                    },1500);
-                };
-                var eleBot=$('#'+Id).find('.chatBot')[0];
-                eleBot.onclick=function () {
-                    $(chatBox).animate({
-                        'scrollTop':chatBox.scrollHeight
-                    },1500);
-                };
-            }
-        }else {
-
-        }
-        //创建消息对象
-        var xxobj={    //本人消息对象
+//
+        //创建缓存消息对象
+        var xxobj={    //本人消息对象 ()
             User:'me',
             time:bztime,
             data:sendVal
         };
         //发送的消息缓存  （本人）
-        if(ChatHistory){
-            if(ChatHistory.length>0){
-                var flog=false;
-                for(var k=0;k<ChatHistory.length;k++){
-                    if(ChatHistory[k].othUser==toID) {
-                        ChatHistory[k].data.push(xxobj);
-                        if(ChatHistory[k].data.length>300){   //判断当前用户的聊天信息数是否达到300条，及时清除
-                            ChatHistory[k].data.shift();
-                            console.log(ChatHistory[k].othUser+'的缓存数已经满了');
-                        }
-                        flog=false;
-                        break;
-                    }else {
-                        flog=true;
-                    }
-                }
-                if(flog==true){
-                    var Userobj={
-                        othUser:toID,
-                        data:[]
-                    };
-                    Userobj.data.push(xxobj);
-                    ChatHistory.push(Userobj);
-                }
-            }else {
-                var Userobj={
-                    othUser:toID,
-                    data:[]
-                };
-                Userobj.data.push(xxobj);
-                ChatHistory.push(Userobj);
-            }
-        }else {
-            console.log('聊天缓存对象不存在')
-        };
-        localStorage.setItem('chatxx', JSON.stringify(ChatHistory));
-        console.log(ChatHistory);
+        saveHcXxO(toID,xxobj)  //发送文本
     }
 };
 
@@ -1083,10 +1270,24 @@ $('.friendOne-send').click(function (e) {
         $('#'+id).find('.xx-name').html(ysName);  //防止窗口已经存在后医生修改姓名，刷新列表后导致的姓名不匹配
         $('#'+id).show().siblings().hide();
     }else {
-        $('.chatList').append('<div class="chatroom" id='+id+'> <p class="xx-name">'+ysName+'</p> <div class="xx-ck"> <div class="xx-ck-home"></div> </div> <div class="chat-value clearfix"><button class="lookHistory">查看聊天记录</button> <button class="xx-fasong">发送信息</button> <input type="text" placeholder="请输入要发送的信息" class="send-value"> </div> <button class="xx-sp"><img src="./img/video@2x.png">视频通话</button></div> </div>')
+        $('.chatList').append(`<div class="chatroom" id="${id}"> 
+        							<p class="xx-name">${ysName}</p> 
+        						<div class="xx-ck"> 
+        							<div class="xx-ck-home"></div>
+        						</div> 
+        						<div class="chat-value clearfix">
+        							<button class="lookHistory">查看聊天记录</button> 
+        							<button class="xx-fasong">发送信息</button> 
+        							<input type="text" placeholder="请输入要发送的信息" class="send-value"> 
+        							<div class="yy_send">
+        								<button class="voice_record snarl-demo waves-button" onclick=funStart("${id}")>录制</button>
+    									<button class="voice_send snarl-demo waves-button" onclick=funStop("${id}","${ToId}")>发送</button>
+        							</div>
+        						</div> 
+        						<button class="xx-sp"><img src="./img/video@2x.png">视频通话</button>
+        					</div>`)
         $('#'+id).show().siblings().hide();
     };
-    // var othImg=$(this).parents('.lx-friend-one').find('.lx-friend-Pic').src;
     // ---------
     if($('#'+ToId).length==1){
         $('#'+ToId).find('.xx-noRead').html(0).hide();
@@ -1102,6 +1303,117 @@ $('.friendOne-send').click(function (e) {
       lookHistory(ToId,id);
     };
 });
+
+function drawmeyy(toID,Id,url){
+	  // ----时间戳
+        var timeList=getInforTime();
+        var bztime = timeList.time;          // 2017-09-14 13:46:22 获取标准时间
+        var xxtime = getTimeText(bztime);
+
+        var xxtime=timeHide(timeList,xxtime,toID);//对时间进行判断
+        
+        var meImg=myImg;  //用户自己的图片
+        if(xxtime==''){
+            bztime='';
+            $('#'+Id).find('.xx-ck-home').append(`<div class="xx-meUser clearfix">
+            											<div class="meImg">
+            												<img src="${meImg}">
+            											</div>
+            											<div class="xx-mtext"> 
+            												<div class="meText">
+            													<p class="weixinAudio Aud">
+																	<audio src="" id="media" width="1" height="1" preload></audio>
+																	<span id="audio_area" class="db audio_area">
+																		<span class="audio_wrp db">
+																			<span class="audio_play_area">
+																				<i class="icon_audio_default"></i>
+																				<i class="icon_audio_playing"></i>
+            																</span>
+																			<span id="audio_length" class="audio_length tips_global"></span>
+																			<span id="audio_progress" class="progress_bar" style="width: 0%;"></span>
+																		</span>
+																	</span>
+																</p>
+            												</div>
+            												<img src="./img/sanjiaor.png"> 
+            											</div> 
+            										</div>`);
+            	$('.Aud').weixinAudio({
+					autoplay:false,
+					src:url,
+				});	
+				console.log(url)
+				$('.weixinAudio').removeClass('Aud');
+        }else {
+            $('#'+Id).find('.xx-ck-home').append(`<div class="xx-meUser clearfix">
+            											<p class="xx-time">
+            												<span>${xxtime}</span>
+            											</p>
+            											<div class="meImg">
+            												<img src="${meImg}">
+            											</div> 
+            											<div class="xx-mtext">
+            												<div class="meText">
+            													<p class="weixinAudio Aud">
+																	<audio src="" id="media" width="1" height="1" preload></audio>
+																	<span id="audio_area" class="db audio_area">
+																		<span class="audio_wrp db">
+																			<span class="audio_play_area">
+																				<i class="icon_audio_default"></i>
+																				<i class="icon_audio_playing"></i>
+            																</span>
+																			<span id="audio_length" class="audio_length tips_global"></span>
+																			<span id="audio_progress" class="progress_bar" style="width: 0%;"></span>
+																		</span>
+																	</span>
+																</p>
+            												</div>
+            												<img src="./img/sanjiaor.png"> 
+            											</div>
+            										</div>`);
+            	$('.Aud').weixinAudio({
+					autoplay:false,
+					src:url,
+				});	
+				console.log(url)
+				$('.weixinAudio').removeClass('Aud');										
+        }
+        var chatBox=$('#'+Id).find('.xx-ck-home')[0];
+        chatBox.scrollTop = chatBox.scrollHeight;
+//
+        //创建缓存消息对象（发送语音）
+			xxone={
+                User:toID,
+                data:url,
+                time:bztime
+        	};
+			
+		saveHcXxO(toID,xxone);  //缓存消息
+//	
+	
+		
+}	
+
+function postyy(content,ToId){
+	$.ajax({
+  			url: 'http://121.40.29.64:8081/MSTYL/pat/addChatVedio.action',
+  			type: 'post',
+  			data:{
+  				myJson:content
+  			},
+  			dataType:'json',
+  			success: function(data){
+  				console.log(data)
+  				if(data.status=='true'){
+  					 fsyypd(ToId);
+  				}
+  			},
+  			error:function(err){
+  				console.log(err)
+  			}
+	});
+}
+
 
 //！！！通过消息界面打开聊天室
 $(".xiaoxi-home").on("click",'.pic-inform',function(){
@@ -1123,10 +1435,24 @@ $(".xiaoxi-home").on("click",'.pic-inform',function(){
         $('#'+id).show().siblings().hide();
     }else {
         console.log('不存在当前对象聊天窗口');
-        $('.chatList').append('<div class="chatroom" id='+id+'> <p class="xx-name">'+ysName+'</p> <div class="xx-ck"> <div class="xx-ck-home"></div> </div> <div class="chat-value clearfix"><button class="lookHistory">查看聊天记录</button> <button class="xx-fasong">发送信息</button> <input type="text" placeholder="请输入要发送的信息" class="send-value"> </div> <button class="xx-sp"><img src="./img/video@2x.png">视频通话</button></div> </div>');
+        $('.chatList').append(`<div class="chatroom" id="${id}"> 
+        							<p class="xx-name">${ysName}</p> 
+        							<div class="xx-ck"> 
+        								<div class="xx-ck-home"></div> 
+        							</div> 
+        							<div class="chat-value clearfix">
+        								<button class="lookHistory">查看聊天记录</button> 
+        								<button class="xx-fasong">发送信息</button> 
+        								<input type="text" placeholder="请输入要发送的信息" class="send-value">
+        								<div class="yy_send">
+        									<button class="voice_record snarl-demo waves-button" onclick=funStart("${id}")>录制</button>
+    										<button class="voice_send snarl-demo waves-button" onclick=funStop("${id}","${ToId}")>发送</button>
+        								</div>
+        							</div>
+        							<button class="xx-sp"><img src="./img/video@2x.png">视频通话</button>
+        						</div>`);
         $('#'+id).show().siblings().hide();
     };
-
     // -----发送消息按钮绑定事件
     var btn=$('#'+id).find('.xx-fasong')[0];
     btn.onclick=function () {
@@ -1144,6 +1470,9 @@ $(".xiaoxi-home").on("click",'.pic-inform',function(){
 });
 // -------查看历史消息记录
 function lookHistory(ToId,id) {
+//	ToId doc62 
+//	id   doc62_x
+	console.log(ChatHistory)
     var meImg=myImg;           //本人(患者)的头像
     //找到id对应的医生姓名和医生图片(查看聊天记录只需要找到对应的医生图片)
     var ysName,ysImg;
@@ -1169,63 +1498,242 @@ function lookHistory(ToId,id) {
     var flog=false;
     for(var i=0;i<ChatHistory.length;i++){
         if(ChatHistory[i].othUser==ToId){
-            $('#'+id).find('.xx-ck-home').children().remove();
-            var data=ChatHistory[i].data;
+        	
+        	console.log(ChatHistory[i])
+            var len=$('#'+id).find('.xx-ck-home').children().length;  //当前页面存在多少条聊天记录
+            var data=ChatHistory[i].data; //缓存数据
+            var hclen=ChatHistory[i].data.length;   //缓存数据长度
+            console.log(len) ;
+            console.log(hclen);
+            if(hclen>=len){
+//          var num=parseInt()
             // ---添加聊天记录到聊天页面
-            for(var j=0;j<data.length;j++){
+            for(var j=hclen-len-1;j>-1;j--){
+            	var textData=data[j].data;
                 if(data[j].User=='me'){
                     var time=data[j].time;
                     // console.log(time)
                     var newTime=getTimeText(time);
+                   
                     if(newTime==''){
-                        $('.xx-ck-home').append('<div class="xx-meUser clearfix"><div class="meImg"><img src='+meImg+'></div> <div class="xx-mtext"> <p class="meText">'+data[j].data+'</p> <img src="./img/sanjiaor.png"> </div> </div>')
+                    	if(textData.slice(0,5)!='blob:'){
+                    		//文本
+                    		$('.xx-ck-home').prepend(`<div class="xx-meUser clearfix">
+                    									<div class="meImg">
+                    										<img src="${meImg}">
+                    									</div> 
+                    									<div class="xx-mtext"> 
+                    										<p class="meText">${textData}</p> 
+                    										<img src="./img/sanjiaor.png"> 
+                    									</div> 
+                    								</div>`)
+                    	}else{
+                    		//音频
+                    		$('.xx-ck-home').prepend(`<div class="xx-meUser clearfix" style="display:none">
+                    									<div class="meImg">
+                    										<img src="${meImg}">
+                    									</div> 
+                    									<div class="xx-mtext"> 
+                    										<div class="meText">
+                    											<p class="weixinAudio Aud">
+																	<audio src="" id="media" width="1" height="1" preload></audio>
+																	<span id="audio_area" class="db audio_area">
+																		<span class="audio_wrp db">
+																			<span class="audio_play_area">
+																				<i class="icon_audio_default"></i>
+																				<i class="icon_audio_playing"></i>
+            																</span>
+																			<span id="audio_length" class="audio_length tips_global"></span>
+																			<span id="audio_progress" class="progress_bar" style="width: 0%;"></span>
+																		</span>
+																	</span>
+																</p>
+                    										</div>
+                    										<img src="./img/sanjiaor.png"> 
+                    									</div> 
+                    								</div>`)
+//                  		$('.Aud').weixinAudio({
+//								autoplay:false,
+//								src:textData,
+//							});	
+//			
+//							$('.weixinAudio').removeClass('Aud');
+                    	}
+                        
                     }else {
-                        $('.xx-ck-home').append('<div class="xx-meUser clearfix"><p class="xx-time"><span>'+newTime+'</span></p> <div class="meImg"><img src='+meImg+'></div> <div class="xx-mtext"> <p class="meText">'+data[j].data+'</p> <img src="./img/sanjiaor.png"> </div> </div>')
+                    	if(textData.slice(0,5)!='blob:'){
+                    		//文本
+                    		$('.xx-ck-home').prepend(`<div class="xx-meUser clearfix">
+                    									<p class="xx-time">
+                    										<span>${newTime}</span>
+                    									</p> 
+                    									<div class="meImg">
+                    										<img src="${meImg}">
+                    									</div> 
+                    									<div class="xx-mtext"> 
+                    										<p class="meText">${textData}</p> 
+                    										<img src="./img/sanjiaor.png"> 
+                    									</div> 
+                    								</div>`)
+                    	}else{
+                    		//语音
+                    		$('.xx-ck-home').prepend(`<div class="xx-meUser clearfix" style="display:none">
+                    									<p class="xx-time">
+                    										<span>${newTime}</span>
+                    									</p> 
+                    									<div class="meImg">
+                    										<img src="${meImg}">
+                    									</div> 
+                    									<div class="xx-mtext"> 
+                    										<div class="meText">
+                    											<p class="weixinAudio Aud">
+																	<audio src="" id="media" width="1" height="1" preload></audio>
+																	<span id="audio_area" class="db audio_area">
+																		<span class="audio_wrp db">
+																			<span class="audio_play_area">
+																				<i class="icon_audio_default"></i>
+																				<i class="icon_audio_playing"></i>
+            																</span>
+																			<span id="audio_length" class="audio_length tips_global"></span>
+																			<span id="audio_progress" class="progress_bar" style="width: 0%;"></span>
+																		</span>
+																	</span>
+																</p>
+                    										</div>
+                    										<img src="./img/sanjiaor.png"> 
+                    									</div> 
+                    								</div>`)
+//                  		
+//                  		$('.Aud').weixinAudio({
+//								autoplay:false,
+//								src:textData,
+//							});	
+//			
+//							$('.weixinAudio').removeClass('Aud');
+                    	}
+                        
                     }
                 }else {
                     var time=data[j].time;
                     var newTime=getTimeText(time);
                     if(newTime==''){
-                        $('.xx-ck-home').append('<div class="xx-othUser clearfix"> <div class="othImg"><img src='+ysImg+'></div> <div class="xx-otext"> <p class="othText">' + data[j].data + '</p> <img src="./img/sanjiaol.png"> </div> </div>')
+                    	if(textData.slice(0,5)!='blob:'){
+                    		//文本
+                    		$('.xx-ck-home').prepend(`<div class="xx-othUser clearfix"> 
+                    										<div class="othImg">
+                    											<img src="${ysImg}">
+                    										</div> 
+                    										<div class="xx-otext"> 
+                    											<p class="othText">${textData}</p> 
+                    											<img src="./img/sanjiaol.png"> 
+                    										</div> 
+                    									</div>`)
+                    	}else{
+                    		//语音
+                    		$('.xx-ck-home').prepend(`<div class="xx-othUser clearfix" style="display:none"> 
+                    										<div class="othImg">
+                    											<img src="${ysImg}">
+                    										</div> 
+                    										<div class="xx-otext"> 
+                    											<div class="othText">
+                    												<p class="weixinAudio Aud">
+																		<audio src="" id="media" width="1" height="1" preload></audio>
+																		<span id="audio_area" class="db audio_area">
+																			<span class="audio_wrp db">
+																				<span class="audio_play_area">
+																					<i class="icon_audio_default"></i>
+																					<i class="icon_audio_playing"></i>
+            																	</span>
+																			<span id="audio_length" class="audio_length tips_global"></span>
+																			<span id="audio_progress" class="progress_bar" style="width: 0%;"></span>
+																		</span>
+																		</span>
+																	</p>
+                    											</div>
+                    											<img src="./img/sanjiaol.png"> 
+                    										</div> 
+                    									</div>`)
+//                  		$('.Aud').weixinAudio({
+//								autoplay:false,
+//								src:textData,
+//							});	
+//			
+//							$('.weixinAudio').removeClass('Aud');
+                    	}
+                        
                     }else {
-                        $('.xx-ck-home').append('<div class="xx-othUser clearfix"><p class="xx-time"><span>'+newTime+'</span></p> <div class="othImg"><img src='+ysImg+'></div> <div class="xx-otext"> <p class="othText">' + data[j].data + '</p> <img src="./img/sanjiaol.png"> </div> </div>')
+                   
+                    	console.log(textData)
+                    	if(textData.slice(0,5)!='blob:'){
+                    		//文本
+                    		$('.xx-ck-home').prepend(`<div class="xx-othUser clearfix">
+                    									<p class="xx-time">
+                    										<span>${newTime}</span>
+                    									</p> 
+                    									<div class="othImg">
+                    										<img src="${ysImg}">
+                    									</div>
+                    									<div class="xx-otext"> 
+                    										<p class="othText">${textData}</p> 
+                    										<img src="./img/sanjiaol.png">
+                    									</div> 
+                    								</div>`)
+                    	}else{
+                    		//语音
+                    		$('.xx-ck-home').prepend(`<div class="xx-othUser clearfix" style="display:none">
+                    									<p class="xx-time">
+                    										<span>${newTime}</span>
+                    									</p> 
+                    									<div class="othImg">
+                    										<img src="${ysImg}">
+                    									</div>
+                    									<div class="xx-otext"> 
+                    										<div class="othText">
+                    											<p class="weixinAudio">
+																	<audio src="" id="media" width="1" height="1" preload></audio>
+																	<span id="audio_area" class="db audio_area">
+																		<span class="audio_wrp db">
+																			<span class="audio_play_area">
+																				<i class="icon_audio_default"></i>
+																				<i class="icon_audio_playing"></i>
+            																</span>
+																			<span id="audio_length" class="audio_length tips_global"></span>
+																			<span id="audio_progress" class="progress_bar" style="width: 0%;"></span>
+																		</span>
+																	</span>
+																</p>
+                    										</div>
+                    										<img src="./img/sanjiaol.png"> 
+                    									</div> 
+                    								</div>`)
+//                  		console.log($('.Aud').length)
+//                  		console.log(textData)
+//                  		$('.Aud').weixinAudio({
+//								autoplay:false,
+//								src:textData,
+//							});	
+//							
+//							$('.weixinAudio').removeClass('Aud');
+//							console.log($('.Aud').length)
+                    	}
+                        
                     }
                 }
             };
             flog=false;
             break;
+            }
         }else {
-            flog=true;
+            flog=true;   //不存在聊天记录
         }
     }
     if(flog==true){
-        $('#'+id).find('.xx-ck-home').html('').append('<p class="xx-time">还没有更多聊天记录~</p>')
+    	console.log('没有更多聊天记录');
+        $('#'+id).find('.xx-ck-home').html('').append('<p class="xx-time ltjlmy">还没有更多聊天记录~</p>')
     }
     //是否出现滚动条
     var chatBox=$('#'+id).find('.xx-ck-home')[0];
     chatBox.scrollTop = chatBox.scrollHeight;
-    if(chatBox.scrollHeight>chatBox.clientHeight){
-        if($('#'+id).find('.scrollBtn').length==1){
-            console.log('存在滚动条')
-        }else {
-            $('#'+id).append('<div class="scrollBtn" style="display: none"> <button class="chatTop"></button> <button class="chatBot"></button> </div>');
-            $('#'+id).find('.scrollBtn').fadeIn("slow");
-            //上
-            var eleTop=$('#'+id).find('.chatTop')[0];
-            eleTop.onclick=function () {
-                $(chatBox).animate({
-                    'scrollTop':0
-                },1500);
-            };
-            var eleBot=$('#'+id).find('.chatBot')[0];
-            eleBot.onclick=function () {
-                $(chatBox).animate({
-                    'scrollTop':chatBox.scrollHeight
-                },1500);
-            };
-        }
-    }else {
-    }
 }
 function gdsptx(docId) {
     //拒绝对方视频请求
@@ -1398,9 +1906,43 @@ function fssptc(docId,sjc) {  //患者正在视频视频聊天  返回给医生
     });
     conn.send(msg.body);
 }
+
+
+function fsyypd(docId) {  //患者正在视频视频聊天  返回给医生
+    //患者给医生发送扩展字段（命令消息过去）
+    console.log('医生环信ID为'+docId);
+    var uuid='pat'+meId;
+    var id = conn.getUniqueId();            //生成本地消息id
+    var msg = new WebIM.message('cmd', id); //创建命令消息
+    var str={
+        uuid:uuid,
+    };
+    var spStr= JSON.stringify(str);
+    var spJson={
+        type:6,
+        json:spStr
+    };
+    var spJsonStr=  JSON.stringify(spJson);
+    console.log(spJsonStr);
+    msg.set({
+        msg: 'msg',                            //组名加本人id
+        to: docId,                              //接收消息对象
+        action : spJsonStr,                    //用户自定义，cmd消息必填
+        ext :{'extmsg':'extends messages'},    //用户自扩展的消息内容（群聊用法相同）
+        success: function ( id,serverMsgId ) {
+            console.log('发送成功')
+        }//消息发送成功回调
+    });
+    conn.send(msg.body);
+}
 // ----------------- 消息窗口 发送视频       //appID声网
 $('body').on('click','.xx-sp',function () {
-    var $ele=$(this).parents('.chatroom').attr('id');
+	var yyimg=$('.yy_tx').length;
+	if(yyimg>0){
+		alert('当前正在发送语音,请关闭');
+		return;
+	}
+	var $ele=$(this).parents('.chatroom').attr('id');
     var ele=$ele.substring(0,$ele.length-2);
     var newDoc=parseInt(ele.slice(3));
     var ysName=$(this).siblings('.xx-name').html();   //医生的姓名
@@ -1416,7 +1958,7 @@ $('body').on('click','.xx-sp',function () {
         }else {
             $('.chatList').hide();       //隐藏信息聊天界面
             $('.shipingList').show().children().remove(); //显示视频聊天界面
-            $('.shipingList').append(' <div class="shipingroom"> <div class="sp-user" id='+ele+'_sp'+'> <div class="sp-name"> <p>'+ysName+'</p> </div> <div class="sp-ck"> <div class="sp-ck-home"> <div id="div_device" class="panel panel-default" style="display:none"> <div class="select"> <label for="audioSource">Audio source: </label><select id="audioSource"></select> </div> <div class="select"> <label for="videoSource">Video source: </label><select id="videoSource"></select> </div> </div> <div id="div_join" class="panel panel-default"> <div class="panel-body"> <div style="display: none"><label>请选择房间: </label><input id="channel" class="big-channel" type="text" value='+newDoc+' size="4"/></div> <input id="videoCheck" class="videoBtn-big" type="checkbox" checked style="display: none"/> <button id="join" class="btn btn-primary" ></button> <button id="leave" class="btn btn-primary" ></button> <input id="key" type="text" value='+swAppId+' size="36" style="display: none" /> </div> </div> </div> <div id="video" class="video-big"> <div id="agora_local" class="videoBig-agora_localId"></div> </div> </div> </div> <button class="sp-liaotiao">发送</button> </div >')
+           	 $('.shipingList').append(' <div class="shipingroom"> <div class="sp-user" id='+ele+'_sp'+'> <div class="sp-name"> <p>'+ysName+'</p> </div> <div class="sp-ck"> <div class="sp-ck-home"> <div id="div_device" class="panel panel-default" style="display:none"> <div class="select"> <label for="audioSource">Audio source: </label><select id="audioSource"></select> </div> <div class="select"> <label for="videoSource">Video source: </label><select id="videoSource"></select> </div> </div> <div id="div_join" class="panel panel-default"> <div class="panel-body"> <div style="display: none"><label>请选择房间: </label><input id="channel" class="big-channel" type="text" value='+newDoc+' size="4"/></div> <input id="videoCheck" class="videoBtn-big" type="checkbox" checked style="display: none"/> <button id="join" class="btn btn-primary" ></button> <button id="leave" class="btn btn-primary" ></button> <input id="key" type="text" value='+swAppId+' size="36" style="display: none" /> </div> </div> </div> <div id="video" class="video-big"> <div id="agora_local" class="videoBig-agora_localId"></div> </div> </div> </div> <button class="sp-liaotiao">发送</button> </div >')
             var eleK=document.getElementById('join');
             eleK.onclick=CheckJoin;
             var eleG=document.getElementById('leave');
@@ -1440,12 +1982,49 @@ $('body').on('click','.sp-liaotiao',function () {
         $('#'+id).show().siblings().hide();
     }else {
         console.log('不存在当前对象聊天窗口');
-        $('.chatList').append('<div class="chatroom" id='+id+'> <p class="xx-name">'+ysName+'</p> <div class="xx-ck"> <div class="xx-ck-home"></div> </div> <div class="chat-value clearfix"><button class="lookHistory">查看聊天记录</button> <button class="xx-fasong">发送信息</button> <input type="text" placeholder="请输入要发送的信息" class="send-value"> </div> <button class="xx-sp"><img src="./img/video@2x.png">视频通话</button></div> </div>');
+        $('.chatList').append(`<div class="chatroom" id="${id}"> 
+        							<p class="xx-name">${ysName}</p> 
+        							<div class="xx-ck"> 
+        								<div class="xx-ck-home"></div> 
+        							</div> 
+        							<div class="chat-value clearfix">
+        								<button class="lookHistory">查看聊天记录</button> 
+        								<button class="xx-fasong">发送信息</button> 
+        								<input type="text" placeholder="请输入要发送的信息" class="send-value"> 
+        								<div class="yy_send">
+        									<button class="voice_record snarl-demo waves-button" onclick=funStart("${id}")>录制</button> 
+        									<button class="voice_send snarl-demo waves-button" onclick =funStop("${id}","${newUser}")> 发送 < /button>
+        								</div>
+        							</div>
+        							<button class="xx-sp"><img src="./img/video@2x.png">视频通话</button>
+        						</div>`);
         $('#'+id).show().siblings().hide();
     };
     if($('#'+newUser).length==1){
         $('#'+newUser).find('.xx-noRead').html(0).hide();
     }
+    
+        // -----发送消息按钮绑定事件
+//  var btn=$('#'+id).find('.yy_send')[0];
+//  btn.onmousedown=function () {   //按下录音
+//  	$('.yy_tx').remove();
+//      $('#'+id).find('.xx-ck-home').append(`<div class="yy_tx">
+//												<img class="thyying" src="./img/yy.jpg" />
+//											</div>`);
+//											
+//		funStart();
+//		yyTime=setInterval(function(){
+//			yytime++;
+//			console.log(yytime)
+//		},1000)
+//  };
+//  btn.onmouseup=function () {   	//抬起发送录音
+//     	$('.yy_tx').remove();
+//     	funStop(id,newUser);	
+//  };
+    
+    
+    
     // -----发送消息按钮绑定事件
     var btn=$('#'+id).find('.xx-fasong')[0];
     btn.onclick=function () {
@@ -1508,7 +2087,25 @@ function getmorexx(docId,data,ysname,yssrc) {
             console.log('已经存在聊天窗口');
         } else {
             console.log('不存在聊天窗口');
-            $('.chatList').append('<div class="chatroom" id=' + id + '> <p class="xx-name">' + ysname + '</p> <div class="xx-ck"> <div class="xx-ck-home"></div> </div> <div class="chat-value clearfix"><button class="lookHistory">查看聊天记录</button> <button class="xx-fasong">发送信息</button> <input type="text" placeholder="请输入要发送的信息" class="send-value"> </div> <button class="xx-sp"><img src="./img/video@2x.png">视频通话</button></div> </div>')
+            $('.chatList').append(`<div class="chatroom" id="${id }"> 
+            							<p class="xx-name">${ysname}</p> 
+            							<div class="xx-ck"> 
+            								<div class="xx-ck-home"></div> 
+            							</div> 
+            							<div class="chat-value clearfix">
+            								<button class="lookHistory">查看聊天记录</button> 
+            								<button class="xx-fasong">发送信息</button> 
+            								<input type="text" placeholder="请输入要发送的信息" class="send-value"> 
+            								<div class="yy_send">
+        										<button class="voice_record snarl-demo waves-button" onclick=funStart("${id}")>录制</button>
+    											<button class="voice_send snarl-demo waves-button" onclick=funStop("${id}","${docId}")>发送</button>
+        									</div>		
+            									
+        									</div>
+            								</div>
+            							</div> 
+            							<button class="xx-sp"><img src="./img/video@2x.png">视频通话</button>
+            						</div>`)
         }
         // 低于2分钟不显示时间的样式
         // var othUserImg=$('#'+docId).find('img').attr('src');    //找到对应医生的图片;
@@ -1521,31 +2118,7 @@ function getmorexx(docId,data,ysname,yssrc) {
         }
         var chatBox = $('#' + id).find('.xx-ck-home')[0];
         chatBox.scrollTop = chatBox.scrollHeight;
-
-        if(chatBox.scrollHeight>chatBox.clientHeight){
-            if($('#'+id).find('.scrollBtn').length==1){
-                // console.log('存在滚动条')
-            }else {
-                $('#'+id).append('<div class="scrollBtn" style="display: none"> <button class="chatTop"></button> <button class="chatBot"></button> </div>');
-                $('#'+id).find('.scrollBtn').fadeIn("slow");
-                //上
-                var eleTop=$('#'+id).find('.chatTop')[0];
-                console.log(eleTop);
-                eleTop.onclick=function () {
-                    $(chatBox).animate({
-                        'scrollTop':0
-                    },1500);
-                };
-                var eleBot=$('#'+id).find('.chatBot')[0];
-                eleBot.onclick=function () {
-                    $(chatBox).animate({
-                        'scrollTop':chatBox.scrollHeight
-                    },1500);
-                };
-            }
-        }else {
-            console.log('对方成功添加你为好友提醒，不出现在聊天对话中')
-        }
+//
         // --消息未读判断 //
         var xxone={}  ;      //当前信息对象
 
@@ -1571,39 +2144,7 @@ function getmorexx(docId,data,ysname,yssrc) {
                 time:bztime
             };
         }
-        if(ChatHistory){             //历史消息缓存
-            if(ChatHistory.length>0){
-                var flog=false;
-                for(var k=0;k<ChatHistory.length;k++){
-                    if(ChatHistory[k].othUser==docId) {
-                        ChatHistory[k].data.push(xxone);
-                        flog=false;
-                        break;
-                    }else {
-                        flog=true;
-                    }
-                }
-                if(flog==true){
-                    var Userobj={
-                        othUser:docId,
-                        data:[]
-                    };
-                    Userobj.data.push(xxone);
-                    ChatHistory.push(Userobj);
-                }
-            }else {
-                var Userobj={
-                    othUser:docId,
-                    data:[]
-                };
-                Userobj.data.push(xxone);
-                ChatHistory.push(Userobj);
-            }
-        }else {
-            console.log('聊天缓存对象不存在')
-        };
-        localStorage.setItem('chatxx', JSON.stringify(ChatHistory));
-        console.log(ChatHistory);
+        saveHcXxO(docId,xxone)     
 
         // -------消息界面的最新消息缓存
         var $ele = $('.xiaoxi-home').html();
@@ -1674,7 +2215,6 @@ $('.yes-accsp').click(function () {
     console.log('对方的环信ID号为'+docId);
     $('.acc-sp').hide();
     var sptype=$('.acc-sp').find('.sp_type').html();
-    console.log('sdsokdskd==================================================sptype'+sptype)
     if(sptype==2){
         var g=2; //虚拟视频聊天
         var str=$('.acc-sp').find('.sp_SRC').html();
@@ -1685,12 +2225,11 @@ $('.yes-accsp').click(function () {
             ysname:arr[3],      //医生姓名
             pcname:arr[6],      //评测名
             pcurl:arr[7],      //评测地址
-        }
+        };
         console.log(xnObj);
     }else {
         var g=1; //普通视频聊天
     }
-    console.log(g);
     if($('.xlsp').is(':visible')){
         console.log('正在训练方案视频观看中');
         var syTime=$('.fa-sythsc').html();
@@ -1733,17 +2272,13 @@ $('.yes-accsp').click(function () {
                     $('.scbz').show();
                 }else {
                     console.log('好友列表check完毕正在为你创建窗口');
-                    console.log('5555555555---------------- 5555555555')
                     var t=2;
                     if(g==1){        //g==1普通视频
-                    	console.log('g======================================1')
                         join(t,g);  //加入房间
                     }else {          //g==2虚拟视频
-                    	console.log('g======================================2')
                         $.when(openNX()).done(function (data) {
-                        	console.log(data)
                             if(data.status=='true'){
-                                console.log('虚拟虚拟虚拟虚拟虚拟虚拟虚拟虚拟虚拟虚拟虚拟虚拟开启成功');
+                                console.log('开启成功');
                                 join(t,g);  //加入房间
                             }
                         })
@@ -1785,7 +2320,6 @@ $('.yes-accsp').click(function () {
 });
 
 function openNX(){ //虚拟摄像头----开启--
-	console.log('//虚拟摄像头----开启--')
     var defer=$.Deferred();
     $.ajax({
         url: ajaxBd+'MST/cmdPc',
@@ -1796,7 +2330,6 @@ function openNX(){ //虚拟摄像头----开启--
         type: "POST",
         dataType: "json",
         success: function (data) {
-        	console.log(data)
             defer.resolve(data);
             //true   操作成功！ info 返回信息false  操作失败！空“”
         },
@@ -1876,6 +2409,42 @@ function xnContain(time,text) { //病人 具体视频评测内容-
     });
     return defer.promise();
 }
+
+
+// 单聊发送音频消息
+var sendPrivateAudio = function () {
+    var id = conn.getUniqueId();                   // 生成本地消息id
+    var msg = new WebIM.message('audio', id);      // 创建音频消息
+    var input = document.getElementById('audio');  // 选择音频的input
+    var file = WebIM.utils.getFileUrl(input);      // 将音频转化为二进制文件
+    var allowType = {
+        'mp3': true,
+        'amr': true,
+        'wmv': true
+    };
+    if (file.filetype.toLowerCase() in allowType) {
+        var option = {
+            apiUrl: WebIM.config.apiURL,
+            file: file,
+            to: 'username',                       // 接收消息对象
+            roomType: false,
+            chatType: 'singleChat',
+            onFileUploadError: function () {      // 消息上传失败
+                console.log('onFileUploadError');
+            },
+            onFileUploadComplete: function () {   // 消息上传成功
+                console.log('onFileUploadComplete');
+            },
+            success: function () {                // 消息发送成功
+                console.log('Success');
+            },
+            flashUpload: WebIM.flashUpload
+        };
+        msg.set(option);
+        conn.send(msg.body);
+    }
+};
+
 // 命令消息
 // var id = conn.getUniqueId();            //生成本地消息id
 // var msg = new WebIM.message('cmd', id); //创建命令消息
@@ -1896,3 +2465,4 @@ function xnContain(time,text) { //病人 具体视频评测内容-
 // }
 //
 // conn.send(msg.body);
+

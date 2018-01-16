@@ -313,9 +313,9 @@ function GrzxUI(data) {
     $('.ess-userld').html(data.id);
     $('.ess-username').html(data.uname);
     if(data.sex==0){
-        var sex='男';
-    }else {
         var sex='女';
+    }else {
+        var sex='男';
     }
     //第一页(基础信息)Ul
     meName=data.uname
