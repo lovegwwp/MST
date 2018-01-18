@@ -186,6 +186,7 @@
     display: block;
     line-height: .8rem;
     font-size: .34rem;
+    cursor: pointer;
 }
 .xtsz-btn{
     width: 1.44rem;

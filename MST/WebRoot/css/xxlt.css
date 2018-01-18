@@ -182,12 +182,14 @@
     cursor: pointer;
 }
 .yy_tx{
-	width: 100px;
+	width: 1rem;
 	left: 50%;
-	margin-left: -50px;
+	margin-left: -.5rem;
 	top: 100px;
-	position: absolute;
+	position: fixed;
 	text-align: center;
+	z-index: 99999;
+	top: 4rem;
 }
 .yy_tx p{
 	font-size: 16px;

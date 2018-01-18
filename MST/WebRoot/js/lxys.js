@@ -181,7 +181,7 @@ $('.lx-s-goUp').click(function () {
 });
 
 // --------------------------------------------编辑分组
-$('.lx-edit-fenzu').click(function () {
+$('body').on('click','.lx-edit-fenzu',function () {
     $(this).parent('.lx-friendListOne').addClass('zhengzai');
      groupName=$(this).siblings('p').html();
     $('.bianjifenzuList').show().find('input').val(groupName);
@@ -194,9 +194,22 @@ $('.bianji-quxiao').click(function () {
 });
 $('.bianji-queding').click(function () {
     var b=$(this).parent().siblings('input').val();
+    var xinzu=document.getElementsByClassName('zu');
+    var flog='true';
     if(b==''){
         $('.csqs').show();
-    }else {
+    }else{
+        for(var d=0;d<xinzu.length;d++){
+            var zuming=$('.zu').eq(d).find('.fenzu-mingcheng').html();
+            if(b==zuming){
+                var str='此分组已经存在！';
+                $('.lxys_tx').show().find('.lxys_tx_text').html(str);
+                flog='false';
+                break;
+            }
+        }
+    }
+    if(flog=='true'){
         $.ajax({
             url: ajaxStr+'MSTYL/pat/bjfz.action',
             data: {
@@ -208,7 +221,7 @@ $('.bianji-queding').click(function () {
             type: "POST",
             dataType: "json",
             success: function (data) {
-                // console.log(data);
+                console.log(groupName);
                 var flog=data.status;
                 if(flog=='true'){
                     $('.search-show1').show();
@@ -227,9 +240,9 @@ $('.bianji-queding').click(function () {
                 $('.fwq_no').show();
             }
         });
-
     }
 });
+
 
 //收起分组
 // $('body').on('click','.fenzu-mingcheng',function () {
@@ -278,7 +291,7 @@ $('.tianjia-queding').click(function () {
                     type: "post",
                     dataType: "json",
                     success: function (data) {
-                        $('.fenzuList-b1').append('<p class="zuming-Listone">'+tjValue+'</p>');
+                        $('.fenzuList-b1').append('<p class="zuming-Listone"><label>'+tjValue+'</label></p>');
                         $.when(getUserList()).done(function (data) {
                             getUserListUI(data);
                         });
@@ -329,7 +342,7 @@ $('.tianjia-queding').click(function () {
                     success: function (data) {
                         var str='添加分组成功!';
                         $('.lxys_tx').show().find('.lxys_tx_text').html(str);
-                        $('.fenzuList-b').append('<p class="zuming-Listone">'+tjValue+'</p>');
+                        $('.fenzuList-b').append('<p class="zuming-Listone"><label>'+tjValue+'</label></p>');
                         $.when(getUserList()).done(function (data) {
                             getUserListUI(data);
                         });
@@ -905,7 +918,7 @@ $('.fs-goUp').click(function () {
 });
 //
 // ---------------------------------------移至分组
-$('.friendOne-remove').on('click',function (e) {
+$('body').on('click','.friendOne-remove',function (e) {
     e.stopPropagation();
     e.preventDefault();
     moveId=$(this).parents('.lx-friendListOne').find('.ysID').html();
@@ -917,7 +930,7 @@ $('.friendOne-remove').on('click',function (e) {
     // console.log(xinzu.length);
     for(var i=0;i<xinzu.length;i++){
         var zuming=$('.zu').eq(i).find('.fenzu-mingcheng').html();
-        $('.fenzuList-b').append('<p class="zuming-Listone">'+zuming+'</p>');
+        $('.fenzuList-b').append('<p class="zuming-Listone"><label>'+zuming+'</label></p>');
     };
 });
 $('body').on('click','.fenzuList-b p',function () {
@@ -936,7 +949,7 @@ $('.fz-queding').click(function (e) {
     e.stopPropagation();
     var p=$('.fenzuList-a').find('.zuming-Listone.active').length;
     if(p==1){
-        var moveGroupName=$('.fenzuList-a').find('.zuming-Listone.active').html();
+        var moveGroupName=$('.fenzuList-a').find('.zuming-Listone.active').find('label').html();
         console.log(patId);
         console.log(moveGroupName);
         console.log(moveId);
@@ -995,7 +1008,7 @@ $('body').on('click','.friendOne-add',function (e) {
         var xinzu=document.getElementsByClassName('zu');
         for(var i=0;i<xinzu.length;i++){
             var zuming=$('.zu').eq(i).find('.fenzu-mingcheng').html();
-            $('.fenzuList-b1').append('<p class="zuming-Listone">'+zuming+'</p>');
+            $('.fenzuList-b1').append('<p class="zuming-Listone"><label>'+zuming+'</label></p>');
         }
     }else {
         for(var k=0;k<lbysID.length;k++){
@@ -1016,7 +1029,7 @@ $('body').on('click','.friendOne-add',function (e) {
             var xinzu=document.getElementsByClassName('zu');
             for(var i=0;i<xinzu.length;i++){
                 var zuming=$('.zu').eq(i).find('.fenzu-mingcheng').html();
-                $('.fenzuList-b1').append('<p class="zuming-Listone">'+zuming+'</p>');
+                $('.fenzuList-b1').append('<p class="zuming-Listone"><label>'+zuming+'</label></p>');
             }
         }
     }

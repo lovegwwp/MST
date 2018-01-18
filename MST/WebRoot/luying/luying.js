@@ -21,9 +21,9 @@
             $('#'+id).find('.voice_record').html('录制中');
             recorder.start();
             $('.yy_tx').remove();
-  			$('#'+id).find('.xx-ck-home').append(`<div class="yy_tx">
-													<img class="thyying" src="./img/yy.jpg" />
-												</div>`);		
+            $('#'+id).find('.xx-ck-home').append(`<div class="yy_tx">
+			   <img class="thyying" src="./img/yy.jpg" />
+		      </div>`);		
             Timer=setInterval(function(){
             	timede++;
             	console.log(timede)
@@ -47,7 +47,7 @@
                 console.log(timede)
                 if(timede<2){
                 	timede=0;
-                	$('#'+id).find('.xx-ck-home').append('<div class="yy_tx"><p>录音时长太短</p></div') 	
+                	$('#'+id).find('.xx-ck-home').append('<div class="yy_tx"><p>录音时长太短</p></div>') 	
  					setTimeout(function(){
   						$('.yy_tx').remove();
  					},1000)
@@ -66,10 +66,11 @@
          					arr.push(ad)
      					}
     					console.log(arr)
-     					var tim=Date.parse(new Date());                 
+     					var tim=Date.parse(new Date());  
+    					var dId=ToId.slice(3,ToId.length);
      					var jss={
             					timemins:timede,
-             					did:ToId,
+             					did:dId,
 								pid:meId,
 								title:tim+ToId+'.mp3',
 								content:arr								

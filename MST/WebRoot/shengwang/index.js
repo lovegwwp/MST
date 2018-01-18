@@ -39,15 +39,35 @@ function join(t,g) {                //大视频进入            g==2 虚拟聊�
             if (document.getElementById("videoCheck").checked){
                 var audioSelect = document.querySelector('select#audioSource');
                 var videoSelect = document.querySelector('select#videoSource');
-                console.log(g)
+                console.log(g);           
+                console.log('摄像头类型/下标！！！！！！！！！！！！！！');
+                var indexvideo;
                 if(g==2) {
                     console.log('虚拟视频---虚拟视频----------虚拟视频---------虚拟视频--------虚拟视频--------虚拟视频----------虚拟视频');
-                    var indexvideo=xnCamera;
-                    console.log(indexvideo);
+                 // alert('虚拟视频');
+                    var Vsource=$("#videoSource option");
+                    console.log(Vsource)
+                    console.log(Vsource.length)
+			
+					for(var r=0;r<Vsource.length;r++){
+						if(Vsource.eq(r).html()=='Virtual Camera'){
+						indexvideo=r;
+						break
+						}
+					}
+                    console.log('虚拟视频，下标为'+indexvideo)
                 }else {
                 	console.log('普通视频-------普通视频--------普通视频--------普通视频--------普通视频--------普通视频---------普通视频-------普通视频');
-                    var indexvideo=bdCamera;
-                    console.log(indexvideo);
+                	 var Vsource=$("#videoSource option");
+                     console.log(Vsource)
+ 					console.log(Vsource.length)
+ 					for(var r=0;r<Vsource.length;r++){
+ 						if(Vsource.eq(r).html()!='Virtual Camera'){
+ 						indexvideo=r;
+ 						break
+ 						}
+ 					}
+                     console.log('普通视频，下标为'+indexvideo);
                 }
                 var SeSource=$('#videoSource option:eq('+indexvideo+')').val();
                 camera = SeSource;
@@ -348,15 +368,35 @@ function creatxlltroom(toid,t,g) {              //toid:'doc20'(房间号);    1:
             if (document.getElementById("videoCheck").checked) {
                 var audioSelect = document.querySelector('select#audioSource');
                 var videoSelect = document.querySelector('select#videoSource');
+                console.log('摄像头类型/下标！！！！！！！！！！！！！！');
+                var indexvideo;
                 if(g==2) {
                     console.log('虚拟视频-----虚拟视频----虚拟视频-------虚拟视频-------虚拟视频---------虚拟视频--------虚拟视频');
-                    var indexvideo=xnCamera;
-                    console.log(indexvideo);
+                    var Vsource=$("#videoSource option");
+                    console.log(Vsource)
+                    console.log(Vsource.length)
+			
+					for(var r=0;r<Vsource.length;r++){
+						if(Vsource.eq(r).html()=='Virtual Camera'){
+						indexvideo=r;
+						break
+						}
+					}
+                    console.log('虚拟视频，下标为'+indexvideo)
                 }else {
                     console.log('普通视频------普通视频-----普通视频-----普通视频-------普通视频-------普通视频------普通视频--------普通视频');
                  
-                    var indexvideo=bdCamera;
-                    console.log(indexvideo);
+                    var Vsource=$("#videoSource option");
+                    console.log(Vsource)
+                    console.log(Vsource.length)
+			
+					for(var r=0;r<Vsource.length;r++){
+						if(Vsource.eq(r).html()!='Virtual Camera'){
+						indexvideo=r;
+						break
+						}
+					}
+                    console.log('普通视频，下标为'+indexvideo);
                 }
                 console.log('小视频');
                 console.log(videoSelect);

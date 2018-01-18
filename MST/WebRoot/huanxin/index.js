@@ -1169,7 +1169,7 @@ function checkAddFriend(docId,docName,docGroupName) {   //添加好友 进行时
 $('.fz-queding1').click(function () {   //主动添加好友 --确定
     if($('.fenzuList-a1').find('.zuming-Listone.active').length==1){
         var docId='doc'+addPersonId;    //医生对应的环信账号
-        addgroupName=$('.fenzuList-a1').find('.zuming-Listone.active').html();
+        addgroupName=$('.fenzuList-a1').find('.zuming-Listone.active').find('label').html();
         console.log('点击新分组确定按钮');
         console.log('添加的组名为'+addgroupName);
         console.log('添加的人名为'+addPersonName);
@@ -1993,7 +1993,7 @@ $('body').on('click','.sp-liaotiao',function () {
         								<input type="text" placeholder="请输入要发送的信息" class="send-value"> 
         								<div class="yy_send">
         									<button class="voice_record snarl-demo waves-button" onclick=funStart("${id}")>录制</button> 
-        									<button class="voice_send snarl-demo waves-button" onclick =funStop("${id}","${newUser}")> 发送 < /button>
+        									<button class="voice_send snarl-demo waves-button" onclick =funStop("${id}","${newUser}")> 发送 </button>
         								</div>
         							</div>
         							<button class="xx-sp"><img src="./img/video@2x.png">视频通话</button>

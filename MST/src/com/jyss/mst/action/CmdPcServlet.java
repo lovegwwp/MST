@@ -281,6 +281,7 @@ public class CmdPcServlet
     Runtime run = Runtime.getRuntime();
     try {
       run.exec("cmd.exe /k start " + urlStr);
+      System.out.println("互动中心启动地址"+urlStr);
     }
     catch (IOException e) {
       e.printStackTrace();
@@ -295,5 +296,6 @@ public class CmdPcServlet
   {
    // hdzxOperate("C:\\Temp\\Third\\001.exe 1 mstsyzmotion 0");
    //System.out.println(clearOperate());
+	 // cmdOperate();
   }
 }
