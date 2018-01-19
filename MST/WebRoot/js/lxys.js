@@ -182,9 +182,49 @@ $('.lx-s-goUp').click(function () {
 
 // --------------------------------------------编辑分组
 $('body').on('click','.lx-edit-fenzu',function () {
+	$('.delectFz').remove();
     $(this).parent('.lx-friendListOne').addClass('zhengzai');
-     groupName=$(this).siblings('p').html();
+    groupName=$(this).siblings('p').html();
     $('.bianjifenzuList').show().find('input').val(groupName);
+    $('.bianjifenzuList').find('label').html(groupName);
+    var num=$(this).parent('.lx-friendListOne').find('.kz-myhy').length;
+    if(num){
+    	$('.bianjifenzuList').find('.bianjifenzu').append(`<div class="delectFz">
+                        		<img src="img/delectFZ.png">
+                        		<p>删除</p>
+                        	</div>`)
+    }
+});
+
+$('body').on('click','.delectFz',function(){
+	var groupName=$('.bianjifenzuList').find('label').html();
+	console.log('删除的组名为'+groupName)
+    $.ajax({
+            url: ajaxStr+'MSTYL/pat/delEmpty.action',
+            data: {
+                pId:patId,
+                groupName:groupName
+            },
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                console.log(groupName);
+                var flog=data.status;
+                if(flog=='true'){
+                    $('.search-show1').show();
+                    $('.bianjifenzuList').hide();
+                    $('.lx-search-show').hide();
+                    $.when(getUserList()).done(function (data) {
+                        getUserListUI(data);
+                    });
+                } else {
+                    $('.fwq_no').show();
+                }
+            },
+            error:function (err) {
+                $('.fwq_no').show();
+            }
+        });		
 });
 
 $('.bianji-quxiao').click(function () {

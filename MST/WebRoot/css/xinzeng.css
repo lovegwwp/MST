@@ -1,0 +1,34 @@
+.delectFz{
+	width: .8rem;
+	height: .8rem;
+	border: 2px solid #d81e06;
+	position: absolute;
+	top: .2rem;
+	right: .2rem;
+	cursor: pointer;
+	border-radius:50%;	
+}
+.delectFz img{
+	width: .4rem;
+	height: .4rem;
+	display: block;
+	margin: 0 auto;
+    margin-top: .05rem;
+}
+.delectFz p{
+	text-align: center;
+	font-size: .16rem;
+	color: #d81e06;
+}
+
+#leave{
+	background-image: url(../img/waiting.png);
+}
+.fa-sp-start{
+	background-image: url(../img/answer.png);
+	background-size: 100% 100%;
+}
+.fa-sp-end{
+	background-image: url(../img/waiting.png);
+	background-size: 100% 100%;
+}

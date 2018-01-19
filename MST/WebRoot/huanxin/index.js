@@ -398,6 +398,9 @@ conn.listen({
                             var spltsc=JSON.parse(localStorage.getItem('spnosc'));  //拿到本地视频缓存时长
                             fsxllthc(spltsc[0]);       //发送聊天时长
                             console.log("好友列表房间退出成功！！！！！！！！");
+                            $('#join').css('backgroundImage','url(./img/answer.png)');
+    						$('#leave').css('backgroundImage','url(./img/waiting.png)');
+
                         }, function (err) {
                             console.log("好友列表房间退出失败！！！！！！！！");
                         });
@@ -426,6 +429,8 @@ conn.listen({
                             var chatTime=spltsc[0];
                             fsxllthc(chatTime);       //发送时长
                             console.log("训练方案房间退出成功！！！！！！！！");
+                            $('.fa-sp-start').css('backgroundImage','url(./img/answer.png)');
+    						$('.fa-sp-end').css('backgroundImage','url(./img/waiting.png)');
                         }, function (err) {
                             console.log("训练方案房间退出失败！！！！！！！！");
                         });
@@ -1908,14 +1913,16 @@ function fssptc(docId,sjc) {  //患者正在视频视频聊天  返回给医生
 }
 
 
-function fsyypd(docId) {  //患者正在视频视频聊天  返回给医生
+function fsyypd(docId) {  //患者正在发送语音片段  返回给医生
     //患者给医生发送扩展字段（命令消息过去）
     console.log('医生环信ID为'+docId);
     var uuid='pat'+meId;
     var id = conn.getUniqueId();            //生成本地消息id
     var msg = new WebIM.message('cmd', id); //创建命令消息
     var str={
-        uuid:uuid,
+            uuid:uuid,
+            name:meName,
+            portraits:myImg
     };
     var spStr= JSON.stringify(str);
     var spJson={

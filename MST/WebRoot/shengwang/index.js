@@ -34,6 +34,9 @@ function join(t,g) {                //大视频进入            g==2 虚拟聊�
         client.join(dynamic_key,strDoc,null, function(uid) {
             console.log("User " + uid + " 加入房间成功！！！！！");
            
+            $('#join').css('backgroundImage','url(./img/waiting.png)')
+    		$('#leave').css('backgroundImage','url(./img/refuse.png)')
+            
             $('.sp-ck-home').append('<div class="bigsfck"><img src="./img/switch@3x.png"></div><div class="otherPerson"> <p class="ltsp-zt">'+strt+'</p> </div><p class="hoshowtime"></p>');
             // console.log('之前的null为uid为'+newDoc);
             if (document.getElementById("videoCheck").checked){
@@ -208,6 +211,8 @@ function leave() {  //大视频退出
             }
             $('.shipingList').hide();   //视频层隐藏
             console.log('好友列表视频退出成功！！！！！！！！！！！！！！');
+            $('#join').css('backgroundImage','url(./img/answer.png)');
+    		$('#leave').css('backgroundImage','url(./img/waiting.png)');
         }, function (err) {
         console.log("Leave channel failed");
     });
@@ -358,6 +363,10 @@ function creatxlltroom(toid,t,g) {              //toid:'doc20'(房间号);    1:
     client.init(key.value, function () {
         client.join(dynamic_key, newDoc, null, function (uid) {
             console.log("User " + uid + " 加入房间成功！！！！！");
+            $('.fa-sp-start').css('backgroundImage','url(./img/waiting.png)')
+    		$('.fa-sp-end').css('backgroundImage','url(./img/refuse.png)')
+
+            
             $('.xlsp-main').find('.videoList2').find('.videoList2_one').addClass('active');
             $('.xlsp-main').find('.videoList2').addClass('active');
             $('.xlsp-main').find('.videoList2').find('.video-js').addClass('active');
@@ -531,6 +540,8 @@ function faCloseSp() {
             fsxllthc(spltsc[0]);       //发送聊天时长
         }
         console.log('训练方案视频退出成功！！！！！！！！！！！！！！');
+        $('.fa-sp-start').css('backgroundImage','url(./img/answer.png)');
+    	$('.fa-sp-end').css('backgroundImage','url(./img/waiting.png)');
     }, function (err) {
         console.log("Leave channel failed");
     });
@@ -688,6 +699,8 @@ function checkPerJion() {
                     var spltsc=JSON.parse(localStorage.getItem('spnosc'));  //拿到本地视频缓存时长
                     fsxllthc(spltsc[0]);       //发送聊天时长
                     console.log("好友列表房间退出成功！！！！！！！！");
+                    $('#join').css('backgroundImage','url(./img/answer.png)');
+    				$('#leave').css('backgroundImage','url(./img/waiting.png)');
                 }, function (err) {
                     console.log("好友列表房间退出失败！！！！！！！！");
                 });
@@ -741,6 +754,9 @@ function checkPerJionsm() {
                     var chatTime=spltsc[0];
                     fsxllthc(chatTime);       //发送时长
                     console.log("训练方案房间退出成功！！！！！！！！");
+                    $('.fa-sp-start').css('backgroundImage','url(./img/answer.png)');
+    				$('.fa-sp-end').css('backgroundImage','url(./img/waiting.png)');
+
                 }, function (err) {
                     console.log("训练方案房间退出失败！！！！！！！！");
                 });

@@ -177,8 +177,8 @@ $('body').on('click','.zx-list-one',function () {
 						<source src="${ajaxStr+zxTextPic[num]}" />
 						<source src="${ajaxStr+zxTextPic[num]}" />
 					</audio>
-                    <p class="zx-detail">${zxTextDetail[num]}</p>`)
-    	$('audio').audioPlayer();
+                    <p class="zx-detail">${zxTextDetail[num]}</p>`)    	
+    	$('.zx-text').find('audio').audioPlayer();
     }else {
     	
     	$('.zx-text').append(` <button class="zx-fanhui">返回</button>

@@ -578,7 +578,7 @@ function xiazaifa(video,len,xzwanchengWidth,num) { // num  100%进度条 一份�
 }
 
 function kaiqi(xzwanchengWidth) {
-    $('.xzwancheng').animate({width: '14.98rem',}, 1000);
+    $('.xzwancheng').animate({width: '14.98rem'}, 1000);
     var opentime = setInterval(function () {
         if (parseInt($('.xzwancheng').css('width')) > xzwanchengWidth) {   //下载页面进度条完毕
             clearInterval(opentime);
