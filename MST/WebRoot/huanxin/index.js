@@ -364,6 +364,7 @@ conn.listen({
                             if(nmbfwcsjc-sjc<40){
                                 $('.acc-sp').show().find('.accsp-text').html(ysname);
                                 $('.acc-sp').find('.sp_type').html('1');   //1 视频请求类型   普通视频聊天
+                                $('.acc-sp').find('.accsp_type').html('医生,邀请你进入视频聊天.....');
                                 $('.thtsls').append('<audio src="./sp.mp3" autoplay="autoplay" preload="auto">您的浏览器不支持audio属性，请更换浏览器再进行浏览。 </audio>')
                                 setTimeout(function () {
                                     $('.acc-sp').hide();
@@ -493,6 +494,7 @@ conn.listen({
                             if(nmbfwcsjc-sjc<40){
                                 $('.acc-sp').show().find('.accsp-text').html(ysname);
                                 $('.acc-sp').find('.sp_type').html('2'); //2 视频请求类型   虚拟视频聊天
+                                $('.acc-sp').find('.accsp_type').html('医生,邀请你进入评测通道.....');
                                 $('.acc-sp').find('.sp_SRC').html(message.action); //评测地址
                                 $('.thtsls').append('<audio src="./sp.mp3" autoplay="autoplay" preload="auto">您的浏览器不支持audio属性，请更换浏览器再进行浏览。 </audio>')
                                 setTimeout(function () {

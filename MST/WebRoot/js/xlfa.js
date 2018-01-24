@@ -274,10 +274,16 @@ function getxllist(obj,xlItem) {
             $('.xl-days-one-btn').eq(0).addClass('xl-xuanzhong2');
         }
     }
+    
+    console.log(newFaData);
     var dateArr=[];
     for(var e=0;e<newFaData.length;e++){
-        dateArr.push(newFaData[e].createdAt);
+    	var datd=newFaData[e].spEntity.spList;
+    	for(var r=0;r<datd.length;r++){
+    		dateArr.push(datd[r].createdAt);
+    	}  
     }
+    
     var maxNum=(Math.max.apply(null, dateArr));  //下载方案时间戳
     var maxNumArr=[maxNum];
     localStorage.setItem('xzfadate', JSON.stringify(maxNumArr));
@@ -458,7 +464,7 @@ function getItem(){
         }
     });
 }
-var xzcount=0;
+//var xzcount=0;
 // ----------------------------------提醒有新方案需要下载
 function getnewxlfn() {
     var xzblog=JSON.parse(localStorage.getItem('xzsjcflog'));
@@ -497,15 +503,20 @@ function getnewxlfn() {
                 var xzStart = setInterval(function () {
                     if (parseInt($('.wancheng').css('width')) > kjwanchengWidth) {
                         // console.log('开机进度条完毕');
+                    	//alert("444444");
                         clearInterval(xzStart);
                         $('.xfatx').hide();
                         $('.xfaxz').show();
                         var num=14.98/data.length;   //100%进度条 一份的进度条长度数
-                        for(var k=0;k<data.length;k++) {
-                            var video = data[k].vedio;
-                            // console.log(video);
-                            xiazaifa(video,len,xzwanchengWidth,num);
-                        }
+                        
+                        
+                        var strArr=[];
+						for(var p=0;p<data.length;p++){
+							strArr.push(data[p].vedio);
+							
+						}
+						cxxiazaifa(len,xzwanchengWidth,num)		
+                        xiazaifa(strArr,len,xzwanchengWidth,num);
                     }
                 }, 200);
 
@@ -523,62 +534,68 @@ function getnewxlfn() {
     });
 }
 
-function xiazaifa(video,len,xzwanchengWidth,num) { // num  100%进度条 一份的进度条长度数
-	console.log(num);
+function xiazaifa(strArr,len,xzwanchengWidth,num) { // num  100%进度条 一份的进度条长度数
+//	alert(xzwanchengWidth)
+	console.log(len);
+	console.log(strArr);
+	var stro={
+		arrLen:len,
+        strArr:strArr
+	}
+	var mobj=JSON.stringify(stro);
     $.ajax({                            //循环数组下载对应视频
-        url:ajaxBd+'MST/Load',
-        type:"GET",
+        url:ajaxBd+'MST/myLoad',
+        type:"post",
         data:{
-            fileName:video
+            loadType:'1',
+            myJson:mobj
         },
         success:function (data) {
-            if(data.status=='true'){
-                xzcount++;
-                var leng=num*xzcount+'rem';
-                console.log('运动长度');
-                console.log(leng);
-                $('.xzwancheng').animate({width: leng,}, 1000);
-                console.log(xzcount);
-               
-                if(xzcount==len){
-                    console.log('下载完毕。执行了开机');
-                    kaiqi(xzwanchengWidth);
-                    return;
-                }
-            }else {
-                alert('下载错误，第'+count+'个文件下载失败');
-                xzcount++;
-                var leng=num*xzcount+'rem';
-                console.log('运动长度');
-                console.log(leng);
-                $('.xzwancheng').animate({width: leng,}, 1000);
-               
-                if(xzcount==len){
-                    console.log('下载完毕。执行了开机');
-                    kaiqi(xzwanchengWidth);
-                    return;
-                }
-            }
+			console.log(data);
         },
         error:function (err) {
             console.log(err);
-            alert('下载错误，第'+count+'个文件下载失败');
-            xzcount++;
-            var leng=num*xzcount+'rem';
-            console.log('运动长度');
-            console.log(leng);
-            $('.xzwancheng').animate({width: leng,}, 1000);
-            if(xzcount==len){
-                console.log('下载完毕。执行了开机');
-                kaiqi(xzwanchengWidth);
-                return;
-            }
         }
     });
 }
 
+function cxxiazaifa(len,xzwanchengWidth,num){
+					var XZtime=setInterval( function(){
+               			$.ajax({                            //循环数组下载对应视频
+        					url:ajaxBd+'MST/myLoad',
+        					type:"post",
+        					data:{
+            					loadType:'2'
+        					},
+        					success:function (data) {
+            					if(data.status=='true'){
+            						var xzcount=data.message;
+            						if(xzcount==0){
+            							console.log('成功下载了'+xzcount+'个文件');
+            						}else{
+            							console.log('成功下载了'+xzcount+'个文件');
+            							var leng=num*xzcount+'rem';
+                						$('.xzwancheng').animate({width: leng,}, 1000);
+                						if(xzcount>=len){
+                    						console.log('下载完毕。执行了开机');
+                    						clearInterval(XZtime);
+                    						kaiqi(xzwanchengWidth);
+                    						return;
+                						}
+            						}	
+            					}
+							},
+							error:function(err){
+								console.log(err);
+								alert('网络异常，请重新连接')
+							}
+						})
+               		},1000)    
+				}
+
+
 function kaiqi(xzwanchengWidth) {
-    $('.xzwancheng').animate({width: '14.98rem'}, 1000);
+    $('.xzwancheng').animate({width: '16rem'}, 1000);
     var opentime = setInterval(function () {
         if (parseInt($('.xzwancheng').css('width')) > xzwanchengWidth) {   //下载页面进度条完毕
             clearInterval(opentime);

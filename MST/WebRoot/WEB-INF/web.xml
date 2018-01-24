@@ -29,6 +29,10 @@
 	</filter-mapping>  
   
    <servlet>
+    <servlet-name>MyDownLoad</servlet-name>
+    <servlet-class>com.jyss.mst.action.MyDownLoadServlet</servlet-class>
+  </servlet>
+    <servlet>
     <servlet-name>DownLoad</servlet-name>
     <servlet-class>com.jyss.mst.action.DownLoadServlet</servlet-class>
   </servlet>
@@ -45,6 +49,10 @@
 
 
   <servlet-mapping>
+    <servlet-name>MyDownLoad</servlet-name>
+    <url-pattern>/myLoad</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
     <servlet-name>DownLoad</servlet-name>
     <url-pattern>/Load</url-pattern>
   </servlet-mapping>

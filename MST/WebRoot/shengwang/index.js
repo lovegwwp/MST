@@ -42,36 +42,47 @@ function join(t,g) {                //大视频进入            g==2 虚拟聊�
             if (document.getElementById("videoCheck").checked){
                 var audioSelect = document.querySelector('select#audioSource');
                 var videoSelect = document.querySelector('select#videoSource');
-                console.log(g);           
-                console.log('摄像头类型/下标！！！！！！！！！！！！！！');
+                
+                
                 var indexvideo;
+                var Vsource=$("#videoSource option");
+                var sbarr=[];   //接收所有设备空数组
+				var qcArr=[];   //接收去重设备空数组
+				
+				for(var i=0;i<Vsource.length;i++){	
+					var numb=0;
+					var eleLen=Vsource.eq(i).html();
+					for(var j=0;j<eleLen.length;j++){
+						var numb=numb+eleLen.charCodeAt(j)
+					}
+					sbarr.push(numb);
+				}
+				console.log(sbarr)            //所有设备的数组排序
+				var newqcArr=quchong(sbarr,qcArr).sort(NumAscSort);//去重完的数组排序 
+				console.log(newqcArr);
+  
                 if(g==2) {
-                    console.log('虚拟视频---虚拟视频----------虚拟视频---------虚拟视频--------虚拟视频--------虚拟视频----------虚拟视频');
-                 // alert('虚拟视频');
-                    var Vsource=$("#videoSource option");
-                    console.log(Vsource)
-                    console.log(Vsource.length)
-			
-					for(var r=0;r<Vsource.length;r++){
-						if(Vsource.eq(r).html()=='Virtual Camera'){
-						indexvideo=r;
-						break
+                    // alert('虚拟视频');
+					var textContain=newqcArr[xnCamera];
+					for(var p=0;p<sbarr.length;p++){
+						if(sbarr[p]==textContain){
+							indexvideo=p;
+							break
 						}
 					}
-                    console.log('虚拟视频，下标为'+indexvideo)
+                    console.log('虚拟视频，下标为'+indexvideo);
                 }else {
-                	console.log('普通视频-------普通视频--------普通视频--------普通视频--------普通视频--------普通视频---------普通视频-------普通视频');
-                	 var Vsource=$("#videoSource option");
-                     console.log(Vsource)
- 					console.log(Vsource.length)
- 					for(var r=0;r<Vsource.length;r++){
- 						if(Vsource.eq(r).html()!='Virtual Camera'){
- 						indexvideo=r;
- 						break
- 						}
- 					}
-                     console.log('普通视频，下标为'+indexvideo);
+                    // alert('普通视频');
+                    var textContain=newqcArr[bdCamera];
+					for(var p=0;p<sbarr.length;p++){
+						if(sbarr[p]==textContain){
+							indexvideo=p;
+							break
+						}
+					}
+                    console.log('普通视频，下标为'+indexvideo);
                 }
+           
                 var SeSource=$('#videoSource option:eq('+indexvideo+')').val();
                 camera = SeSource;
                 console.log('camera的值为');
@@ -378,37 +389,51 @@ function creatxlltroom(toid,t,g) {              //toid:'doc20'(房间号);    1:
                 var audioSelect = document.querySelector('select#audioSource');
                 var videoSelect = document.querySelector('select#videoSource');
                 console.log('摄像头类型/下标！！！！！！！！！！！！！！');
+                
+                
+                
                 var indexvideo;
+                var Vsource=$("#videoSource option");
+                var sbarr=[];   //接收所有设备空数组
+				var qcArr=[];   //接收去重设备空数组
+				
+				for(var i=0;i<Vsource.length;i++){	
+					var numb=0;
+					var eleLen=Vsource.eq(i).html();
+					for(var j=0;j<eleLen.length;j++){
+						var numb=numb+eleLen.charCodeAt(j)
+					}
+					sbarr.push(numb);
+				}
+				console.log(sbarr)            //所有设备的数组排序
+				var newqcArr=quchong(sbarr,qcArr).sort(NumAscSort);//去重完的数组排序 
+				console.log(newqcArr);
                 if(g==2) {
-                    console.log('虚拟视频-----虚拟视频----虚拟视频-------虚拟视频-------虚拟视频---------虚拟视频--------虚拟视频');
-                    var Vsource=$("#videoSource option");
-                    console.log(Vsource)
-                    console.log(Vsource.length)
-			
-					for(var r=0;r<Vsource.length;r++){
-						if(Vsource.eq(r).html()=='Virtual Camera'){
-						indexvideo=r;
-						break
+                    // alert('虚拟视频');
+                    var textContain=newqcArr[xnCamera];
+					for(var p=0;p<sbarr.length;p++){
+						if(sbarr[p]==textContain){
+							indexvideo=p;
+							break
 						}
 					}
-                    console.log('虚拟视频，下标为'+indexvideo)
+					alert('虚拟视频，下标为'+indexvideo);
                 }else {
-                    console.log('普通视频------普通视频-----普通视频-----普通视频-------普通视频-------普通视频------普通视频--------普通视频');
-                 
-                    var Vsource=$("#videoSource option");
-                    console.log(Vsource)
-                    console.log(Vsource.length)
-			
-					for(var r=0;r<Vsource.length;r++){
-						if(Vsource.eq(r).html()!='Virtual Camera'){
-						indexvideo=r;
-						break
+                    // alert('普通视频');
+                    var textContain=newqcArr[bdCamera];
+					for(var p=0;p<sbarr.length;p++){
+						if(sbarr[p]==textContain){
+							indexvideo=p;
+							break
 						}
 					}
-                    console.log('普通视频，下标为'+indexvideo);
+					alert('普通视频，下标为'+indexvideo);
                 }
                 console.log('小视频');
-                console.log(videoSelect);
+                
+                
+                
+                
                 var SeSource=$('#videoSource option:eq('+indexvideo+')').val();
                 camera = SeSource;
                 console.log(camera);
@@ -847,3 +872,17 @@ function getCameraIndex(){ //获取摄像头下标= ----开启
 //audioSelect.onchange = getDevices;
 //videoSelect.onchange = getDevices;
 //getDevices();
+
+
+
+function NumAscSort(a,b){
+	 return b - a;
+	}
+	function quchong(event,qcArr) {
+	    for (var i = 0; i < event.length; i++) {
+	        if (qcArr.indexOf(event[i]) == -1) qcArr.push(event[i]);
+	    }
+	    return qcArr;
+	};
+
+
