@@ -737,42 +737,32 @@ function loadNewestBan(filename) {  //下载最新版本 (3)
     return defer.promise();
 }
 
-$('.no_videoChat_btn_btn').click(function () {
-        $('.no_videoChat').hide();
+$('.no_videoChat_btn_btn').click(function () { //医生拒绝了你的视频请求
+    $('.no_videoChat').hide();
 });
-$('.zx_fx_btn-bt').click(function () {
-    $('.zx_fx').hide();
+
+$('.gdsp_btn_btn').click(function () {//对方已经挂断的视频
+$('.gdsp').hide();
 });
-$('.gdsp_btn_btn').click(function () {
-    $('.gdsp').hide();
+$('.gbqtsp_btn_btn').click(function () { //请您先关闭视频聊天窗口再试
+$('.gbqtsp').hide();
 });
-$('.gbqtsp_btn_btn').click(function () {
-   $('.gbqtsp').hide();
+
+$('.fwq_no_btn_btn').click(function () {//服务器开小差
+$('.fwq_no').hide();
 });
-$('.no_accFriend_btn_btn').click(function () {
-    $('.no_accFriend').hide();
+$('.csqs_btn_btn').click(function () { //参数缺失
+$('.csqs').hide();
 });
-$('.qqadd_Friend_btn_btn').click(function () {
-    $('.qqadd_Friend').hide();
+$('.scbz_btn_btn').click(function () {  //服务器开小差
+$('.scbz').hide();
 });
-$('.fwq_no_btn_btn').click(function () {
-    $('.fwq_no').hide();
+$('.lxys_tx_btn_btn').click(function () { //添加分组上限提示
+$('.lxys_tx').hide();
 });
-$('.csqs_btn_btn').click(function () {
-    $('.csqs').hide();
-});
-$('.scbz_btn_btn').click(function () {
-    $('.scbz').hide();
-});
-$('.lxys_tx_btn_btn').click(function () {
-    $('.lxys_tx').hide();
-});
-$('.ysfx_cptx_btn_btn').click(function () {
-    $('.ysfx_cptx').hide();
-});
-$('body').on('click','.ysfx_cptx_btn_btn',function () {
-    $(this).parents('.ysfx_cptx').remove();
-});
+$('.wlzt_ok-btn').click(function () {  //联网提醒
+    $('.wlzt_ok').hide();
+});      
 
 // $('.xiazai').attr("href",'http://dl.360safe.com/360zip_setup_3.2.0.2200.exe');
 // window.location.href='http://dl.360safe.com/360zip_setup_3.2.0.2200.exe'

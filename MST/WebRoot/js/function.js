@@ -95,6 +95,15 @@ var xnCamera=1;  //虚拟摄像头  下标默认为0
 
 var yypd=''; //流文件 
 
+//---弹框随机数
+var dd=1;
+//录音状态
+var lystatus='true' ;
+//网络状态
+var wlstatus='true';
+//对方接受视频的状态
+var jsspstatus='false';
+
 (function () {
     $.ajax({
         url: ajaxStr +'MSTYL/pat/getKaiji.action',
@@ -123,7 +132,8 @@ var yypd=''; //流文件
 if(window.navigator.onLine==true){
     $('.wangluodeng img').attr('src','./img/youwangluo.png');
 }else{
-    $('.wangluodeng img').attr('src','./img/meiwangluo.png')
+    $('.wangluodeng img').attr('src','./img/meiwangluo.png');
+    wlstatus='false';
 }
 
 //绑定视频热键（开启/关闭）
@@ -259,7 +269,6 @@ function openExe(){
       };
       // 网络断开和连接的判断
       EventUtil.addHandler(window, "online", function () {
-          $('.wlzt').hide();
           loginHX();                                           //网络正常重新连接环信
           var Fasc=JSON.parse(localStorage.getItem('fasc'));//查看观看训练时长本地是否存在缓存
           var Fasp=JSON.parse(localStorage.getItem('spnosc'));//查看观看视频聊天时长本地是否存在缓存
@@ -286,7 +295,6 @@ function openExe(){
       });
       EventUtil.addHandler(window, "offline", function () {
           $('.wangluotext').html('网络未连接');
-          $('.wlzt').show();
       });
       //按钮水波纹初始化
       $(document).on('ready', function() {

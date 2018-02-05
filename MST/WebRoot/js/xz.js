@@ -216,7 +216,7 @@ function getxzone(xzData) {
     $('.xz-List').prepend('<div class="xz-list-one"> <div><p class="xz-one-yisheng">'+xzData.user+'</p></div> <div><p class="xz-one-leimu">'+xzData.name+'</p></div> <div><p class="xz-one-zhiding">'+xzData.testTime+'</p></div><div><p class="xz-one-shijian">'+xzData.time+'</p></div> <div class="zx-one-X">删除</div></div>');
     // var CompId=JSON.parse(localStorage.getItem('micId'));
     getXzList();  //刷新下载方案界面
-    XZHistory.push(xzData);
+    XZHistory.unshift(xzData);
     localStorage.setItem('xzdata', JSON.stringify(XZHistory));
     // console.log(XZHistory);
 }

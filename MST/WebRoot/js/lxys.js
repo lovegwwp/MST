@@ -305,7 +305,7 @@ $('.tianjia-queding').click(function () {
         var tjValue=$('.tjnewfenzu').val();
         var xinzu=document.getElementsByClassName('zu');
         // console.log((xinzu.length));
-        if(xinzu.length<7){
+        if(xinzu.length<100){
             if(tjValue==''){
                 $('.csqs').show();
                 num=1;
@@ -344,7 +344,7 @@ $('.tianjia-queding').click(function () {
                 $('.tianjiafenzuList').hide();
             }
         }else {
-            var str='抱歉，您最多添加7个分组!';
+            var str='抱歉，您最多添加100个分组!';
             $('.lxys_tx').show().find('.lxys_tx_text').html(str);
             $('.tianjiafenzuList').hide();
         }
@@ -354,7 +354,7 @@ $('.tianjia-queding').click(function () {
         var tjValue=$('.tjnewfenzu').val();
         var xinzu=document.getElementsByClassName('zu');
         // console.log((xinzu.length));
-        if(xinzu.length<7){
+        if(xinzu.length<100){
             if(tjValue==''){
                 $('.csqs').show()
                 num=1;
@@ -395,18 +395,17 @@ $('.tianjia-queding').click(function () {
                 $('.tianjiafenzuList').hide();
             }
         }else {
-            var str='抱歉，您最多添加7个分组!';
+            var str='抱歉，您最多添加100个分组!';
             $('.lxys_tx').show().find('.lxys_tx_text').html(str);
             $('.tianjiafenzuList').hide();
         }
-    }
-    else {
+    }else {
         //单纯添加分组
         var num=0;
         var tjValue=$('.tjnewfenzu').val();
         var xinzu=document.getElementsByClassName('zu');
         // console.log((xinzu.length));
-        if(xinzu.length<7){
+        if(xinzu.length<100){
             if(tjValue==''){
                 $('.csqs').show();
                 num=1;
@@ -445,7 +444,7 @@ $('.tianjia-queding').click(function () {
                 $('.tianjiafenzuList').hide();
             }
         }else {
-            var str='抱歉，您最多添加7个分组!';
+            var str='抱歉，您最多添加100个分组!';
             $('.lxys_tx').show().find('.lxys_tx_text').html(str);
             $('.tianjiafenzuList').hide();
         }
@@ -1106,6 +1105,7 @@ function addFried(docId,group) {
         dataType: "json",
         success: function (data) {
             // alert('向本地服务器添加好友成功');
+        	askYssx(docId);
             getUserListadd(docId) //刷新好友列表②
 
         },

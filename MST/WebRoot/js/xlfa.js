@@ -414,7 +414,8 @@ function getxlfn(xlItem) {
                 console.log('请求的训练方案成功');
                 getxllist(data,xlItem);
             }else {
-                console.log('请求的训练方案没有数据')
+                console.log('请求的训练方案没有数据');
+                $('.xl-content-home').append(`<div class='famysj'><div class="famysj_box">尚无康复训练方案</div></div>`);
             }
         },
         error:function (err) {
@@ -423,10 +424,13 @@ function getxlfn(xlItem) {
             var newfahc=JSON.parse(localStorage.getItem('fahc'));
             // console.log(newfahc);
             if(newfahc==null){
-                console.log('检测到断网，拿到训练方案缓存，但是为空')
+                console.log('检测到断网，拿到训练方案缓存，但是为空');
+                $('.xl-content-home').append(`<div class='famysj'><div class="famysj_box">尚无康复训练方案</div></div>`)
             } else if(newfahc.length>0){
                 getxllist(newfahc,xlItem);
                 console.log('检测到断网，为你拿到本地训练缓存方案')
+            }else{
+            	$('.xl-content-home').append(`<div class='famysj'><div class="famysj_box">尚无康复训练方案</div></div>`)
             }
         }
     });
@@ -712,7 +716,7 @@ $('body').on('click','.xl-days-one-btn',function () {
                 };
                 // console.log(newFaData);
                 for (var i = 0; i < newFaData.length; i++) {
-                    if (newFaData[i].item == item) {
+                    if (newFaData[i].item == item && newFaData[i].dID==dID) {
                         break;
                     }
                 }
@@ -787,7 +791,7 @@ $('body').on('click','.xl-days-one-btn',function () {
                     CheckfaSpClose();
                 };
                 for (var i = 0; i < newFaData.length; i++) {
-                    if (newFaData[i].item == item) {
+                    if (newFaData[i].item == item && newFaData[i].dID==dID) {
                         break;
                     }
                 }

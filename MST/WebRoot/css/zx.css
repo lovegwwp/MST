@@ -72,7 +72,6 @@
     /*background-color: pink;*/
 }
 .zx-text{
-    /*background-color: pink;*/
     padding-top: .1rem;
 }
 .zx-pic img{
@@ -106,8 +105,6 @@
 #zx-clone{
     display: none;
 }
-
-
 .zx-fanhui{
     font-size: 0.2rem;
     width: 1rem;
@@ -152,3 +149,51 @@
     margin-left: -.3rem;
 }
 
+
+
+
+
+
+/*------*/
+.zx-fanhui{
+	left: 0;
+}
+.zx-text .video-js {
+    width: 10rem;
+    height: 5.625rem;
+    margin: 0 auto;
+    margin-bottom: .8rem;
+}
+.zx-text .vjs-big-play-button {
+    top: 2.5rem;
+}
+.zx-text .vjs-icon-placeholder {
+    top: 0;
+}
+.zxvdo_vid{
+	width: 12rem;
+    float: right;
+}
+.zxvdo_title{
+	width: 5rem;
+    float: left;
+    margin-top: 1rem;
+}
+.zx-pic {
+   	width: 12rem;
+    height: 5.625rem;
+    margin: 0 auto;
+    margin-bottom: .8rem;
+    float: right;
+    text-align: center;
+}
+.zx-pic img{
+	width: 10rem;
+    height: 5.625rem;
+}
+/*----*/
+.zxpic_title{
+	width: 5rem;
+    float: left;
+    margin-top: 1rem;
+}

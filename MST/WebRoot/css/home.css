@@ -776,3 +776,110 @@ input {
     z-index: 99999999999999999999;
 }
 
+.mkffw{
+	width: 8rem;
+    height: 4rem;
+    line-height: 4rem;
+    border: .02rem solid #9cfbff;
+    background-color: #18333e;
+    border-radius: .1rem;
+    z-index: 999999999;
+    position: fixed;
+    top: 0;
+    font-size: .5rem;
+    text-align: center;
+    left: 50%;
+    margin-left: -4rem;
+    margin-top: 3rem;
+}
+.dfzzspth{
+	width: 8rem;
+    height: 4rem;
+    border: .02rem solid #9cfbff;
+    background-color: #18333e;
+    border-radius: .1rem;
+    z-index: 999999999;
+    position: fixed;
+    top: 0;
+    font-size: .5rem;
+    text-align: center;
+    left: 50%;
+    margin-left: -4rem;
+    margin-top: 3rem;
+    padding: .4rem;
+    padding-top: 1.2rem;
+}
+
+
+/*----联网-*/
+.wlzt_ok{
+    width: 19.2rem;
+    height: 10.8rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999999;
+    background-image: url("../img/wangluo.png");
+    background-size: 100% 100%;
+}
+.wlzt_ok-ck{
+    width: 9rem;
+    height: 5.8rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -2.9rem;
+    margin-left: -4.50rem;
+}
+.wlzt_ok p{
+    color: #fff;
+    font-size: .4rem;
+    line-height: 5.5rem;
+    text-align: center;
+}
+.wlzt_ok-btn{
+    font-size: .35rem;
+    line-height: .62rem;
+    width: 2.37rem;
+    top: 4rem;
+    left: 3.34rem;
+    position: absolute;
+    background-image: url(../img/anniu_xuanzhong.png);
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+.wlzt_ok-btn:before {
+    content: ' ';
+    position: absolute;
+    background: #fff;
+    width: .25rem;
+    height: .51rem;
+    top: .05rem;
+    left: -.45rem;
+    opacity: 0.3;
+    -webkit-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+}
+.wlzt_ok-btn:hover:before {
+    width: .25rem;
+    left: 2.5rem;
+    -webkit-transition: all .35s ease-out;
+    transition: all .35s ease-out;
+}
+/*---网络已经断开-*/
+.wlyjdk{
+	width: 8rem;
+    height: 4rem;
+    line-height: 4rem;
+    border: .02rem solid #9cfbff;
+    background-color: #18333e;
+    border-radius: .1rem;
+    z-index: 999999999;
+    position: fixed;
+    top: 0;
+    font-size: .5rem;
+    text-align: center;
+    left: 50%;
+    margin-left: -4rem;
+    margin-top: 3rem;
+}

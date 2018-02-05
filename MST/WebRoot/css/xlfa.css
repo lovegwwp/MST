@@ -1,4 +1,4 @@
-/*-------训练方案*/
+/*------------------------训练方案----------------------*/
 .content{
     padding-left: 1rem; ;
     padding-right: 1rem;
@@ -400,20 +400,7 @@ span.active{
 .gr-fenye{
     top: .15rem;
 }
-/*.xl-more-list{*/
-/*position: absolute;*/
-/*!*box-shadow: rgba(15, 29, 31, 0.72) 0px 41px 29px -10px;*!*/
-/*border-radius: 0 0 .1rem 0;*/
-/*!*background-color: rgba(39,94,102,1);*!*/
-/*background-image: url("../img/backgroundc.png");*/
-/*top: 0;*/
-/*width: 5.9rem;*/
-/*height: 3.5rem;*/
-/*left: 0;*/
-/*z-index: 9999;*/
-/*overflow: auto;*/
-/*padding-bottom: .1rem;*/
-/*}*/
+
 .xl-more-list{
     width: 5.9rem;
     height: 2.8rem;
@@ -588,7 +575,7 @@ span.active{
 li{
     color: #f1f1df;
 }
-/*--训练----测评页2222-*/
+/*---------训练------------------测评页2222-*/
 .small-pc-main{
     padding-top: .30rem;
 }
@@ -1057,3 +1044,19 @@ div.zitiPage-yanse{
 }
 
 
+/*--------==--xlfa.css---===------*/
+.famysj{
+	width: 10.9rem;
+    height: 6.9rem;
+    padding-top: .28rem;
+}
+.famysj_box{
+	border: .02rem solid #60d1d6;
+    box-shadow: 0 0 0.2rem #47fefd;
+    height: 6.6rem;
+    text-align: center;
+    line-height: 6.6rem;
+    color: #a29b9b;
+    font-size: .8rem;
+    
+}

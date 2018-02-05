@@ -72,7 +72,7 @@
 .send-value{
     position: absolute;
     left: 4.30rem;
-    width: 9.30rem;
+    width: 7rem;
     height: .54rem;
     font-size: .28rem;
     border: .01rem solid #1ce0e4;
@@ -169,75 +169,83 @@
 	height: .8rem;
 }
 
-.yy_send{
-	width: 100px;
-    font-size: 23px;
-    border: 1px solid;
+.yy_send {
+    width: 2.80rem;
     position: absolute;
-    right: 27px;
-    height: 80px;
-    line-height: 80px;
-    text-align: center;
-    top: 0;
+    right: 0;
+    top: .15rem;
     cursor: pointer;
+    height: .5rem;
 }
 .yy_tx{
 	width: 1rem;
 	left: 50%;
-	margin-left: -.5rem;
-	top: 100px;
+	margin-left: -.50rem;
+	top: 1rem;
 	position: fixed;
 	text-align: center;
 	z-index: 99999;
 	top: 4rem;
 }
 .yy_tx p{
-	font-size: 16px;
+	font-size: .16rem;
 	color: #fff;
 }
 .thyying{
-	width: 100px;
-	height: 100px;
+	width: 1rem;
+	height: 1rem;
 	
 }
 .meText .audio_area .audio_length{
-	
 	color: #fff;
 }
 
 
 
 .voice_record{
-	height: .35rem;
+	height: .5rem;
+	width: 1.2rem;
     line-height: .35rem;
-    width: 100%;
     border: .02rem solid #1ce0e4;
-    background: url(../img/yy_record.png) no-repeat .6rem .04rem;
-    background-size: .25rem .25rem;
+    background: url(../img/yy_record.png) no-repeat .8rem .07rem;
+   	background-size: .3rem .3rem;
     border-radius: .04rem;
-    /* padding-bottom: 20px; */
     text-align: left;
     padding-left: .14rem;
-    font-size: .16rem;
-    margin-top: .05rem;
-    margin-bottom: .05rem;
+    font-size: .3rem;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 .voice_send{
-	height: .35rem;
+	height: .5rem;
+    width: 1.2rem;
     line-height: .35rem;
-    width: 100%;
     border: .02rem solid #1ce0e4;
-    background:url(../img/yy_send.png) no-repeat .6rem .04rem;
-    background-size: .25rem .25rem;
+    background: url(../img/yy_send.png) no-repeat .8rem .07rem;
+    background-size: .3rem .3rem;
     border-radius: .04rem;
     text-align: left;
-    padding-left: .14rem;
-    font-size: .16rem;
-
+    padding-left: .1rem;
+    font-size: .3rem;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 .voice_record:hover{
 	color: #1ce0e4;
 }
 .voice_send:hover{
 	color: #1ce0e4;
+}
+
+
+/*--------------*/
+.send-value{
+	left: 3rem;
+    width: 7rem;
+}
+.xx-fasong{
+	right: 5rem;
+
 }

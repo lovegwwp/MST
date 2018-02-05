@@ -70,7 +70,7 @@ function join(t,g) {                //大视频进入            g==2 虚拟聊�
 							break
 						}
 					}
-                    console.log('虚拟视频，下标为'+indexvideo);
+                    console.log('！！！！！！！！大视频，虚拟视频，下标为'+indexvideo);
                 }else {
                     // alert('普通视频');
                     var textContain=newqcArr[bdCamera];
@@ -80,7 +80,7 @@ function join(t,g) {                //大视频进入            g==2 虚拟聊�
 							break
 						}
 					}
-                    console.log('普通视频，下标为'+indexvideo);
+                    console.log('！！！！！！！！！大视频，普通视频，下标为'+indexvideo);
                 }
            
                 var SeSource=$('#videoSource option:eq('+indexvideo+')').val();
@@ -220,7 +220,18 @@ function leave() {  //大视频退出
             if(spltsc[0]!=0){
                 fsxllthc(spltsc[0]);       //发送聊天时长
             }
-            $('.shipingList').hide();   //视频层隐藏
+            if($('.xx-btn').is('.active-under2')){
+            	$('.shipingList').hide();   //视频层隐藏
+            	$('.xiaoxi-home').show();
+   				var $ele= $('.xiaoxi-home').children();
+    			$ele.eq(0).show();
+    			$ele.eq(1).show();
+    			$ele.eq(2).show();
+    			$ele.eq(3).show();
+    			$ele.eq(4).show();
+            }else{
+            	$('.shipingList').hide();   //视频层隐藏
+            }
             console.log('好友列表视频退出成功！！！！！！！！！！！！！！');
             $('#join').css('backgroundImage','url(./img/answer.png)');
     		$('#leave').css('backgroundImage','url(./img/waiting.png)');
@@ -290,21 +301,28 @@ function getDevices() {
         }
     });
 }
-// 好友列表 --开启视频检测
+//好友列表 --开启视频检测
 function CheckJoin() {       //通过视频的计时器得到视频页面是否存在
     var syTime=$('.fa-sythsc').html();
+    if(wlstatus=='false'){
+    	$('.wlyjdk').show();
+    	setTimeout(function(){
+    		$('.wlyjdk').hide();
+    	},1000);
+    	return;
+    }
     if($('.hoshowtime').length){
         $('.gbqtsp').show();
-    }else {
-        if(parseInt(syTime)<=0){
-            var text='视频聊天时长不足,请充值后进入！';
-            $('.scbztext').html(text);
-            $('.scbz').show();
-        }else {
-            console.log('好友列表check完毕正在为你创建窗口');
-            join();
-        }
+        return;
     }
+    if(parseInt(syTime)<=0){
+        var text='视频聊天时长不足,请充值后进入！';
+        $('.scbztext').html(text);
+        $('.scbz').show();
+        return;
+    }
+    console.log('好友列表check完毕正在为你创建窗口');
+    join();  
 }
 // 好友列表 --关闭视频检测
 function Checkleave() {       //通过视频的计时器得到视频页面是否存在
@@ -315,21 +333,28 @@ function Checkleave() {       //通过视频的计时器得到视频页面是否
         console.log('好友列表check完毕不存在视频聊天的对象，退出按键无效');
     }
 }
-// 训练方案 --开启视频检测
+//训练方案 --开启视频检测
 function CheckfaSpOpen(toid){//开启训练视频对视频是否存在做判断
     var syTime=$('.fa-sythsc').html();
+    if(wlstatus=='false'){
+    	$('.wlyjdk').show();
+    	setTimeout(function(){
+    		$('.wlyjdk').hide();
+    	},1000);
+    	return;
+    }
     if($('.fashowtime').length){
         $('.gbqtsp').show();
-    }else {
-        if(parseInt(syTime)<=0){
-            var text='视频聊天时长不足,请充值后进入！';
-            $('.scbztext').html(text);
-            $('.scbz').show();
-        } else {
-            console.log('训练方案check完毕正在为你开启视频聊天');
-            creatxlltroom(toid)
-        }
+        return;
     }
+    if(parseInt(syTime)<=0){
+        var text='视频聊天时长不足,请充值后进入！';
+        $('.scbztext').html(text);
+        $('.scbz').show();
+        return;
+    } 
+    console.log('训练方案check完毕正在为你开启视频聊天');
+    creatxlltroom(toid)
 }
 // 训练方案 --挂断视频检测
 function CheckfaSpClose() {
@@ -417,7 +442,7 @@ function creatxlltroom(toid,t,g) {              //toid:'doc20'(房间号);    1:
 							break
 						}
 					}
-					alert('虚拟视频，下标为'+indexvideo);
+					console.log('!!!!!!!!!!!!!!!!!!!!!!!!!小视频，虚拟视频，下标为'+indexvideo);
                 }else {
                     // alert('普通视频');
                     var textContain=newqcArr[bdCamera];
@@ -427,13 +452,9 @@ function creatxlltroom(toid,t,g) {              //toid:'doc20'(房间号);    1:
 							break
 						}
 					}
-					alert('普通视频，下标为'+indexvideo);
+					console.log('!!!!!!!!!!!!!!!!!!!!小视频，普通视频，下标为'+indexvideo);
                 }
                 console.log('小视频');
-                
-                
-                
-                
                 var SeSource=$('#videoSource option:eq('+indexvideo+')').val();
                 camera = SeSource;
                 console.log(camera);
@@ -697,21 +718,33 @@ $('body').on('click','.smsfck',function () {
         }
     }
 });
+
+
+
 //大视频检测用户加入
 function checkPerJion() {
-        var count=1;
-        pertime=setInterval(function () {
+    var count=1;
+    pertime=setInterval(function () {
         count++;
         if($('.bigOtherPic').length){
             console.log('检测发现有用户进入，为你清除计时器');
             clearInterval(pertime);
             $('.otherPerson').remove();
-        }else {
-            // console.log('没有用户加入')
+            return;
         }
         if(count==30){
             clearInterval(pertime);
             $('.ltsp-zt').html('对方没有接听！');
+            $.when(getTimesjc()).done(function (data) {       //从服务器请求时间戳
+                    if(data){
+                        var fwcsjc=data.sjc;
+                        lksptx(VideoChating,fwcsjc);
+                        var docId=VideoChating.slice(3,VideoChating.length);
+                        var newfwcsjc= fwcsjc-30;
+                		ysspmjt(docId,newfwcsjc);
+                    }
+            });
+            //关闭聊天窗口
             setTimeout(function () {
                 clearInterval(pertime); //清除检测用户加入的定时器
                 client.leave(function () {
@@ -724,21 +757,17 @@ function checkPerJion() {
                     var spltsc=JSON.parse(localStorage.getItem('spnosc'));  //拿到本地视频缓存时长
                     fsxllthc(spltsc[0]);       //发送聊天时长
                     console.log("好友列表房间退出成功！！！！！！！！");
+                    
                     $('#join').css('backgroundImage','url(./img/answer.png)');
     				$('#leave').css('backgroundImage','url(./img/waiting.png)');
+                    
                 }, function (err) {
                     console.log("好友列表房间退出失败！！！！！！！！");
                 });
-                clearInterval(pertime);
+                clearInterval(pertime);                
                 setTimeout(function () {
                     $('.shipingList').hide();   //视频层隐藏
                 },2000);
-                $.when(getTimesjc()).done(function (data) {       //从服务器请求时间戳
-                    if(data){
-                        var fwcsjc=data.sjc;
-                        lksptx(VideoChating,fwcsjc);
-                    }
-                });
             },2000)
         }
     },1000)
@@ -752,8 +781,7 @@ function checkPerJionsm() {
             console.log('检测发现有用户进入，为你清除计时器');
             clearInterval(pertimesm);
             $('.otherxlPerson').remove();
-        }else {
-            // console.log('没有用户加入')
+            return;
         }
         if(count==30){
             clearInterval(pertimesm);
@@ -764,6 +792,9 @@ function checkPerJionsm() {
                     if(data){
                         var fwcsjc=data.sjc;
                         lksptx(VideoChating,fwcsjc);
+                        var docId=VideoChating.slice(3,VideoChating.length)
+                        var newfwcsjc= fwcsjc-30;
+                		ysspmjt(docId,newfwcsjc);
                     }
                 });
                 client.leave(function () {
@@ -779,9 +810,10 @@ function checkPerJionsm() {
                     var chatTime=spltsc[0];
                     fsxllthc(chatTime);       //发送时长
                     console.log("训练方案房间退出成功！！！！！！！！");
+					
                     $('.fa-sp-start').css('backgroundImage','url(./img/answer.png)');
     				$('.fa-sp-end').css('backgroundImage','url(./img/waiting.png)');
-
+                    
                 }, function (err) {
                     console.log("训练方案房间退出失败！！！！！！！！");
                 });
@@ -790,6 +822,7 @@ function checkPerJionsm() {
         }
     },1000)
 }
+
 
 //正计时 ，显示时间XX:XX:XX  (训练方案显示)(主视频界面显示)
 var fashowflag,hoshowflag;
@@ -886,3 +919,52 @@ function NumAscSort(a,b){
 	};
 
 
+	
+
+	//医生视频没接听
+	function ysspmjt(docId,sjc){
+		console.log('检测状态');
+		jsspstatus='false';
+		var i=1;
+		var ysjt=setInterval(function(){
+			i++;
+			console.log(i)
+			if(i==20){
+				console.log(i);
+				ysspmjtfwq(docId,sjc);
+				clearInterval(ysjt);
+				jsspstatus=='false';
+				return;
+			}
+			if(jsspstatus=='true'){
+				clearInterval(ysjt);
+				jsspstatus=='false';
+				return;
+			}
+		},1000)
+	}
+	//医生视频没接听发送到服务器
+	function ysspmjtfwq(docId,sjc){
+		console.log(docId+','+meId+','+meName+','+sjc+','+myImg+','+meSex+','+meAge)
+		$.ajax({
+	        url: ajaxStr+'MSTYL/pat/addHuanxin.action',
+	        data: {
+	        	toId:docId,
+	        	fromId:meId,
+	        	fromName:meName,
+	        	fromSjc:sjc,
+	        	fromAvatar:myImg,
+	        	fromSex:meSex,
+	        	fromAge:meAge,
+	        	type:0 	
+	        },
+	        type: "POST",
+	        dataType: "json",
+	        success: function (data) {
+				console.log(data);
+	        },
+	        err: function (err) {
+	            console.log(err)
+	        }
+	   });
+	}

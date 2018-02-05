@@ -66,7 +66,8 @@ public class MyDownLoadServlet extends HttpServlet {
 			for (String str : strArr) {
 				if (str!=null&&!(str.equals(""))) {
 					DoMyLoad(request,str);
-				}				
+				}	
+				count++;
 				System.out.println("已下载=====>"+count);
 			}
 			System.out.println("走完下载！");
@@ -96,46 +97,51 @@ public class MyDownLoadServlet extends HttpServlet {
         if(!file.exists()) {
             file.mkdirs();
         }
+        //judgeSame
+        File fileSame = new File(filePath+ fileName);
+		if (fileSame.exists()) {
+			System.out.println(fileName + "文件已存在，不下载！");
+		} else {
+			FileOutputStream fileOut = null;
+			HttpURLConnection conn = null;
+			InputStream inputStream = null;
 
-        FileOutputStream fileOut = null;
-        HttpURLConnection conn = null;
-        InputStream inputStream = null;
+			try {
+				URL e = new URL(url);
+				conn = (HttpURLConnection) e.openConnection();
+				conn.setRequestMethod("POST");
+				conn.setDoInput(true);
+				conn.setDoOutput(true);
+				conn.setUseCaches(false);
+				conn.connect();
+				inputStream = conn.getInputStream();
+				BufferedInputStream bis = new BufferedInputStream(inputStream);
+				if (!filePath.endsWith("/")) {
+					filePath = filePath + "/";
+				}
 
-        try {
-            URL e = new URL(url);
-            conn = (HttpURLConnection)e.openConnection();
-            conn.setRequestMethod("POST");
-            conn.setDoInput(true);
-            conn.setDoOutput(true);
-            conn.setUseCaches(false);
-            conn.connect();
-            inputStream = conn.getInputStream();
-            BufferedInputStream bis = new BufferedInputStream(inputStream);
-            if(!filePath.endsWith("/")) {
-                filePath = filePath + "/";
-            }
+				fileOut = new FileOutputStream(filePath + fileName);
+				BufferedOutputStream bos = new BufferedOutputStream(fileOut);
+				byte[] buf = new byte[4096];
 
-            fileOut = new FileOutputStream(filePath + fileName);
-            BufferedOutputStream bos = new BufferedOutputStream(fileOut);
-            byte[] buf = new byte[4096];
+				for (int length = bis.read(buf); length != -1; length = bis
+						.read(buf)) {
+					bos.write(buf, 0, length);
+				}
 
-            for(int length = bis.read(buf); length != -1; length = bis.read(buf)) {
-                bos.write(buf, 0, length);
-            }
-
-            bos.close();
-            bis.close();
-            conn.disconnect();
-            count++;
-            System.out.println("OKOKOKOKOKOKOK！！" + fileName);
-            m.put("status", "true");
-        } catch (Exception var17) {
-            var17.printStackTrace();
-            count++;
-            System.out.println("抛出异常！！");
-            m.put("status", "false");
-        }
-        
+				bos.close();
+				bis.close();
+				conn.disconnect();
+				///count++;
+				System.out.println("OKOKOKOKOKOKOK！！" + fileName);
+				m.put("status", "true");
+			} catch (Exception var17) {
+				var17.printStackTrace();
+				//count++;
+				System.out.println("抛出异常！！");
+				m.put("status", "false");
+			}
+		}
     	
     }
 }

@@ -45,8 +45,8 @@ function getzxone(page) {
             	var zxPic=data[i].pics;
             	var t=zxPic.substr(-3);
             	
-            	var zxData=data[i].xgsj.split(" ");
-                var zxData=zxData[0];
+            	var zxData=data[i].xgsj;
+            	var zxData=zxData.slice(0,zxData.length-3);
                 var zxTitle=data[i].titles;
                 var zxText = data[i].contents;
                 
@@ -159,41 +159,55 @@ $('body').on('click','.zx-list-one',function () {
     $('.zx-home').hide();
     $('.zx-text').show().html('');
     var num=$(this).index();
-  
     var type=$(this).find('b').html();
+    
     if(type=='pic'){
     	$('.zx-text').append(` <button class="zx-fanhui">返回</button>
-                    <p class="zx-title">${zxTextTitle[num]}</p>
-                    <p class="zx-data">${zxTextData[num]}</p>
-                    <div class="zx-pic"><img src="${ajaxStr+zxTextPic[num]}"></div>
-                    <p class="zx-detail">${zxTextDetail[num]}</p>`)
+    								<div class="zxpic_main clearfix">
+    									<div class="zxpic_title">
+    										<p class="zx-title">${zxTextTitle[num]}</p>
+                    						<p class="zx-data">${zxTextData[num]}</p>
+    									</div>
+    									<div class="zx-pic">
+                    						<img src="${ajaxStr+zxTextPic[num]}">
+                    					</div>
+    								</div>
+                    				<p class="zx-detail">${zxTextDetail[num]}</p>`)
     	
     }else if(type=='mp3'){
     	$('.zx-text').append(` <button class="zx-fanhui">返回</button>
-                    <p class="zx-title">${zxTextTitle[num]}</p>
-                    <p class="zx-data">${zxTextData[num]}</p>
-                    <audio preload="auto" controls>
-						<source src="${ajaxStr+zxTextPic[num]}" />
-						<source src="${ajaxStr+zxTextPic[num]}" />
-						<source src="${ajaxStr+zxTextPic[num]}" />
-					</audio>
-                    <p class="zx-detail">${zxTextDetail[num]}</p>`)    	
-    	$('.zx-text').find('audio').audioPlayer();
+    								<div class="zxmp_main clearfix">
+    									<div>
+    										<p class="zx-title">${zxTextTitle[num]}</p>
+                    						<p class="zx-data">${zxTextData[num]}</p>
+    									</div>
+    									<div class="zxmp_mp3">
+                    						<audio preload="auto" controls style="display:block;margin:0 auto;margin-bottom:.3rem"> 
+												<source src="${ajaxStr+zxTextPic[num]}" />
+											</audio>
+                    					</div>
+    								</div>
+                    			<p class="zx-detail">${zxTextDetail[num]}</p>`)
     }else {
-    	
     	$('.zx-text').append(` <button class="zx-fanhui">返回</button>
-                    <p class="zx-title">${zxTextTitle[num]}</p>
-                    <p class="zx-data">${zxTextData[num]}</p>
-                    <video class="video-js" controls preload="auto" poster="./img/poster.jpg">
-                                    <source src="${ajaxStr+zxTextPic[num]}" type="video/mp4">
-                                    <source src="${ajaxStr+zxTextPic[num]}" type="video/webm">
-                                    <source src="${ajaxStr+zxTextPic[num]}" type="video/ogg">
-                                    <p class="vjs-no-js">
-                                        To view this video please enable JavaScript, and consider upgrading to a web browser that
-                                        <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                                    </p>
-                                </video>
-                    <p class="zx-detail">${zxTextDetail[num]}</p>`);
+    							<div class="zxvdo_main clearfix">
+    								<div class="zxvdo_title">
+    									<p class="zx-title">${zxTextTitle[num]}</p>
+                    					<p class="zx-data">${zxTextData[num]}</p>
+    								</div>
+    								<div class="zxvdo_vid">
+    									<video class="video-js" controls preload="auto" poster="./img/poster.jpg">
+                                    		<source src="${ajaxStr+zxTextPic[num]}" type="video/mp4">
+                                    		<source src="${ajaxStr+zxTextPic[num]}" type="video/webm">
+                                    		<source src="${ajaxStr+zxTextPic[num]}" type="video/ogg">
+                                    		<p class="vjs-no-js">
+                                        		To view this video please enable JavaScript, and consider upgrading to a web browser that
+                                        		<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                                    		</p>
+                                		</video>
+    								</div>
+                                </div>
+                    			<p class="zx-detail">${zxTextDetail[num]}</p>`);
                     
         	var ele=document.getElementsByClassName('zx-text')[0].getElementsByClassName('video-js')[0];
             console.log(ele);

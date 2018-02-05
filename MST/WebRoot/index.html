@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link type="text/css" rel="stylesheet" href="./css/video-js.css">
     <link type="text/css" rel="stylesheet" href="./css/home.css">
-    <link type="text/css" rel="stylesheet" href="./css/xlfa.css">       <!--训练方案的样式-->
+    <link type="text/css" rel="stylesheet" href="./css/xlfa.css?v=1.2">       <!--训练方案的样式-->
     <link type="text/css" rel="stylesheet" href="./css/zx.css">          <!--资讯的样式-->
     <link type="text/css" rel="stylesheet" href="./css/lxys.css">          <!--联系医生的样式-->
     <link type="text/css" rel="stylesheet" href="./css/xz.css">          <!--下载的样式-->
@@ -772,28 +772,22 @@
             <button class="wlzt-btn">确定</button>
         </div>
     </div>                 <!--网络状态弹框-->
-    <div class="zx_fx" style="display: none">                   <!--医生给病人分享了最新资讯-->
-        <div class="zx_fx-ck">
-            <p class="zx_fx_uesr"><span class="zx_fx_uesrname"></span><span>医生给你分享了新的资讯消息!</span></p>
-            <p class="zx_fx_text">(请前往医疗资讯查看)</p>
-            <div class="zx_fx_btn clearfix">
-                <button class="zx_fx_btn-bt">确定</button>
-            </div>
+    <div class="wlzt_ok" style="display: none">
+        <div class="wlzt_ok-ck">
+            <p>检测到网络已经连接,请重启启动!</p>
+            <button class="wlzt_ok-btn">确定</button>
         </div>
-    </div>
+    </div>                 <!--网络状态弹框(联网)-->
+    
     <div class="myhy" style="display: none">
         <button class="myhy-btn">取消</button>
     </div>                          <!--搜索医生，没有匹配医生弹框-->
-    <div class="accF"></div> 
-    <!--<!--环信视频信令，医生请求添加你为好友弹框(动态添加页面)-->
-    <div class="addFriend" style="display: none">
-        <div class="addFriend-ck">
-            <p class="add-uesr"><span class="add-uesrname"></span><span>医生同意了您的好友申请!</span></p>
-            <div class="addFriend-btn clearfix">
-                <button class="addFriend-btn-bt">确定</button>
-            </div>
-        </div>
-    </div>           <!--环信视频信令，医生同意添加你为好友弹框-->
+    <!--医生给病人分享了最新资讯-->           <!--没问题-->   
+    <!--环信视频信令，医生请求添加你为好友弹框-->  
+    <!--环信视频信令，医生同意添加你为好友弹框-->  <!--没问题-->
+    <!--环信视频信令，医生拒绝添加你为好友！-->    <!--没问题-->
+  	<!--环信视频信令，医生分享产品给康复者-->     <!--没问题-->   
+    <!--环信视频信令，主动添加某医生为好友！-->   <!--没问题-->
     <div class="no_videoChat" style="display: none">
         <div class="no_videoChat-ck">
             <p class="no_videoChat_uesr"><span class="no_videoChat_uesrname"></span><span>医生拒绝了你的视频请求！</span></p>
@@ -802,23 +796,6 @@
             </div>
         </div>
     </div>        <!--环信视频信令，对方拒绝接听视频-->
-    <div class="no_accFriend" style="display: none">
-        <div class="no_accFriend-ck">
-            <p class="no_accFriend_uesr"><span class="no_accFriend_uesrname"></span><span>医生拒绝添加你为好友！</span></p>
-            <div class="no_accFriend-btn clearfix">
-                <button class="no_accFriend_btn_btn">确定</button>
-            </div>
-        </div>
-    </div>        <!--环信视频信令，医生拒绝添加你为好友！-->
-    <div class="ysfx_Box"></div><!--环信视频信令，医生分享产品给康复者！(动态添加页面)-->
-    <div class="qqadd_Friend" style="display: none">
-        <div class="qqadd_Friend-ck">
-            <p class="qqadd_Friend_uesr"><span>你已经向</span><span class="qqadd_Friend_uesrname"></span><span>医生发起了好友请求,请等待！</span></p>
-            <div class="qqadd_Friend-btn clearfix">
-                <button class="qqadd_Friend_btn_btn">确定</button>
-            </div>
-        </div>
-    </div>        <!--环信视频信令，主动添加某医生为好友！-->
     <div class="fwq_no" style="display:none">
         <div class="fwq_no_ck">
             <p>服务器开小差了~请稍后重新尝试！</p>
@@ -876,6 +853,21 @@
             <p>有新的训练方案,即将下载新的资源库!</p>
         </div>
     </div>                         <!--新方案提醒弹框-->
+    <div class="mkffw" style="display: none;">
+        <div class="mkffw-ck">
+            <p class="mkffw_uesr"><span>麦克风访问异常！</span></p>
+        </div>
+    </div>        <!--麦克风访问异常提醒！-->
+    <div class="wlyjdk" style="display: none;">
+        <div class="wlyjdk-ck">
+            <p class="wlyjdk_uesr"><span>网络已经断开！</span></p>
+        </div>
+    </div>        <!--网络已经断开提醒！-->
+    <div class="dfzzspth" style="display: none;">
+        <div class="dfzzspth-ck">
+            <p><span class="dfzzspth_uesr"></span><span>医生正在视频通话中，请稍后再试！</span></p>
+        </div>
+    </div>        <!--对方正在视频提醒！-->
     <div class="xfaxz" style="display:none;">
         <p>新方案下载中...</p>
         <div class="xz-jingdutiaoList">
@@ -904,7 +896,7 @@
                 <button class="lxys_tx_btn_btn">确定</button>
             </div>
         </div>
-    </div>        <!--联系医生不足！   提醒 分组存在 分组成功 最多7个分组 医生列表刷新失败,请手动刷新-->
+    </div>        <!--联系医生不足！   提醒 分组存在 分组成功 最多100个分组 医生列表刷新失败,请手动刷新-->
     <div class="kjdanger" style="display: none">
         <div class="kjdanger-ck">
             <p>检测到您的设备号匹配异常,请重新运行!</p>
@@ -923,7 +915,7 @@
         <div class="fx-code">
             <div id="fxpay"></div>
             <p class="fx-name"></p>
-            <p class="fxpay-text">打开手机淘宝扫码进入淘宝商城</p>
+            <p class="fxpay-text">请打开手机微信，扫码进入商城!</p>
         </div>
         <div class="fxpay-X"><img src="./img/delete@3x.png"></div>
     </div>
@@ -935,11 +927,12 @@
     <div class="fagktxsc" style="display: none">
         <P><span>您的视频训练已经观看了</span><span class="xlgktime"></span><span>分钟</span></P>
     </div>   <!--观看训练方案30分钟提醒一次的弹出层-->
+    
     <script src="./js/waves.min.js"></script>                  <!--点击水波纹-->
     <script src="./js/MacId.js"></script>                        <!--抓取-匹配设备号-->
     <script src="./js/video.min.js"></script>                    <!--训练方案video.js-->
     <script src="./js/home.js"></script>                           <!--各个页面公共的方法和最先定义的方法-->
-    <script src="./js/xlfa.js"></script>
+    <script src="./js/xlfa.js?v=1"></script>
     <script src="./js/ylzx.js"></script>
     <script src="./js/lxys.js"></script>
     <script src="./js/xz.js"></script>
@@ -949,9 +942,6 @@
     <script src="./js/Popt.js"></script>                    <!--个人中心城市选择-->
    	<script src="./js/cityJson.js"></script>                <!--个人中心城市选择-->
     <script src="./js/citySet.js"></script>                 <!--个人中心城市选择-->
-    
-    <script src="./js/audiomain.js"></script>                 <!--医疗咨询radio-->
-    <script src="./js/audioplayer.js"></script>                 <!--医疗咨询radio-->
     <script src="./js/jquery.qrcode.min.js"></script>           <!--生成二维码-->
     <script src="./js/circleChart.min.js"></script>               <!--训练方案圆形百分比-->
     <script src="./shengwang/AgoraRTCSDK-2.0.0.js"></script>
@@ -963,7 +953,7 @@
     <script src="./huanxin/adapter.js"></script>
     <script src="./huanxin/webrtc-1.4.12.js"></script>
     <script src="./js/weixinAudio.js"></script>
-    <script src="./huanxin/index.js"></script>
+    <script src="./huanxin/index.js?v=2"></script>
     <script src="./js/function.js"></script>    
     <script src="luying/recordmp3.js"></script>
     <script src="luying/luying.js"></script>

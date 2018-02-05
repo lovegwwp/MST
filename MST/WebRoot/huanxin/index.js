@@ -260,77 +260,123 @@ conn.listen({
             if(arr[0]=='01'){       // 01 代表对方同意添加你为好友
                 var ysname=arr[1];  //医生姓名
                 var docId=arr[2];   //医生环信ID
-                var group=arr[3];   //医生组名
-                $('.add-uesrname').html(ysname);
-                $('.addFriend').show();
-                var addClose=document.getElementsByClassName('addFriend-btn-bt')[0];
+                var group=arr[3];   //医生带过来的患者刷新本地组名
+                var sjnum3=1;        //对方同意添加为好友
+                console.log('带过来的组名'+group);
+				sjnum3=sjnum3+dd;
+				dd++;
+                $('body').append(`<div class="addFriend ${sjnum3}_dfty">
+                						<div class="addFriend-ck">
+            								<p class="add-uesr">
+            									<span class="add-uesrname">${ysname}</span>
+            									<span>医生同意了您的好友申请!</span>
+            								</p>
+            								<div class="addFriend-btn clearfix">
+                								<button class="addFriend-btn-bt">确定</button>
+            								</div>
+        								</div>
+        								</div>`);
+                var addClose=document.getElementsByClassName(sjnum3+'_dfty')[0].getElementsByClassName('addFriend-btn-bt')[0];
+                console.log(addClose);
                 addClose.onclick=function () {
-                    $('.addFriend').hide();
+                    $('.'+sjnum3+'_dfty').remove();
                 };
-                if(addHcPer.length>0){
-                    for(var i=0;i<addHcPer.length;i++){
-                        if(addHcPer[i].docId==docId){
-                            console.log(addHcPer[i]);
-                            addHcPer[i].type='2';      //2代表已经互相成为好友（修改状态）
-                            console.log(docId+'对方同意，互为好友，状态发生改变2');
-                            break;
-                        }
-                    }
-                }else {
-                    console.log('本地没有该好友的ID')//此种情况不存在
-                }
-                localStorage.setItem('addPer', JSON.stringify(addHcPer));
-                addHcPer=JSON.parse(localStorage.getItem('addPer'));
-                console.log(addHcPer);
+//              if(addHcPer.length>0){
+//                  for(var i=0;i<addHcPer.length;i++){
+//                      if(addHcPer[i].docId==docId){
+//                          console.log(addHcPer[i]);
+//                          addHcPer[i].type='2';      //2代表已经互相成为好友（修改状态）
+//                          console.log(docId+'对方同意，互为好友，状态发生改变2');
+//                          break;
+//                      }
+//                  }
+//              }else {
+//                  console.log('本地没有该好友的ID')//此种情况不存在
+//              }
+//              localStorage.setItem('addPer', JSON.stringify(addHcPer));
+//              addHcPer=JSON.parse(localStorage.getItem('addPer'));
+//              console.log(addHcPer);
                 addFried(docId,group);   //走自己的服务器添加好友① -> 刷新好友②
             }else if(arr[0]=='11'){       //11 对方删除你好友
                 // console.log('对方删除你好友，修改医生ID状态');
+                var docname=arr[1];  //医生姓名
                 var docId=arr[2];
-                if(addHcPer.length>0){
-                    for(var i=0;i<addHcPer.length;i++){
-                        if(addHcPer[i].docId==docId){
-                            console.log(addHcPer);
-                            addHcPer[i].type='0';        //0代表已经拒绝，可以重复添加(状态修改)
-                            break;
-                        }
-                    }
-                }else {
-                    console.log('本地没有该好友的ID')//此种情况不存在
-                }
-                localStorage.setItem('addPer', JSON.stringify(addHcPer));
-                addHcPer=JSON.parse(localStorage.getItem('addPer'));
-                console.log(addHcPer);
-                setTimeout(function () {     //   延迟刷新好友列表
-                    $.when(getUserList()).done(function (data) {
-                        getUserListUI(data);
-                    });
-                    console.log('3秒已经刷新本地服务器')
-                },3000)
+//              if(addHcPer.length>0){
+//                  for(var i=0;i<addHcPer.length;i++){
+//                      if(addHcPer[i].docId==docId){
+//                          console.log(addHcPer);
+//                          addHcPer[i].type='0';        //0代表已经拒绝，可以重复添加(状态修改)
+//                          break;
+//                      }
+//                  }
+//              }else {
+//                  console.log('本地没有该好友的ID')//此种情况不存在
+//              }
+//              localStorage.setItem('addPer', JSON.stringify(addHcPer));
+//              addHcPer=JSON.parse(localStorage.getItem('addPer'));
+//              console.log(addHcPer);
             }else if(arr[0]=='12'){      //12 对方拒绝你的好友请求
-                console.log('对方拒绝添加你为好友，修改医生ID状态');
+//              console.log('对方拒绝添加你为好友，修改医生ID状态');
+				var yName=arr[1];
                 var docId=arr[2];
-                var yName=arr[1];
-                if(addHcPer.length>0){
-                    for(var i=0;i<addHcPer.length;i++){
-                        if(addHcPer[i].docId==docId){
-                            addHcPer[i].type='0';       //0代表已经拒绝，可以重复添加(状态修改)
-                            console.log(addHcPer);
-                            break;
-                        }
-                    }
-                }else {
-                    console.log('本地没有该好友的ID')//此种情况不存在
-                }
-                $('.no_accFriend_uesrname').html(yName);
-                $('.no_accFriend').show();
-                localStorage.setItem('addPer', JSON.stringify(addHcPer));
-                addHcPer=JSON.parse(localStorage.getItem('addPer'));
-                console.log(addHcPer);
+//              if(addHcPer.length>0){
+//                  for(var i=0;i<addHcPer.length;i++){
+//                      if(addHcPer[i].docId==docId){
+//                          addHcPer[i].type='0';       //0代表已经拒绝，可以重复添加(状态修改)
+//                          console.log(addHcPer);
+//                          break;
+//                      }
+//                  }
+//              }else {
+//                  console.log('本地没有该好友的ID')//此种情况不存在
+//              }
+                var sjnum1=1;        //对方拒绝添加
+				sjnum1=sjnum1+dd;
+				dd++;
+                $('body').append(`<div class="no_accFriend ${sjnum1}_jjtj">
+        								<div class="no_accFriend-ck">
+            								<p class="no_accFriend_uesr">
+            									<span class="no_accFriend_uesrname">${yName}</span>
+            									<span>医生拒绝添加你为好友！</span>
+            								</p>
+            								<div class="no_accFriend-btn clearfix">
+                								<button class="no_accFriend_btn_btn">确定</button>
+            								</div>
+        								</div>
+    							</div>`);
+                var addClose=document.getElementsByClassName(sjnum1+'_jjtj')[0].getElementsByClassName('no_accFriend_btn_btn')[0];
+                console.log(addClose);
+                addClose.onclick=function () {
+                    $('.'+sjnum1+'_jjtj').remove();
+                    console.log(sjnum1);
+                };
+//              localStorage.setItem('addPer', JSON.stringify(addHcPer));
+//              addHcPer=JSON.parse(localStorage.getItem('addPer'));
+//              console.log(addHcPer);
             } else if(arr[0]=='10'){     // 10 代表医生分享资讯消息给你
                 //alert('对方给你分享了最新资讯');   //医生分享消息给病人
                 var yName=arr[1];
                 console.log(yName);
-                $('.zx_fx').show().find('.zx_fx_uesrname').html(yName);
+                var sjnum4=1;        //医生分享消息给病人
+				sjnum4=sjnum4+dd;
+				dd++;
+            	$('body').append(`<div class="zx_fx ${sjnum4}_zxfx" >                  
+        							<div class="zx_fx-ck">
+            							<p class="zx_fx_uesr">
+            								<span class="zx_fx_uesrname">${yName}</span>
+            								<span>医生给你分享了新的资讯消息!</span>
+            							</p>
+            							<p class="zx_fx_text">(请前往医疗资讯查看)</p>
+            							<div class="zx_fx_btn clearfix">
+                							<button class="zx_fx_btn-bt">确定</button>
+            							</div>
+        							</div>
+    							</div>`);
+    			var addClose=document.getElementsByClassName(sjnum4+'_zxfx')[0].getElementsByClassName('zx_fx_btn-bt')[0];
+    			console.log(addClose);
+    			addClose.onclick=function () {
+        			$('.'+sjnum4+'_zxfx').remove();
+    			};
                 setTimeout(function () {
                     var page=1;
                     getzxone(page);       //刷新资讯列表
@@ -346,38 +392,22 @@ conn.listen({
                 console.log('时间戳'+sjc);
                 console.log('图片地址'+yssrc);
                 if($('acc-sp').is(':visible')|| $('.hoshowtime').length==1||$('.fashowtime').length==1){
+                	//alert('正在通话中')
                     $.when(getTimesjc()).done(function (data) {       //从服务器请求时间戳
                         if(data){
                             var ysname=arr[1];  //医生姓名
                             var fwcsjc=data.sjc;
-                            fssptc(fwcsjc,ysname);   //此时康复者正在视频通话中
+                            fssptc(docId,fwcsjc);   //此时康复者正在视频通话中
                         }
                     });
-                }else {
-                    $.when(getTimesjc()).done(function (data) {       //从服务器请求时间戳
-                        if(data){
-                            var fwcsjc=data.sjc;
-                            var nmbfwcsjc=parseInt(fwcsjc);
-                            console.log(fwcsjc);
-                            console.log(nmbfwcsjc);
-                            console.log('时间戳值相减等于'+(nmbfwcsjc-sjc));
-                            if(nmbfwcsjc-sjc<40){
-                                $('.acc-sp').show().find('.accsp-text').html(ysname);
-                                $('.acc-sp').find('.sp_type').html('1');   //1 视频请求类型   普通视频聊天
-                                $('.acc-sp').find('.accsp_type').html('医生,邀请你进入视频聊天.....');
-                                $('.thtsls').append('<audio src="./sp.mp3" autoplay="autoplay" preload="auto">您的浏览器不支持audio属性，请更换浏览器再进行浏览。 </audio>')
-                                setTimeout(function () {
-                                    $('.acc-sp').hide();
-                                    $('.thtsls').html('');
-                                },30000);
-                                $('.acc-sp').find('.yes-accsp-docid').html(docId);
-                            }else {
-                                console.log('有医生发了视频请求但是时间戳大于40s不显示界面不显示')
-                            };
-                            var data='[视频聊天]';
-                            getmorexx(docId,data,ysname,yssrc);
-                        }
-                    });
+                }else {                                                  
+                      $('.acc-sp').show().find('.accsp-text').html(ysname);
+                      $('.acc-sp').find('.accsp_type').html('医生,邀请你进入视频聊天.....')
+                      $('.acc-sp').find('.sp_type').html('1');   //1 视频请求类型   普通视频聊天
+                      $('.thtsls').append('<audio src="./sp.mp3" autoplay="autoplay" preload="auto">您的浏览器不支持audio属性，请更换浏览器再进行浏览。 </audio>');
+                      $('.acc-sp').find('.yes-accsp-docid').html(docId);  
+                      var data='[视频聊天]';
+                      getmorexx(docId,data,ysname,yssrc);  
                 }
             }else if(arr[0]=='05'){ //对方拒绝你的视频请求（你发起请求）
                 var yName=arr[1];
@@ -401,7 +431,7 @@ conn.listen({
                             console.log("好友列表房间退出成功！！！！！！！！");
                             $('#join').css('backgroundImage','url(./img/answer.png)');
     						$('#leave').css('backgroundImage','url(./img/waiting.png)');
-
+                            
                         }, function (err) {
                             console.log("好友列表房间退出失败！！！！！！！！");
                         });
@@ -432,6 +462,8 @@ conn.listen({
                             console.log("训练方案房间退出成功！！！！！！！！");
                             $('.fa-sp-start').css('backgroundImage','url(./img/answer.png)');
     						$('.fa-sp-end').css('backgroundImage','url(./img/waiting.png)');
+                            
+                            
                         }, function (err) {
                             console.log("训练方案房间退出失败！！！！！！！！");
                         });
@@ -439,13 +471,14 @@ conn.listen({
                     },1000)
                 }
             }else if(arr[0]=='06') {  //对方提前挂断视频请求（对方发起请求）
-                if($('.acc-sp').is(':visible')){
-                    $('.acc-sp').hide();
-                    $('.thtsls').html('');
-                }
+                $('.acc-sp').hide();
+                $('.thtsls').html('');
             }else if(arr[0]=='13'){    //对方正在视频通话
                 var yName=arr[1];
-                alert(yName+'对方正在视频通话，请稍后再试');
+                $('.dfzzspth').show().find('.dfzzspth_uesr').html(yName);
+                setTimeout(function(){
+                	$('.dfzzspth').hide().find('.dfzzspth_uesr').html('');
+                },3000)
                 Checkleave();
                 CheckfaSpClose();
             }else if(arr[0]=='100'){                 //医生给你分享商品
@@ -456,7 +489,29 @@ conn.listen({
                 var spId=arr[5];                  //商品id
                 var spmc=arr[6];                  //商品名称
                 var splj=arr[7];                  //商品链接
-                $('.ysfx_Box').append( '<div class="ysfx_cptx"> <div class="ysfx_cptx-ck"> <p class="ysfx_cptx_uesr"><span class="ysfx_cptx_uesrname">'+ysname+'</span><span>给你分享了</span><span class="cptx_name">一个新的商品！</span></p> <p>请前往消息界面查看详情</p> <div class="ysfx_cptx-btn clearfix"> <button class="ysfx_cptx_btn_btn">确定</button> </div> </div> </div>');
+                var sjnum6=1;        //分享商品
+				sjnum6=sjnum6+dd;
+				dd++;
+                $('body').append(`<div class="ysfx_Box ${sjnum6}_fxsp">
+                					<div class="ysfx_cptx">
+                					<div class="ysfx_cptx-ck"> 
+                						<p class="ysfx_cptx_uesr">
+                							<span class="ysfx_cptx_uesrname">${ysname}</span>
+                							<span>给你分享了</span><span class="cptx_name">一个新的商品！</span>
+                						</p> 
+                						<p>请前往消息界面查看详情</p> 
+                						<div class="ysfx_cptx-btn clearfix"> 
+                							<button class="ysfx_cptx_btn_btn">确定</button> 
+                						</div> 
+                					</div> 
+                					</div>
+                				 </div>`);
+                var ele=document.getElementsByClassName(sjnum6+'_fxsp')[0].getElementsByClassName('ysfx_cptx_btn_btn')[0];
+            	ele.onclick=function (){
+            		console.log(sjnum6);
+                	$('.'+sjnum6+'_fxsp').remove();
+            	};				 
+                				 
                 // ----消息的时间显示（时间戳）
                 var timeList=getInforTime();         //获取时间对象
                 var bztime = timeList.time;          // 2017-09-14 13:46:22 获取时间对象--标准时间
@@ -466,7 +521,7 @@ conn.listen({
                 // -------消息界面的最新消息缓存
                 var $ele = $('.xiaoxi-home').html();
                 localStorage.setItem('xxjmhc', JSON.stringify($ele));
-            }else if(arr[0]==123){    //医生向康复者发送虚拟视频请求
+            }else if(arr[0]=='123'){    //医生向康复者发送虚拟视频请求
                 var dId=arr[1];       //医生ID
                 var docId=arr[2];    //医生环信ID
                 var ysname=arr[3];  //医生姓名
@@ -481,35 +536,60 @@ conn.listen({
                     $.when(getTimesjc()).done(function (data) {       //从服务器请求时间戳
                         if(data){
                             var fwcsjc=data.sjc;
-                            fssptc(fwcsjc,ysname);   //此时康复者正在视频通话中
+                            fssptc(docId,fwcsjc);   //此时康复者正在视频通话中
                         }
                     });
-                } else {
-                    $.when(getTimesjc()).done(function (data) {       //从服务器请求时间戳
-                        if(data){
-                            var fwcsjc=data.sjc;
-                            var nmbfwcsjc=parseInt(fwcsjc);
-                            console.log(sjc);
-                            console.log(nmbfwcsjc);
-                            if(nmbfwcsjc-sjc<40){
-                                $('.acc-sp').show().find('.accsp-text').html(ysname);
-                                $('.acc-sp').find('.sp_type').html('2'); //2 视频请求类型   虚拟视频聊天
-                                $('.acc-sp').find('.accsp_type').html('医生,邀请你进入评测通道.....');
-                                $('.acc-sp').find('.sp_SRC').html(message.action); //评测地址
-                                $('.thtsls').append('<audio src="./sp.mp3" autoplay="autoplay" preload="auto">您的浏览器不支持audio属性，请更换浏览器再进行浏览。 </audio>')
-                                setTimeout(function () {
-                                    $('.acc-sp').hide();
-                                    $('.thtsls').html('');
-                                },30000);
-                                $('.acc-sp').find('.yes-accsp-docid').html(docId);
-                            }else {
-                                console.log('有医生发了视频请求但是时间戳大于40s不显示界面不显示')
-                            };
-                            var data='[视频聊天]';
-                            getmorexx(docId,data,ysname,yssrc);
-                        }
-                    });
+                } else {                                                                                                
+                      $('.acc-sp').show().find('.accsp-text').html(ysname);
+                      $('.acc-sp').find('.accsp_type').html('医生,邀请你进入评测通道.....')
+                      $('.acc-sp').find('.sp_type').html('2'); //2 视频请求类型   虚拟视频聊天
+                      $('.acc-sp').find('.sp_SRC').html(message.action); //评测地址
+                      $('.thtsls').append('<audio src="./sp.mp3" autoplay="autoplay" preload="auto">您的浏览器不支持audio属性，请更换浏览器再进行浏览。 </audio>');
+                      $('.acc-sp').find('.yes-accsp-docid').html(docId);
+                      var data='[视频聊天]';
+                      getmorexx(docId,data,ysname,yssrc);   
                 }
+            }else if(arr[0]=='201'){
+            	console.log('对方加你为好友');
+            	var ysname=arr[1];   //对方医生的姓名;
+            	var group=arr[2];    //组名
+          		var docId=arr[3];    //对方医生的环信ID;
+				var sjnum5=1;        //对方添加你为好友
+				sjnum5=sjnum5+dd;
+				dd++;
+            	$('body').append(`<div class="accF ${sjnum5}_dftjn">
+            						<div class="accFriend">
+            						<div class="accFriend-ck"> 
+            							<p class="acc-user">
+            								<span class="acc-username">${ysname}</span>
+            								<span>医生请求添加您为好友!</span>
+            							</p> 
+            							<div class="accFriend-btn clearfix">
+            								<button class="accFriend-no">拒绝</button> 
+            								<button class="accFriend-yes active">同意</button> 
+            							</div>
+            						</div>
+            						</div>
+            					</div>`);
+            	var accOk=document.getElementsByClassName(sjnum5+'_dftjn')[0].getElementsByClassName('accFriend-yes')[0];
+            	var accNo=document.getElementsByClassName(sjnum5+'_dftjn')[0].getElementsByClassName('accFriend-no')[0];
+            	accOk.onclick=function (){
+            		console.log(sjnum5)
+                	$('.'+sjnum5+'_dftjn').remove();
+					accFriendOk(docId,group,ysname);         
+            	};
+            	accNo.onclick=function () {
+            		console.log(sjnum5)
+                	$('.'+sjnum5+'_dftjn').remove();
+                	accFriendONo(docId,ysname);       
+            	};	
+            }else if(arr[0]=='666'){  //对方添加好友，删除好友（ 从数据库移除）
+            	console.log('收到666')
+            	sxbdfuq();	   //刷新本地好友列表
+            	
+            }else if(arr[0]=='404'){
+            	console.log('收到404')
+            	jsspstatus='true';
             }
         }
     },     //收到命令消息
@@ -741,33 +821,9 @@ conn.listen({
     },   //收到视频消息
     //加好友函数回调;
     onPresence: function ( message ) {
-        console.log(message);
         var e=message;
-        console.log(message);
         var str=e.status;
         if (e.type === 'subscribe') {
-            console.log('对方加你为好友');
-            var arr=str.split("@$");
-            var ysname=arr[0];   //对方医生的姓名;
-            var group=arr[1];    //组名
-//          var docId=arr[2];    //对方医生的环信ID;
-            $('.acc-username').html(ysname);
-            $('.accF').append('<div class="accFriend accFriend'+e.from+'"> <div class="accFriend-ck"> <p class="acc-user"><span class="acc-username">'+ysname+'</span>医生请求添加您为好友!</p> <div class="accFriend-btn clearfix"><button class="accFriend-no">拒绝</button> <button class="accFriend-yes active">同意</button> </div> </div> </div>');
-            var accOk=document.getElementsByClassName('accFriend'+e.from)[0].getElementsByClassName('accFriend-yes')[0];
-            var accNo=document.getElementsByClassName('accFriend'+e.from)[0].getElementsByClassName('accFriend-no')[0];
-            accOk.onclick=function () {
-                $(this).parents('.accFriend').remove();
-                accFriendOk(e,group,ysname);          //走环信同意添加好友（双向添加）
-            };
-            accNo.onclick=function () {
-                $(this).parents('.accFriend').remove();
-                accFriendONo(e);       //走环信拒绝添加好友          index 485
-            };
-        }else if (e.type === 'subscribed'&&e.status){
-            console.log('对方同意添加你为好友[环信自带提醒,非命令]');
-        }else if (e.type === 'unsubscribed'){
-            // var docId=e.from;
-            // checkRefuseFriend(docId); //判断对方是否拒绝/删除
         }
     },                                       //添加好友提醒！！！处理“广播”或“发布-订阅”消息，如联系人订阅请求、处理群组、聊天室被踢解散等消息
     onRoster: function ( message ) {
@@ -777,15 +833,14 @@ conn.listen({
     onInviteMessage: function ( message ) {},  //处理群组邀请
     onOnline: function () {
         console.log('环信提示联网了');
-        $('.xx-fasong').attr('disabled',false);
-        $('.send-value').html('请输入要发送的信息').attr('disabled',false);
-        $('.wlzt').hide();
-        $('.dwdwdw').hide();
+        wlstatus='true';
+        $('.wlzt').hide();  //断网弹出层提示隐藏
+        $('.dwdwdw').hide();//右下角断网文字提示隐藏
+        $('.wlzt_ok').show();
     },                  //本机网络连接成功
     onOffline: function () {
         console.log('环信提示断网了');
-        $('.xx-fasong').attr('disabled',true);
-        $('.send-value').html('网络未连接，消息无法发送').attr('disabled',true);
+        wlstatus='false';
         $('.wlzt').show();
         $('.dwdwdw').show();
     },                 //本机网络掉线
@@ -812,7 +867,6 @@ conn.listen({
         console.log('果用户在A群组被禁言')
     }        //如果用户在A群组被禁言，在A群发消息会走这个回调并且消息不会传递给群其它成员
 });
-//  消息时间戳
 
 //缓存信息对方
 function saveHcXxO(message,xxone){
@@ -998,10 +1052,19 @@ function timeHide(timeList,xxtime,othUser) {
 
 //  聊天窗口点击发送消息
 var sendPrivateText = function (toID,Id) {
+	if(wlstatus=='false'){   //断网判断
+    	$('.wlyjdk').show();
+    	setTimeout(function(){
+    		$('.wlyjdk').hide();
+    	},1000);
+    	return;
+    }
     var sendVal=$('#'+Id).find('.send-value').val();
-    $('#'+Id).find('.send-value').val('');
-    if(sendVal!==''){
+    if(sendVal==''||sendVal.trim().length == 0){
+    	return;
+    }
     	$('.ltjlmy').remove();
+    	$('#'+Id).find('.send-value').val('');
         // ----时间戳
         var timeList=getInforTime();
         var bztime = timeList.time;          // 2017-09-14 13:46:22 获取标准时间
@@ -1063,207 +1126,284 @@ var sendPrivateText = function (toID,Id) {
         };
         //发送的消息缓存  （本人）
         saveHcXxO(toID,xxobj)  //发送文本
-    }
+//    }
 };
 
 //测试  删除聊天记录
 $('.delchat').click(function () {
     localStorage.removeItem('chatxx');
 });
-// 测试加对方为好友
-function addFriends(docId,docName) {
-    var meid='pat'+meId;
-    var obj={
-        img:myImg,
-        state:'5',
-        age:meAge,
-        sex:meSex,
-        name:meName,
-        uuid:meid,
-        type:'5',
-        groupName:addgroupName
-    };
-    var strJson=JSON.stringify(obj);
-    conn.subscribe({
-        to: docId,
-        // Demo里面接收方没有展现出来这个message，在status字段里面
-        message:strJson//携带参数
-    });
-    console.log('主动添加对方为好友，已经添加'+docName+',对方的环信id为:'+docId+'请耐心等待验证');
-    $('.qqadd_Friend_uesrname').html(docName);
-    $('.qqadd_Friend').show();
-
-};
 // 主动添加对方为好友
-$('.addtest').click(function () {
-    var docId='fuguannnan1';
-    // var docId='doc55';
-    var docName='张三';
-    var docGroupName='我的好友';
-    // addFriends(docId);
-    checkAddFriend(docId,docName,docGroupName);
-});
-
-function checkAddFriend(docId,docName,docGroupName) {   //添加好友 进行时间验证，防止重复添加
-    $.when(getTimesjc()).done(function (data) {         //从服务器请求时间戳
+function addFriends(docId,docName) {
+    $.when(getTimesjc()).done(function (data) {       //从服务器请求时间戳
         if(data){
-            var fwcsjc=data.sjc;
-            if(addHcPer.length>0){
-                var flg=true;
-                for(var i=0;i<addHcPer.length;i++){
-                    if(addHcPer[i].docId==docId){
-                        flg=false;
-                        var dName=addHcPer[i].docName;
-                        var dtype=addHcPer[i].type;
-                        var dtime=addHcPer[i].time;  //上次
-                        if(dtype=='1'){     //0：已经添加过，对方已经拒绝  1：已经添加过，对方未回复
-                            $.when(getTimesjc()).done(function (data) {       //从服务器请求时间戳
-                                var newfwcsjc=data.sjc;
-                                addHcPer[i].time=fwcsjc;  //本地缓存时间为最新的
-                                addFriends(docId,docName);
-                                //对方信息消息忽视判断 时间戳
-//                              if(fwcsjc-dtime>1*60*60){
-                                    //时间至少相差6小时，可以重复添加
-                                    
-//                                  console.log('至少6小时前添加过'+dName+'为好友，可以重复添加');
-//                              }else {
-//                                  //时间一天之内，不可以重复添加
-//                                  alert('您今天已经添加过'+dName+'为好友，请等待对方回复');
-//                                  console.log(addHcPer)
-//                              }
-                            });
-                        }else {
-                            console.log('数组存在,找到该医生ID，'+dName+'已经拒绝，可以重复添加');
-                            addHcPer[i].type='1'; //改变状态
-                            console.log(docId+'对方拒绝，状态发生改变1');
-                            console.log(addHcPer);
-                            localStorage.setItem('addPer', JSON.stringify(addHcPer));
-                            addFriends(docId,docName);
-                        }
-                        break;
-                    }
-                }
-                if(flg==true){
-                    var addObj={
-                        docId:docId,
-                        docName:docName,
-                        docgroup:docGroupName,
-                        time:fwcsjc,
-                        type:'1'
-                    };
-                    addHcPer.push(addObj);
-                    console.log('数组存在但是没有找到该ID,可以添加');
-                    addFriends(docId,docName);
-                }
-            }else {
-                var addObj={
-                    docId:docId,
-                    docName:docName,
-                    docgroup:docGroupName,
-                    time:fwcsjc,
-                    type:'1'    //已经添加
-                };
-                addHcPer.push(addObj);
-                console.log('数组不存在也没有该ID,可以添加');
-                addFriends(docId,docName);
-            }
-            localStorage.setItem('addPer', JSON.stringify(addperArr));
+        	var fwcsjc=data.sjc;
+        	var uuid='pat'+meId;
+            var id = conn.getUniqueId();            //生成本地消息id
+            var msg = new WebIM.message('cmd', id); //创建命令消息
+            var str={
+            	uuid:uuid,
+        		name:meName,
+        		groupName:addgroupName,
+        		type:'1',
+        		state:'5',
+        		time:fwcsjc,
+        		sex:meSex,
+                portraitUrl:myImg,
+        		age:meAge,	
+            };
+            var spStr= JSON.stringify(str);
+            var spJson={
+                type:'7',
+                json:spStr
+            };
+            var spJsonStr=  JSON.stringify(spJson);
+            console.log(spJsonStr);
+            msg.set({
+                msg: 'msg',                            //组名加本人id
+                to: docId,                              //接收消息对象
+                action : spJsonStr,                    //用户自定义，cmd消息必填
+                ext :{'extmsg':'extends messages'},    //用户自扩展的消息内容（群聊用法相同）
+                success: function ( id,serverMsgId ) {
+                    console.log('主动添加'+docName+'为好友');
+                    console.log('主动添加对方为好友，已经添加'+docName+',对方的环信id为:'+docId+'请耐心等待验证');
+    				var sjnum2=1;        //主动添加对方为好友
+					sjnum2=sjnum2+dd;
+					dd++;
+    				$('body').append(`<div class="qqadd_Friend ${sjnum2}_zdtj">
+        									<div class="qqadd_Friend-ck">
+            									<p class="qqadd_Friend_uesr">
+            										<span>你已经向</span><span class="qqadd_Friend_uesrname">${docName}</span>
+            										<span>医生发起了好友请求,请等待！</span>
+            									</p>
+            									<div class="qqadd_Friend-btn clearfix">
+                									<button class="qqadd_Friend_btn_btn">确定</button>
+           				 						</div>
+        									</div>
+    									</div> `);
+    				var addClose=document.getElementsByClassName(sjnum2+'_zdtj')[0].getElementsByClassName('qqadd_Friend_btn_btn')[0];
+    				console.log(addClose);
+    				addClose.onclick=function () {
+        				$('.'+sjnum2+'_zdtj').remove();
+    				};
+            	}//消息发送成功回调
+            });
+            conn.send(msg.body);
         }
     });
-}
+};
+
+//function checkAddFriend(docId,docName,docGroupName) {   //添加好友 进行时间验证，防止重复添加（不走）
+//  $.when(getTimesjc()).done(function (data) {         //从服务器请求时间戳
+//      if(data){
+//          var fwcsjc=data.sjc;
+//          if(addHcPer.length>0){
+//              var flg=true;
+//              for(var i=0;i<addHcPer.length;i++){
+//                  if(addHcPer[i].docId==docId){
+//                      flg=false;
+//                      var dName=addHcPer[i].docName;
+//                      var dtype=addHcPer[i].type;
+//                      var dtime=addHcPer[i].time;  //上次
+//                      if(dtype=='1'){     //0：已经添加过，对方已经拒绝  1：已经添加过，对方未回复
+//                          $.when(getTimesjc()).done(function (data) {       //从服务器请求时间戳
+//                              var newfwcsjc=data.sjc;
+//                              addHcPer[i].time=fwcsjc;  //本地缓存时间为最新的
+//                              addFriends(docId,docName);
+//                              //对方信息消息忽视判断 时间戳
+////                              if(fwcsjc-dtime>1*60*60){
+//                                  //时间至少相差6小时，可以重复添加
+//                                  
+////                                  console.log('至少6小时前添加过'+dName+'为好友，可以重复添加');
+////                              }else {
+////                                  //时间一天之内，不可以重复添加
+////                                  alert('您今天已经添加过'+dName+'为好友，请等待对方回复');
+////                                  console.log(addHcPer)
+////                              }
+//                          });
+//                      }else {
+//                          console.log('数组存在,找到该医生ID，'+dName+'已经拒绝，可以重复添加');
+//                          addHcPer[i].type='1'; //改变状态
+//                          console.log(docId+'对方拒绝，状态发生改变1');
+//                          console.log(addHcPer);
+//                          localStorage.setItem('addPer', JSON.stringify(addHcPer));
+//                          addFriends(docId,docName);
+//                      }
+//                      break;
+//                  }
+//              }
+//              if(flg==true){
+//                  var addObj={
+//                      docId:docId,
+//                      docName:docName,
+//                      docgroup:docGroupName,
+//                      time:fwcsjc,
+//                      type:'1'
+//                  };
+//                  addHcPer.push(addObj);
+//                  console.log('数组存在但是没有找到该ID,可以添加');
+//                  addFriends(docId,docName);
+//              }
+//          }else {
+//              var addObj={
+//                  docId:docId,
+//                  docName:docName,
+//                  docgroup:docGroupName,
+//                  time:fwcsjc,
+//                  type:'1'    //已经添加
+//              };
+//              addHcPer.push(addObj);
+//              console.log('数组不存在也没有该ID,可以添加');
+//              addFriends(docId,docName);
+//          }
+//          localStorage.setItem('addPer', JSON.stringify(addperArr));
+//      }
+//  });
+//}
 
 // 搜索好友列表，添加好友进入新的分组确定按钮
 $('.fz-queding1').click(function () {   //主动添加好友 --确定
     if($('.fenzuList-a1').find('.zuming-Listone.active').length==1){
         var docId='doc'+addPersonId;    //医生对应的环信账号
         addgroupName=$('.fenzuList-a1').find('.zuming-Listone.active').find('label').html();
-        console.log('点击新分组确定按钮');
-        console.log('添加的组名为'+addgroupName);
-        console.log('添加的人名为'+addPersonName);
-        console.log('医生环信ID为'+docId);
+        console.log('添加的组名为:'+addgroupName);
+        console.log('添加的人名为:'+addPersonName);
+        console.log('医生环信ID为:'+docId);
         $('.fenzuList1').hide();
         $('.search-show1').show();
         $('.fenzuList-b1').html('');
-        checkAddFriend(docId,addPersonName,addgroupName);              //确定添加对方为好友，走环信通知
-    }else {
+        //checkAddFriend(docId,addPersonName,addgroupName);               //验证好友状态，防止多次添加
+        addFriends(docId,addPersonName);                                         //确定添加对方为好友，走环信通知
+    }else { 
         $('.csqs').show();
     }
 });
+//通知医生端，本地好友服务器刷新
+//eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+function askYssx(docId) {
+    $.when(getTimesjc()).done(function (data) {       //从服务器请求时间戳
+        if(data){
+        	var fwcsjc=data.sjc;
+        	var uuid='pat'+meId;
+            var id = conn.getUniqueId();            //生成本地消息id
+            var msg = new WebIM.message('cmd', id); //创建命令消息
+            var str={
+                json:uuid,
+                type:'10'
+            };
+			var JsonStr= JSON.stringify(str);
+    		console.log(JsonStr);	
+            msg.set({
+                msg: 'msg',                            //组名加本人id
+                to: docId,                              //接收消息对象
+                action : JsonStr,                    //用户自定义，cmd消息必填
+                ext :{'extmsg':'extends messages'},    //用户自扩展的消息内容（群聊用法相同）
+                success: function ( id,serverMsgId ) {
+                    console.log('告诉对方环信id为:'+docId+'刷新本地服务器');
+            	}//消息发送成功回调
+            });
+            conn.send(msg.body);
+        }
+    });
+}
 
 
 //同意添加对方为好友
-function accFriendOk(e,group,docName) {
-    // 同意添加为好友
-    var docId=e.from;
-    console.log('对方的环信账号为'+e.from);
-    if (e.type === 'subscribe') {
-        /*同意添加好友操作的实现方法*/
-        conn.subscribed({
-            to: e.from,
-            message : '[resp:true]',
-        });
-        conn.subscribe({//需要反向添加对方好友
-            to: e.from,
-            message : '[resp:true]',
-        });
-    }
+function accFriendOk(docId,group,docName) {
     console.log('发送过去的组名'+group);
     $.when(getTimesjc()).done(function (data) {       //从服务器请求时间戳
         if(data){
-            var fwcsjc=data.sjc;
-            console.log(fwcsjc);
-            if(addHcPer.length>0){
-                var flg=true;
-                for(var i=0;i<addHcPer.length;i++){
-                    if(addHcPer[i].docId==docId){
-                        flg=false;
-                        addHcPer[i].type='2'; //互为好友
-                        break;
-                    }
-                }
-                if(flg==true){
-                    var addObj={
-                        docId:e.from,
-                        docName:docName,
-                        docgroup:group,
-                        time:fwcsjc,
-                        type:'2'
-                    };
-                    addHcPer.push(addObj);
-                    console.log('数组存在但是没有找到该ID,添加状态2');
-                }
-            }else {
-                var addObj={
-                    docId:e.from,
-                    docName:docName,
-                    docgroup:group,
-                    time:fwcsjc,
-                    type:'2'
-                };
-                addHcPer.push(addObj);
-                console.log('数组不存在也没有该ID,添加状态2');
-            }
+        	var fwcsjc=data.sjc;
+      		var uuid='pat'+meId;
+            var id = conn.getUniqueId();            //生成本地消息id
+            var msg = new WebIM.message('cmd', id); //创建命令消息\n\
+            var str={
+                json:uuid,
+                type:8
+            };
+			var JsonStr= JSON.stringify(str);
+    		console.log(JsonStr);	
+            msg.set({
+                msg: 'msg',                            //组名加本人id
+                to: docId,                              //接收消息对象
+                action : JsonStr,                    //用户自定义，cmd消息必填
+                ext :{'extmsg':'extends messages'},    //用户自扩展的消息内容（群聊用法相同）
+                success: function ( id,serverMsgId ) {
+                    console.log('同意添加'+docName+'为好友；环信id为:'+docId);
+//                   if(addHcPer.length>0){
+//              		var flg=true;
+//              		for(var i=0;i<addHcPer.length;i++){
+//                  		if(addHcPer[i].docId==docId){
+//                      		flg=false;
+//                      		addHcPer[i].type='2'; //互为好友
+//                      		break;
+//                  		}
+//              		}
+//              		if(flg==true){
+//                  		var addObj={
+//                      		docId:e.from,
+//                      		docName:docName,
+//                      		docgroup:group,
+//                      		time:fwcsjc,
+//                      		type:'2'
+//                  		};
+//                  		addHcPer.push(addObj);
+//                  		console.log('数组存在但是没有找到该ID,添加状态2');
+//              		}
+//          		}else {
+//              		var addObj={
+//                  		docId:e.from,
+//                  		docName:docName,
+//                  		docgroup:group,
+//                  		time:fwcsjc,
+//                  		type:'2'
+//              		};
+//              		addHcPer.push(addObj);
+//              		console.log('数组不存在也没有该ID,添加状态2');
+//          		}
+//          		localStorage.setItem('addPer', JSON.stringify(addperArr));
+            	}//消息发送成功回调
+            });
+            conn.send(msg.body);
         }
     });
-    localStorage.setItem('addPer', JSON.stringify(addperArr));
-    setTimeout(function () {   //   延迟刷新好友列表
-        $.when(getUserList()).done(function (data) {
-            getUserListUI(data);
-        });
-        console.log('3秒已经刷新本地服务器');
-    },3000)
 }
+
+function sxbdfuq(){
+	$.when(getUserList()).done(function (data) {
+        getUserListUI(data);
+   });
+}
+
 //拒绝添加对方为好友
-function accFriendONo(e) {   //拒绝添加对方为好友
-    console.log(e);
-    if (e.type === 'subscribe') {
-        /*拒绝添加好友的方法处理*/
-        conn.unsubscribed({
-            to: e.from,
-            message : '拒绝添加好友'
-        });
-    }
+function accFriendONo(docId,ysname) {   //拒绝添加对方为好友
+     $.when(getTimesjc()).done(function (data) {       //从服务器请求时间戳
+        if(data){
+        	var fwcsjc=data.sjc;
+	     	var uuid='pat'+meId;
+            var id = conn.getUniqueId();            //生成本地消息id
+            var msg = new WebIM.message('cmd', id); //创建命令消息
+            var str={
+                json:uuid,
+                type:'9',
+            };
+        	var JsonStr=  JSON.stringify(str);
+    		console.log(JsonStr);
+            msg.set({
+                msg: 'msg',                            //组名加本人id
+                to: docId,                              //接收消息对象
+                action : JsonStr,                    //用户自定义，cmd消息必填
+                ext :{'extmsg':'extends messages'},    //用户自扩展的消息内容（群聊用法相同）
+                success: function ( id,serverMsgId ) {
+                    console.log('拒绝添加'+ysname+'为好友;环信id为：'+docId);
+            	}//消息发送成功回调
+            });
+            conn.send(msg.body);
+        }
+    });
 }
+
+
 // ！！！好友列表发信息，打开聊天室
 $('.friendOne-send').click(function (e) {
     e.stopPropagation();
@@ -1908,23 +2048,23 @@ function fssptc(docId,sjc) {  //患者正在视频视频聊天  返回给医生
         action : spJsonStr,                    //用户自定义，cmd消息必填
         ext :{'extmsg':'extends messages'},    //用户自扩展的消息内容（群聊用法相同）
         success: function ( id,serverMsgId ) {
-            console.log('发送成功')
+            console.log('康复者正在视频通话，发送成功;发送医生环信id:'+docId)
         }//消息发送成功回调
     });
     conn.send(msg.body);
 }
 
 
-function fsyypd(docId) {  //患者正在发送语音片段  返回给医生
+function fsyypd(docId) {     //聊天语音片段 返回给医生
     //患者给医生发送扩展字段（命令消息过去）
     console.log('医生环信ID为'+docId);
     var uuid='pat'+meId;
     var id = conn.getUniqueId();            //生成本地消息id
     var msg = new WebIM.message('cmd', id); //创建命令消息
     var str={
-            uuid:uuid,
-            name:meName,
-            portraits:myImg
+        uuid:uuid,
+        name:meName,
+        portraits:myImg
     };
     var spStr= JSON.stringify(str);
     var spJson={
@@ -2153,7 +2293,7 @@ function getmorexx(docId,data,ysname,yssrc) {
                 time:bztime
             };
         }
-        saveHcXxO(docId,xxone)     
+        saveHcXxO(docId,xxone);
 
         // -------消息界面的最新消息缓存
         var $ele = $('.xiaoxi-home').html();
@@ -2313,6 +2453,7 @@ $('.yes-accsp').click(function () {
                     console.log('好友列表check完毕正在为你创建窗口');
                     var t=2;
                     if(g==1){        //g==1普通视频
+                    
                         join(t,g);  //加入房间
                     }else {          //g==2虚拟视频
                         $.when(openNX()).done(function (data) {
